@@ -1,3 +1,8 @@
 
 .DS_Store
+
 BdeWebSite/composer-setup.php
+=======
+*.example
+BdeWebSite/.env
+
