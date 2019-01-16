@@ -8,37 +8,37 @@
 #------------------------------------------------------------
 
 CREATE TABLE User(
-        idUser        Int  Auto_increment  NOT NULL ,
+        idUsers       Int  Auto_increment  NOT NULL ,
         name          Varchar (255) NOT NULL ,
         lastName      Varchar (255) NOT NULL ,
         location      Varchar (255) NOT NULL ,
         email         Varchar (255) NOT NULL ,
         password      Varchar (60) NOT NULL ,
-        state         Int NOT NULL ,
+        state         TinyINT NOT NULL ,
         rememberToken Varchar (100) NOT NULL ,
         created_at    TimeStamp NOT NULL ,
-        adapted_at    TimeStamp NOT NULL
-	,CONSTRAINT User_PK PRIMARY KEY (idUser)
+        updapted_at   TimeStamp NOT NULL
+	,CONSTRAINT User_PK PRIMARY KEY (idUsers)
 )ENGINE=InnoDB;
 
 
 #------------------------------------------------------------
-# Table: Event
+# Table: Events
 #------------------------------------------------------------
 
-CREATE TABLE Event(
-        idEvent    Int  Auto_increment  NOT NULL ,
+CREATE TABLE Events(
+        id         Int  Auto_increment  NOT NULL ,
         owner      Varchar (255) NOT NULL ,
-        date       Varchar (255) NOT NULL ,
+        date       Date NOT NULL ,
         descrition Varchar (255) NOT NULL ,
-        validated  TinyINT NOT NULL ,
+        validated  Bool NOT NULL ,
         imageLink  Varchar (255) NOT NULL ,
         like       TinyText NOT NULL ,
-        notes      Varchar (255) NOT NULL ,
-        idUser     Int NOT NULL
-	,CONSTRAINT Event_PK PRIMARY KEY (idEvent)
+        vote       Int NOT NULL ,
+        idUsers    Int NOT NULL
+	,CONSTRAINT Events_PK PRIMARY KEY (id)
 
-	,CONSTRAINT Event_User_FK FOREIGN KEY (idUser) REFERENCES User(idUser)
+	,CONSTRAINT Events_User_FK FOREIGN KEY (idUsers) REFERENCES User(idUsers)
 )ENGINE=InnoDB;
 
 
@@ -47,12 +47,13 @@ CREATE TABLE Event(
 #------------------------------------------------------------
 
 CREATE TABLE Article(
-        idArticle Int  Auto_increment  NOT NULL ,
-        name      Varchar (255) NOT NULL ,
-        quantity  Varchar (255) NOT NULL ,
-        price     Varchar (255) NOT NULL ,
-        urlImage  Varchar (255) NOT NULL
-	,CONSTRAINT Article_PK PRIMARY KEY (idArticle)
+        idArticles Int  Auto_increment  NOT NULL ,
+        name       Varchar (255) NOT NULL ,
+        quantity   Int NOT NULL ,
+        price      Int NOT NULL ,
+        imageLink  Varchar (255) NOT NULL ,
+        categorie  Varchar (255) NOT NULL
+	,CONSTRAINT Article_PK PRIMARY KEY (idArticles)
 )ENGINE=InnoDB;
 
 
@@ -63,10 +64,10 @@ CREATE TABLE Article(
 CREATE TABLE Photos(
         idPhotos Int  Auto_increment  NOT NULL ,
         link     Varchar (255) NOT NULL ,
-        idEvent  Int NOT NULL
+        id       Int NOT NULL
 	,CONSTRAINT Photos_PK PRIMARY KEY (idPhotos)
 
-	,CONSTRAINT Photos_Event_FK FOREIGN KEY (idEvent) REFERENCES Event(idEvent)
+	,CONSTRAINT Photos_Events_FK FOREIGN KEY (id) REFERENCES Events(id)
 )ENGINE=InnoDB;
 
 
@@ -89,12 +90,12 @@ CREATE TABLE Comments(
 #------------------------------------------------------------
 
 CREATE TABLE Buy(
-        idUser    Int NOT NULL ,
-        idArticle Int NOT NULL
-	,CONSTRAINT Buy_PK PRIMARY KEY (idUser,idArticle)
+        idUsers    Int NOT NULL ,
+        idArticles Int NOT NULL
+	,CONSTRAINT Buy_PK PRIMARY KEY (idUsers,idArticles)
 
-	,CONSTRAINT Buy_User_FK FOREIGN KEY (idUser) REFERENCES User(idUser)
-	,CONSTRAINT Buy_Article0_FK FOREIGN KEY (idArticle) REFERENCES Article(idArticle)
+	,CONSTRAINT Buy_User_FK FOREIGN KEY (idUsers) REFERENCES User(idUsers)
+	,CONSTRAINT Buy_Article0_FK FOREIGN KEY (idArticles) REFERENCES Article(idArticles)
 )ENGINE=InnoDB;
 
 
@@ -103,11 +104,11 @@ CREATE TABLE Buy(
 #------------------------------------------------------------
 
 CREATE TABLE Subscribe(
-        idEvent Int NOT NULL ,
-        idUser  Int NOT NULL
-	,CONSTRAINT Subscribe_PK PRIMARY KEY (idEvent,idUser)
+        id      Int NOT NULL ,
+        idUsers Int NOT NULL
+	,CONSTRAINT Subscribe_PK PRIMARY KEY (id,idUsers)
 
-	,CONSTRAINT Subscribe_Event_FK FOREIGN KEY (idEvent) REFERENCES Event(idEvent)
-	,CONSTRAINT Subscribe_User0_FK FOREIGN KEY (idUser) REFERENCES User(idUser)
+	,CONSTRAINT Subscribe_Events_FK FOREIGN KEY (id) REFERENCES Events(id)
+	,CONSTRAINT Subscribe_User0_FK FOREIGN KEY (idUsers) REFERENCES User(idUsers)
 )ENGINE=InnoDB;
 
