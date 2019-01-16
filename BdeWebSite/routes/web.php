@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/template', function () {
-    return view('template');
-});
+
+Route::resource('users', 'UsersController');
+Route::resource('events', 'EventsController');
+Route::resource('photos', 'PhotosController');
+Route::resource('comments', 'CommentsController');
+Route::resource('articles', 'ArticlesController');
