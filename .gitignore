@@ -1,6 +1,4 @@
 
 .DS_Store
 *.example
-BdeWebSite/.env.example
-BdeWebSite/.env.example
-BdeWebSite/.env.example
+BdeWebSite/.env
