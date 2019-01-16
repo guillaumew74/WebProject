@@ -21,3 +21,4 @@ Route::resource('events', 'EventsController');
 Route::resource('photos', 'PhotosController');
 Route::resource('comments', 'CommentsController');
 Route::resource('articles', 'ArticlesController');
+
