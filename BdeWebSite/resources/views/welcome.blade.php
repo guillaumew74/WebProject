@@ -12,7 +12,7 @@
 
             <p>Bienvenue sur le site du bureau des élèves de l'école CESI de Lyon !<br></p>
             <p>Découvrez tous les évenements et la boutique qui font du CESI Lyon l'un des plus actifs parmis les écoles d'ingénieurs.<br></p>
-            <p>Rejoins nos évenements afin de participer a l'expansion de la vie étudiante au CESI.<br></p>
+            <p>Rejoins nos évenements afin de participer à l'expansion de la vie étudiante au CESI.<br></p>
             <p>Afin de vous mettre en valeurs, nous vous proposons de proposer vos évenements, qui seront voter par les autres membres du CESI, puis réaliser si une majorité l'aura liker, donc
             n'attends pas et viens nous proposer ton évenement !<br></p>
             <p>Le site est organisé en différentes catégories pour faciliter la navigation, mais si tu as une question tu peux nous contacter ou encore venir directement dans ton BDE.<br></p>
