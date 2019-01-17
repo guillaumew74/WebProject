@@ -2,11 +2,14 @@
 
 @section('contenu')
 
-  <section id="about">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Présentation <br></h2>
+          <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+                <h2>Présentation <br></h2>
 
             <p><strong>Bonjour à toi CESIEN(E)!</strong></p>
 
@@ -19,43 +22,30 @@
 
             <p><strong>À très vite !</strong></p>
 
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="youtube" class="bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 mx-auto">
-            <h2>Informations pratiques</h2>
-            <p class="lead">
-
-                <table class="table table-hover">
-                <tbody>
-                    <tr>
-                         <th scope="row"></th>
-                        <td>Adresse </td>
-                        <td>Téléphone </td>
-                        <td>Les horaires</td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td>Campus CESI LYON <br>Adresse : 19 Avenue Guy de Collongue, 69130 Écully</td>
-                        <td>04 72 18 89 89</td>
-                        <td>Horaires d'ouverture  du lundi au vendredi de 8h00 à 18h00</td>
-                    </tr>
-
-                </tbody>
-</table>
-
             </div>
-          </div>
         </div>
-      </div>
-</section>
+        <!-- /#page-content-wrapper -->
+        <div id="page-content-wrapper">
+            <h2>Informations Pratiques<br></h2>
+            <table class="table table-hover">
+                        <tbody>
+                            <tr>
+                                 <th scope="row"></th>
+                                <td>Adresse </td>
+                                <td>Téléphone </td>
+                                <td>Les horaires</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"></th>
+                                <td>Campus CESI LYON <br>Adresse : 19 Avenue Guy de Collongue, 69130 Écully</td>
+                                <td>04 72 18 89 89</td>
+                                <td>Horaires d'ouverture  du lundi au vendredi de 8h00 à 18h00</td>
+                            </tr>
 
-<section id="carousel" class="bg-secondary">
+                        </tbody>
+            </table>
+  </div>
+  <section id="carousel" >
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
@@ -102,3 +92,4 @@
 </section>
 
 @endsection
+
