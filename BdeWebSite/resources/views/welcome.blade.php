@@ -5,10 +5,9 @@
           <!-- /#sidebar-wrapper -->
 
         <!-- Page Content -->
-        <div id="page-content-wrapper">
+        <div class="page-content-wrapper">
             <div class="container-fluid">
-
-                <a href="#menu-toggle" class="btn btn-secondary" id="menu-toggle">Menu</a>
+                <h1>Bde Web Site</h1>
                 <h2>Présentation <br></h2>
 
             <p><strong>Bonjour à toi CESIEN(E)!</strong></p>
@@ -25,7 +24,7 @@
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        <div id="page-content-wrapper">
+        <div class="page-content-wrapper">
             <h2>Informations Pratiques<br></h2>
             <table class="table table-hover">
                         <tbody>
@@ -45,7 +44,7 @@
                         </tbody>
             </table>
   </div>
-  <section id="carousel" >
+<section id="carousel" >
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
@@ -88,7 +87,6 @@
         </div>
       </div>
     </div>
-  </div>
 </section>
 
 @endsection
