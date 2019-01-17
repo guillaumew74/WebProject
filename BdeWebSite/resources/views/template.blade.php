@@ -33,7 +33,7 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                      <img src="img2.png" style="margin-left: -16px;">
+                      <img src="img/img2.png" style="margin-left: -16px;">
                     </a>
                 </li>
                 <li>
