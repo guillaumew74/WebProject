@@ -7,7 +7,7 @@
         <!-- Page Content -->
         <div class="page-content-wrapper">
             <div class="container-fluid">
-                <h1>Bde Web Site</h1>
+                <h1>Bde Web Site CESI</h1>
                 <h2>Présentation <br></h2>
 
             <p><strong>Bonjour à toi CESIEN(E)!</strong></p>
@@ -48,7 +48,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 mx-auto">
-        <h2>Bibliothèque d'image</h2>
+        <h2>Bibliothèque d'images</h2>
           <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
               <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>

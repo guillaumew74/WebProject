@@ -26,7 +26,7 @@ body {
 .page-content-wrapper {
   width: 100%;
   position: absolute;
-  padding: 15px;
+  padding: 2%;
 }
 
 #wrapper .page-content-wrapper {
@@ -80,7 +80,6 @@ body {
   background: none;
 }
 
-@media(min-width:768px) {
   #wrapper {
     padding-left: 0;
   }
@@ -100,7 +99,7 @@ body {
   #wrapper .page-content-wrapper {
     position: relative;
     margin-right: 0;
-  }
+
 }
 footer{
   width: 100%;
@@ -116,6 +115,7 @@ header
   background-color: black;
   position:fixed;
   top: 0;
+
 }
 
 li img

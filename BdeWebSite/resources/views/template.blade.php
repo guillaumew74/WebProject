@@ -38,10 +38,10 @@
                 </li>
 
                 <li>
-                    <a href="/pevenements">Proposition Evenement</a>
+                    <a href="/pevenements">Proposition &Eacute;v&egrave;nement</a>
                 </li>
                 <li>
-                    <a href="/evenements">Evenements</a>
+                    <a href="/evenements">&Eacute;v&egrave;nements</a>
                 </li>
                 <li>
                     <a href="/boutique">Boutique</a>
@@ -50,7 +50,7 @@
                     <a href="/panier">Panier</a>
                 </li>
                 <li>
-                    <a href="/login">Login</a>
+                    <a href="/login">Login / Register</a>
                 </li>
             </ul>
         </div>
