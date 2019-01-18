@@ -34,7 +34,7 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <li class="sidebar-brand" id="navimg">
-                   <img alt="logo cesi" src="img/cesi.jpg">
+                  <a href="/"><img alt="logo cesi" src="img/cesi.jpg"></a>
                 </li>
 
                 <li>
@@ -48,6 +48,9 @@
                 </li>
                 <li>
                     <a href="/panier">Panier</a>
+                </li>
+                <li>
+                    <a href="/mentions-legales">Mentions L&eacute;gales</a>
                 </li>
                 <li>
                     <a href="/login">Login / Register</a>

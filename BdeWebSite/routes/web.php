@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/mentions-legales', function () {
+    return view('mentions-legales');
+});
+
 
 Route::resource('users', 'UsersController');
 Route::resource('events', 'EventsController');
