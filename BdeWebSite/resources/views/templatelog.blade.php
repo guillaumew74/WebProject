@@ -15,7 +15,7 @@
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
       <!-- Custom styles for this template -->
-      <link href="../css/about.css" rel="stylesheet">
+      <link href="../css/aboutlog.css" rel="stylesheet">
 
       <!--[if lt IE 9]>
       {{ Html::style('https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js') }}

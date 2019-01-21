@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('templatelog')
 
 @section('contenu')
 <div class="container">
