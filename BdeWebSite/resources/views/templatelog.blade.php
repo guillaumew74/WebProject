@@ -101,6 +101,9 @@
                     <a href="/panier">Panier</a>
                 </li>
                 <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                <li>
                     <a href="/mentions-legales">Mentions Légales</a>
                 </li>
             </ul>

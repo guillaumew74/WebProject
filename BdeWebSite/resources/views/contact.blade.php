@@ -1,11 +1,11 @@
-@extends('template')
+@extends('templatelog')
 
 @section('contenu')
     <br>
 	<div class="col-sm-offset-3 col-sm-6">
 		<div class="panel panel-default">
 			<div class="panel-heading">Contactez-moi</div>
-			<div class="panel-body"> 
+			<div class="panel-body">
 				{!! Form::open(['url' => 'contact']) !!}
 					<div class="form-group {!! $errors->has('nom') ? 'has-error' : '' !!}">
 						{!! Form::text('nom', null, ['class' => 'form-control', 'placeholder' => 'Votre nom']) !!}
