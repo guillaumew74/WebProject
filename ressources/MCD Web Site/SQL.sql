@@ -22,7 +22,7 @@ CREATE TABLE Article(
 # Table: User
 #------------------------------------------------------------
 
-CREATE TABLE User(
+CREATE TABLE Users(
         idUsers       Int  Auto_increment  NOT NULL ,
         name          Varchar (255) NOT NULL ,
         lastName      Varchar (255) NOT NULL ,
@@ -48,9 +48,9 @@ CREATE TABLE Events(
         owner      Varchar (255) NOT NULL ,
         date       Date NOT NULL ,
         descrition Varchar (255) NOT NULL ,
-        validated  Bool NOT NULL ,
+        validated  boolean NOT NULL ,
         imageLink  Varchar (255) NOT NULL ,
-        like       TinyText NOT NULL ,
+        likes       TinyText NOT NULL ,
         vote       Int NOT NULL ,
         idUsers    Int NOT NULL
 	,CONSTRAINT Events_PK PRIMARY KEY (idEvent)
@@ -105,12 +105,12 @@ CREATE TABLE Subscribe(
 
 
 
-ALTER TABLE User
+ALTER TABLE Users
 	ADD CONSTRAINT User_Comments0_FK
 	FOREIGN KEY (idcomments)
 	REFERENCES Comments(idcomments);
 
-ALTER TABLE User
+ALTER TABLE Users
 	ADD CONSTRAINT User_Photos1_FK
 	FOREIGN KEY (idPhotos)
 	REFERENCES Photos(idPhotos);
@@ -118,7 +118,7 @@ ALTER TABLE User
 ALTER TABLE Events
 	ADD CONSTRAINT Events_User0_FK
 	FOREIGN KEY (idUsers)
-	REFERENCES User(idUsers);
+	REFERENCES Users(idUsers);
 
 ALTER TABLE Photos
 	ADD CONSTRAINT Photos_Events0_FK
@@ -133,7 +133,7 @@ ALTER TABLE Comments
 ALTER TABLE Buy
 	ADD CONSTRAINT Buy_User0_FK
 	FOREIGN KEY (idUsers)
-	REFERENCES User(idUsers);
+	REFERENCES Users(idUsers);
 
 ALTER TABLE Buy
 	ADD CONSTRAINT Buy_Article1_FK
@@ -148,4 +148,4 @@ ALTER TABLE Subscribe
 ALTER TABLE Subscribe
 	ADD CONSTRAINT Subscribe_User1_FK
 	FOREIGN KEY (idUsers)
-	REFERENCES User(idUsers);
+	REFERENCES Users(idUsers);
