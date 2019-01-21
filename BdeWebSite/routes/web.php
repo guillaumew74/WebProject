@@ -20,8 +20,9 @@ Route::get('/mentions-legales', function () {
 });
 
 
-Route::resource('users', 'UsersController');
-Route::resource('events', 'EventsController');
-Route::resource('photos', 'PhotosController');
-Route::resource('comments', 'CommentsController');
-Route::resource('articles', 'ArticlesController');
+//ROUTE MODIFICATION USER CSSEUD
+Route::resource('user', 'UserController');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('logout', 'auth\LoginController@logout');
