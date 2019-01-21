@@ -22,7 +22,6 @@
       {{ Html::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}
       <![endif]-->
 
-      <script src="{{ asset('js/app.js') }}" defer></script>
 
       <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -119,7 +118,7 @@
             <p class="m-1 text-center text-white">Copyright &copy; Guillaume Woreth / Niels Boeckx / Remi Papin / Zacharia Azzouzi Clausel</p>
           </div>
       </footer>
-
+    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Bootstrap core JavaScript -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

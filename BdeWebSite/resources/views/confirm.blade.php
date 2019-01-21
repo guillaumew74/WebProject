@@ -9,9 +9,9 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Contactez-moi</div>
+            <div class="panel-heading">Contactez le BDE</div>
 
-            <div class="panel-body"> 
+            <div class="panel-body">
 
                 Merci. Votre message a été transmis à l'administrateur du site. Vous recevrez une réponse rapidement.
 
