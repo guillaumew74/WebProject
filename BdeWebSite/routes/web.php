@@ -26,3 +26,7 @@ Route::resource('user', 'UserController');
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', 'auth\LoginController@logout');
+
+Route::get('contact', 'ContactController@getForm');
+Route::post('contact', 'ContactController@postForm');
+
