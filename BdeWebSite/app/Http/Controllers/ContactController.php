@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace App\Http\Controllers;
 
@@ -15,7 +15,7 @@ class ContactController extends Controller {
 
     {
 
-        return view('contact');
+        return view('contact.contact');
 
     }
 
@@ -24,7 +24,7 @@ class ContactController extends Controller {
 
     {
 
-        Mail::send('email_contact', $request->all(), function($message) 
+        Mail::send('contact.email_contact', $request->all(), function($message)
 
         {
 
@@ -33,7 +33,7 @@ class ContactController extends Controller {
         });
 
 
-        return view('confirm');
+        return view('contact.confirm');
 
     }
 

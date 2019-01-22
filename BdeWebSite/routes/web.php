@@ -13,12 +13,12 @@
 
 //ROUTE HOME
 Route::get('/', function () {
-    return view('welcome');
+    return view('vue.welcome');
 });
 
 //ROUTE MENTIONS LEGALES
 Route::get('/mentions-legales', function () {
-    return view('mentions-legales');
+    return view('vue.mentions-legales');
 });
 
 //ROUTE MODIFICATION USER CSSEUD
