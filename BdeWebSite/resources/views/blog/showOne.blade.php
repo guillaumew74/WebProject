@@ -24,7 +24,7 @@
     <div class="col-sm-8">
       <h2 class="mt-4">What We Do</h2>
       <p>{{ $eventShow->description }}</p>
-      <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:40px;color:white;"></i>Commente</a>
+      <a class="btn btn-primary btn-lg" id="btnComment"><i class="far fa-comments" style="font-size:40px;color:white;"></i>Commente</a>
       <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:40px;color:white;"></i>Like {{ $eventShow->like }}</a>
     </div>
     <div class="col-sm-4">
