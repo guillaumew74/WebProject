@@ -24,8 +24,8 @@
     <div class="col-sm-8">
       <h2 class="mt-4">What We Do</h2>
       <p>{{ $eventShow->description }}</p>
-      <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:40px;color:white;"></i>Commente</a>
-      <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:40px;color:white;"></i>Like {{ $eventShow->like }}</a>
+      <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:20px;color:white;"></i>Commente</a>
+      <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>Like {{ $eventShow->like }}</a>
     </div>
     <div class="col-sm-4">
       <h2 class="mt-4">Contact Us</h2>
@@ -46,16 +46,16 @@
   </div>
   <!-- /.row -->
   <div class="row">
-   {{-- @if($comments->comments) --}}
-   <div class="col-lg-2 " id="comment">
-    @foreach ($comments as $comment)
+   {{--  @if($comments->comments) --}}
 
+    @foreach ($comments as $comment)
+      <div class="col-lg-2 " id="comment">
     <p>{{ $comment->comments }}</p>
 
-
+      </div>
     @endforeach
-    </div>
-  {{-- @endif --}}
+
+   {{-- @endif --}}
 </div>
 <!-- /.row -->
 <div class="row">

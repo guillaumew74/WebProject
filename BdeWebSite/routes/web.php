@@ -40,5 +40,8 @@ Route::get('/show', 'EventsController@showPostNoP');
 Route::get('/show/{id}', 'EventsController@showPost');
 
 Route::get('/showOne/{id}', 'EventsController@showOne');
+Route::post('/postComment/{id}', 'EventsController@showOnePost');
 
 Route::get('/like/{id}', 'EventsController@like');
+
+Route::get('/showIdee', 'EventsController@showIdee');

@@ -97,11 +97,15 @@
           </li>
 
           <li>
-            <a href="/pevenements">Proposition &Eacute;vènement</a>
+            <a href="/form">Proposition &Eacute;vènement</a>
+          </li>
+              <li>
+            <a href="/showIdee">Boite à idée</a>
           </li>
           <li>
             <a href="/show">&Eacute;vènements</a>
           </li>
+
           <li>
             <a href="/boutique">Boutique</a>
           </li>
