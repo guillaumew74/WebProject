@@ -69,8 +69,13 @@
       </div>
       <!-- /.row -->
       <div class="row">
+
         <div class="col-lg-6 text-center">
+          @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
+          <a class="btn btn-primary center-block" href="/showIdea/{{ $j }}">Show more event ! </a>
+          @else
           <a class="btn btn-primary center-block" href="/show/{{ $j }}">Show more event ! </a>
+          @endif
 
 
     </div>

@@ -100,7 +100,7 @@
             <a href="/form">Proposition &Eacute;vénement</a>
           </li>
               <li>
-            <a href="/showIdee">Boite à idée</a>
+            <a href="/showIdea">Boite à idée</a>
           </li>
           <li>
             <a href="/show">&Eacute;vénements</a>
