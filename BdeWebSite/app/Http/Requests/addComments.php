@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class addComments extends FormRequest
 {
@@ -24,7 +25,7 @@ class addComments extends FormRequest
     public function rules()
     {
         return [
-            'commentaire' => 'required|max:250'
+            'comments' => 'required|max:250'
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class formRequests extends FormRequest
 {
@@ -24,8 +25,10 @@ class formRequests extends FormRequest
     public function rules()
     {
         return [
-            'Titre' => 'required|min:5|max:20',
-            'Description' => 'required|max:250',
+            'title' => 'required|min:5|max:20',
+            'description' => 'required|max:250',
+            'date' => 'required',
+
             'image' => 'required|image|dimensions:min_width,min_height=100',
             'email' => 'required|email',
             'date' => 'required'

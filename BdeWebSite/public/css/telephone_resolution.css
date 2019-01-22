@@ -1,6 +1,13 @@
+/*ajouter dans le html
+<link rel="stylesheet" media="screen and (max-width: 360px)" 
+href="telephone_resolution.css" />  */
+
+@media all and (max-device-width: 400px){
+
+
 body {
   overflow-x: hidden;
-  }
+}
 
 #wrapper {
   padding-left: 250px;
@@ -19,7 +26,7 @@ body {
   background: #000;
 }
 
-#wrapper #sidebar-wrapper {
+#wrapper #sidebar-wrapper {  
   width: 250px;
 }
 
@@ -127,18 +134,9 @@ h1
 }
 
 
-
-.card {
-  height: 100%;
 }
 
-#comment {
-  border: 1px solid blue;
-
-}
-
-#navbartop {
-  margin-top: 0;
-}
-
-
+/*bare lateral en % 
+texte en pourcentage et plus petit 
+faut voir comment le main est arrangé et voir ce que ca donne,
+retrecir le carroussel*/

@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Events;
 use App\Comments;
 use App\Http\Requests\formRequests;
-use App\Http\Requests\addComment;
+use App\Http\Requests\addComments;
 
 class EventsController extends Controller
 {
@@ -16,41 +16,45 @@ class EventsController extends Controller
 
      return view("Form/Form");
   }
-    public function postForm(Request $request) //Traitement du formulaire
+    public function postForm(formRequests $request) //Traitement du formulaire
     {
 
-         $image = $request->file('image');//on récupere le fichier envoyer avec file()
-
-        if ($image->isValid())//utilisation de la methode isValid qui vérifie la validité de l'image
-        {
-            $chemin = config('image.path');//fais référence au file config/image.php ou on définit le path des image récuperer
-
-            $extension = $image->getClientOriginalExtension();//methode qui recupère l'extension originelle
-
-            do {
-                $nom = str_random(10) . '.' . $extension;
-            } while(file_exists($chemin . '/' . $nom));//on génére un nom alétoire et on vérifie qu'il n'existe pas déjà
-            $cheminPhoto = $chemin . '/' . $nom;
-               //if(Auth::check()) permet de vérifier si il le user est authentifier
-
-
-            if($image->move($chemin, $nom)){ //Si l'image à bien été déplacer
-            $events = new Events();
-            $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
-            $inputs['imageLink'] = $cheminPhoto;
-            $inputs['owner'] = $inputs['email'];
-
-            //return $inputs;
 
 
 
-             $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
-             $events->save();
+        $image = $request->file('image');//on récupere le fichier envoyer avec file()
+        $inputs = $request->input();
+        return $inputs;
+        // if ($image->isValid())//utilisation de la methode isValid qui vérifie la validité de l'image
+        // {
+        //     $chemin = config('image.path');//fais référence au file config/image.php ou on définit le path des image récuperer
 
-            return redirect()->action('EventsController@showPostNoP');
-         }
+        //     $extension = $image->getClientOriginalExtension();//methode qui recupère l'extension originelle
 
-    }
+        //     do {
+        //         $nom = str_random(10) . '.' . $extension;
+        //     } while(file_exists($chemin . '/' . $nom));//on génére un nom alétoire et on vérifie qu'il n'existe pas déjà
+        //     $cheminPhoto = $chemin . '/' . $nom;
+        //        //if(Auth::check()) permet de vérifier si il le user est authentifier
+
+
+        //     if($image->move($chemin, $nom)){ //Si l'image à bien été déplacer
+        //     $events = new Events();
+        //     $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
+        //     $inputs['imageLink'] = $cheminPhoto;
+        //     $inputs['owner'] = $inputs['email'];
+
+        //     //return $inputs;
+
+
+
+        //      $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
+        //      $events->save();
+
+        //     return redirect()->action('EventsController@showPostNoP');
+        //  }
+
+    //}
 
     return redirect('/form')
     ->with('error','Désolé mais votre image ne peut pas être envoyée !');
@@ -132,8 +136,8 @@ class EventsController extends Controller
   }
 
 
-  public function showOnePost(addComment $request, $id){
-     $events = new Events();
+  public function showOnePost(Request $request, $id){
+        $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
         $addRow = Comments::create($inputs);

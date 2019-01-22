@@ -24,7 +24,7 @@
     <div class="col-sm-8">
       <h2 class="mt-4">What We Do</h2>
       <p>{{ $eventShow->description }}</p>
-      <a class="btn btn-primary btn-lg" id="btnComment"><i class="far fa-comments" style="font-size:40px;color:white;"></i>Commente</a>
+      <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:40px;color:white;"></i>Commente</a>
       <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:40px;color:white;"></i>Like {{ $eventShow->like }}</a>
     </div>
     <div class="col-sm-4">
@@ -60,7 +60,7 @@
 <!-- /.row -->
 <div class="row">
   <div class="col-lg-8" id="divFormu">{{-- L'id permet d'activer la fct js qui affiche le formulaire apres le clique --}}
-    {!! Form::open(array('action' => array('EventsController@showOne', $eventShow->idEvents))) !!}
+    {!! Form::open(array('action' => array('EventsController@showOnePost', $eventShow->idEvents))) !!}
     <div class="form-group {!! $errors->has('comments') ? 'has-error' : '' !!}">
       {!! Form::textarea ('comments', null, ['class' => 'form-control', 'placeholder' => 'Votre commentaire:']) !!}
       {!! $errors->first('comments', '<small class="help-block">:message</small>') !!}
