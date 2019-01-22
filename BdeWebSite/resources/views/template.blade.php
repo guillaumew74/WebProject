@@ -97,13 +97,13 @@
           </li>
 
           <li>
-            <a href="/form">Proposition &Eacute;vènement</a>
+            <a href="/form">Proposition &Eacute;vénement</a>
           </li>
               <li>
             <a href="/showIdee">Boite à idée</a>
           </li>
           <li>
-            <a href="/show">&Eacute;vènements</a>
+            <a href="/show">&Eacute;vénements</a>
           </li>
 
           <li>
