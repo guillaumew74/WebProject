@@ -1,11 +1,9 @@
 body {
   overflow-x: hidden;
-  padding-top: 54px;
 }
 
 #wrapper {
   padding-left: 250px;
-  margin-top: 50px;
 
 }
 
@@ -127,13 +125,6 @@ h1
   margin:0.5%;
 }
 
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
-
-}
-
 .card {
   height: 100%;
 }
@@ -142,9 +133,4 @@ h1
   border: 1px solid blue;
 
 }
-
-#navbartop {
-  margin-top: 0;
-}
-
 
