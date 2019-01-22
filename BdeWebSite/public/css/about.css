@@ -4,7 +4,6 @@ body {
 
 #wrapper {
   padding-left: 250px;
-  margin-top: 50px;
 
 }
 
@@ -126,8 +125,6 @@ h1
   margin:0.5%;
 }
 
-
-
 .card {
   height: 100%;
 }
@@ -136,9 +133,4 @@ h1
   border: 1px solid blue;
 
 }
-
-#navbartop {
-  margin-top: 0;
-}
-
 
