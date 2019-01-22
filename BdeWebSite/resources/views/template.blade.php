@@ -20,6 +20,10 @@
   <!-- Custom styles for this template -->
   <link href="../css/about.css" rel="stylesheet">
 
+  <link rel="stylesheet" href="../css/ipad_resolution.css" />
+  
+  <link rel="stylesheet" href="../css/telephone_resolution.css" />
+
       <!--[if lt IE 9]>
       {{ Html::style('https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js') }}
       {{ Html::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}
