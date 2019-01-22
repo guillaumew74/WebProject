@@ -1,4 +1,4 @@
-@extends('template')
+@extends('templateuser')
 
 @section('contenu')
     <div class="col-sm-offset-4 col-sm-4">
@@ -8,12 +8,14 @@
       <div class="panel-body">
         <p>Nom : {{ $user->name }}</p>
         <p>Email : {{ $user->email }}</p>
+        <p>LastName : {{ $user->lastName }}</p>
+        <p>Location : {{ $user->location }}</p>
 
-        @if($user->sate == 3)
+        @if($user->sate == 2)
           Administrateur
         @endif
 
-        @if($user->sate == 2)
+        @if($user->sate == 1)
           Cesi
         @endif
 

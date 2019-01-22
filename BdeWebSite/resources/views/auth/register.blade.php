@@ -40,7 +40,7 @@
                         </div>
 
                         <div class="form-group row">
-        <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('location') }}</label>
+        <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('location') }}</label>
         <div class="col-md-6">
             <p>
        <select id="location" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" required autofocus>

@@ -17,8 +17,10 @@ class UserRepository
   private function save(User $user, Array $inputs)
   {
     $user->name = $inputs['name'];
+    $user->lastName = $inputs['lastName'];
+    $user->location = $inputs['location'];
     $user->email = $inputs['email'];
-    $user->admin = isset($inputs['state']);
+    $user->state = isset($inputs['state']);
 
     $user->save();
   }
