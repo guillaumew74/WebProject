@@ -36,12 +36,20 @@ Route::post('contact', 'ContactController@postForm');
 Route::get('/form', 'EventsController@getForm');
 Route::post('/post', 'EventsController@postForm');
 
-Route::get('/show', 'EventsController@showPostNoP');
-Route::get('/show/{id}', 'EventsController@showPost');
+Route::get('/show', 'EventsController@showEventNoP');
+Route::get('/show/{id}', 'EventsController@showEvent');
 
 Route::get('/showOne/{id}', 'EventsController@showOne');
+
 Route::post('/postComment/{id}', 'EventsController@showOnePost');
 
 Route::get('/like/{id}', 'EventsController@like');
 
-Route::get('/showIdee', 'EventsController@showIdeeNoP');
+Route::get('/vote/{id}', 'EventsController@vote');
+
+Route::get('/showIdea', 'EventsController@showIdeaNoP');
+Route::get('/showIdea/{id}', 'EventsController@showIdea');
+
+
+Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');
+Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');

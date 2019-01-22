@@ -60,14 +60,14 @@ class EventsController extends Controller
        }
 
 
-  public function showPost($j) //affichage de la page des événements
+  public function showEvent($j) //affichage de la page des événements
   {
            // $j = 0;
             $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
 
-            $first = Events::where('validated', '=', '1')->first();
-            $idFirst = $first->idEvents;
+              $first = Events::where('validated', '=', '1')->first();
+              $idFirst = $first->idEvents;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -88,9 +88,9 @@ class EventsController extends Controller
              if($arrayShow[$i]->idEvents == $idFirst)
              {
               return view('errors.errorNoMoreShow');
-             }
+            }
 
-           }
+          }
            $j--; //j a été incrémenté une fois de trop dans le do while
 
            return view('blog.show', compact('arrayShow', 'j'));
@@ -101,9 +101,9 @@ class EventsController extends Controller
         }
 
       }
-      public function showPostNoP() {
+      public function showEventNoP() {
 
-           $j = 0;
+       $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -141,7 +141,7 @@ class EventsController extends Controller
         }
 
 
-        public function showIdeeNoP() {
+        public function showIdeaNoP() {
 
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
@@ -176,7 +176,7 @@ class EventsController extends Controller
           }
         }
 
-        public function showIdee($j) {
+        public function showIdea($j) {
 
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
@@ -216,21 +216,19 @@ class EventsController extends Controller
 
   public function showOne($id)//affiche un event en particulier
   {
-    $i = 0;
-    $idParse = $id;
     $eventShow = Events::where('idEvents', $id)->first();
+    if($eventShow->validated == 1) {
+      return redirect()->action('EventsController@showOneEvent', $id);
+    }
+    else{
+      return redirect()->action('EventsController@showOneIdea', $id);
+    }
 
-     $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
-     foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
-     $comments[$i] = $comment;
-     $i++;
    }
 
-   return view("blog.showOne", compact('eventShow', 'comments'));
- }
 
 
- public function showOnePost(Request $request, $id){
+ public function showOneEventPost(Request $request, $id){
   $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
@@ -253,5 +251,38 @@ class EventsController extends Controller
 
         return view("blog.showOne", compact('eventShow', 'comments'));
       }
-    }
+
+      public function vote($id){
+
+        $eventShow = Events::where('idEvents', $id)->first();
+        $nbVotes = $eventShow->vote + 1;
+        $update = Events::where('idEvents', $id)->update(['vote' => $nbVotes]);//On update le nombre de like
+        $eventShow = Events::where('idEvents', $id)->first();//On vien chargé l'event avec le nouveau nombre de like
+
+        return view("blog.showOneIdea", compact('eventShow'));
+      }
+
+      public function showOneEvent($id) {
+        $i = 0;
+        $idParse = $id;
+        $eventShow = Events::where('idEvents', $id)->first();
+
+      $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
+     foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
+     $comments[$i] = $comment;
+     $i++;
+   }
+
+   return view("blog.showOne", compact('eventShow', 'comments'));
+ }
+  public function showOneIdea($id) {
+        $i = 0;
+        $idParse = $id;
+        $eventShow = Events::where('idEvents', $id)->first();
+
+   return view("blog.showOneIdea", compact('eventShow'));
+}
+}
+
+
 
