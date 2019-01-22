@@ -14,13 +14,14 @@ class EventsController extends Controller
   public function getForm()
   {
 
-     return view("Form/Form");
-  }
-    public function postForm(formRequests $request) //Traitement du formulaire
-    {
+   return view("Form/Form");
+ }
+
+  public function postForm(formRequests $request) //Traitement du formulaire
+  {
 
 
-        $image = $request->file('image');//on récupere le fichier envoyer avec file()
+   $image = $request->file('image');//on récupere le fichier envoyer avec file()
 
         if ($image->isValid())//utilisation de la methode isValid qui vérifie la validité de l'image
         {
@@ -29,7 +30,7 @@ class EventsController extends Controller
             $extension = $image->getClientOriginalExtension();//methode qui recupère l'extension originelle
 
             do {
-                $nom = str_random(10) . '.' . $extension;
+              $nom = str_random(10) . '.' . $extension;
             } while(file_exists($chemin . '/' . $nom));//on génére un nom alétoire et on vérifie qu'il n'existe pas déjà
             $cheminPhoto = $chemin . '/' . $nom;
                //if(Auth::check()) permet de vérifier si il le user est authentifier
@@ -48,77 +49,103 @@ class EventsController extends Controller
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
              $events->save();
 
-            return redirect()->action('EventsController@showPostNoP');
+             return redirect()->action('EventsController@showPostNoP');
+           }
+
          }
 
-    }
+         return redirect('/form')
+         ->with('error','Désolé mais votre image ne peut pas être envoyée !');
 
-    return redirect('/form')
-    ->with('error','Désolé mais votre image ne peut pas être envoyée !');
-
-  }
+       }
 
 
-      public function showPost($j) //affichage de la page des événements
-      {
+  public function showPost($j) //affichage de la page des événements
+  {
            // $j = 0;
+            $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
+            if ($allEvents >= 5) {
+
+            $first = Events::where('validated', '=', '1')->first();
+            $idFirst = $first->idEvents;
+
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
 
             for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5eme est utilisé pour le bouton showMore)
 
 
-               $lastid = $postShow->idEvents + 1;
-               $lastid = $lastid - $j;
-               do{
-                $j++;
-                $lastid = $lastid - 1;
+             $lastid = $postShow->idEvents + 1;
+             $lastid = $lastid - $j;
+             do{
+              $j++;
+              $lastid = $lastid - 1;
              } while (Events::where('idEvents', $lastid)->first() == null ); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
 
 
              $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+             if($arrayShow[$i]->idEvents == $idFirst)
+             {
+              return view('errors.errorNoMoreShow');
+             }
 
-          }
+           }
            $j--; //j a été incrémenté une fois de trop dans le do while
 
-           //return view('blog.show', compact('arrayShow', 'j'));
+           return view('blog.show', compact('arrayShow', 'j'));
+         }
+         else
+         {
+          return view('errors.errorNotEnough');
         }
-        public function showPostNoP() {
 
-         $j = 0;
+      }
+      public function showPostNoP() {
+
+           $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
+            $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
+            if ($allEvents >= 5) {
 
              for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
 
 
-             $lastid = $postShow->idEvents + 1;
+             $lastid = $postShow->idEvents + 1; //l'id du dernier event
              $lastid = $lastid - $j;
 
 
              do{
-                $j++;
-                $lastid = $lastid - 1;
+              $j++;
+              $lastid = $lastid - 1;
               } while (Events::where('idEvents', $lastid)->where('validated', '=', '1')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
 
 
               $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
 
-           }
+            }
 
 
              $j--; //j a été incrémenté une fois de trop dans le do while
 
              return view('blog.show', compact('arrayShow', 'j'));
-         }
+           }
+           else
+           {
+            return view('errors.errorNotEnough');
+          }
+        }
 
 
-         public function showIdee() {
-            $j = 0;
+        public function showIdeeNoP() {
+
+            $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
+            if ($allEvents >= 5) {
+              $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -127,48 +154,84 @@ class EventsController extends Controller
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
 
 
-             $lastid = $postShow->idEvents + 1;
-             $lastid = $lastid - $j;
+               $lastid = $postShow->idEvents + 1;
+               $lastid = $lastid - $j;
 
 
-             do{
+               do{
                 $j++;
                 $lastid = $lastid - 1;
               } while (Events::where('idEvents', $lastid)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
-
-
               $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
-
-           }
-
+            }
 
              $j--; //j a été incrémenté une fois de trop dans le do while
 
              return view('blog.show', compact('arrayShow', 'j'));
            }
+           else
+           {
+            return view('errors.errorNotEnough');
+          }
+        }
+
+        public function showIdee($j) {
+
+            $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
+            if ($allEvents >= 5) {
+
+
+            $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
+
+
+             for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+                //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
+
+
+               $lastid = $postShow->idEvents + 1;
+               $lastid = $lastid - $j;
+
+
+               do{
+                $j++;
+                $lastid = $lastid - 1;
+              } while (Events::where('idEvents', $lastid)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
+
+              $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+            }
+
+             $j--; //j a été incrémenté une fois de trop dans le do while
+
+             return view('blog.show', compact('arrayShow', 'j'));
+           }
+           else
+           {
+            return view('errors.errorNotEnough');
+          }
+        }
 
 
 
 
-    public function showOne($id)//affiche un event en particulier
-    {
-      $i = 0;
-      $idParse = $id;
-     $eventShow = Events::where('idEvents', $id)->first();
+  public function showOne($id)//affiche un event en particulier
+  {
+    $i = 0;
+    $idParse = $id;
+    $eventShow = Events::where('idEvents', $id)->first();
 
      $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
      foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
-       $comments[$i] = $comment;
-       $i++;
-     }
+     $comments[$i] = $comment;
+     $i++;
+   }
 
-     return view("blog.showOne", compact('eventShow', 'comments'));
-  }
+   return view("blog.showOne", compact('eventShow', 'comments'));
+ }
 
 
-  public function showOnePost(Request $request, $id){
-        $events = new Events();
+ public function showOnePost(Request $request, $id){
+  $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
         $addRow = Comments::create($inputs);
@@ -177,9 +240,9 @@ class EventsController extends Controller
         $comments = Comments::where('idEvents', $id )->get();
 
         return view("blog.showOne", compact('eventShow', 'comments'));
-     }
+      }
 
-     public function like($id){
+      public function like($id){
 
         $eventShow = Events::where('idEvents', $id)->first();
         $nbLikes = $eventShow->like + 1;
@@ -189,6 +252,6 @@ class EventsController extends Controller
 
 
         return view("blog.showOne", compact('eventShow', 'comments'));
-     }
-  }
+      }
+    }
 
