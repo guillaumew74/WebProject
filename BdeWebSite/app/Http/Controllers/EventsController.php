@@ -65,6 +65,10 @@ class EventsController extends Controller
            // $j = 0;
             $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
+
+            $first = Events::where('validated', '=', '1')->first();
+            $idFirst = $first->idEvents;
+
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
 
@@ -81,6 +85,10 @@ class EventsController extends Controller
 
 
              $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+             if($arrayShow[$i]->idEvents == $idFirst)
+             {
+              return view('errors.errorNoMoreShow');
+             }
 
            }
            $j--; //j a été incrémenté une fois de trop dans le do while
@@ -89,13 +97,13 @@ class EventsController extends Controller
          }
          else
          {
-          return view('errors.error');
+          return view('errors.errorNotEnough');
         }
 
       }
       public function showPostNoP() {
 
-        $j = 0;
+           $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -128,7 +136,7 @@ class EventsController extends Controller
            }
            else
            {
-            return view('errors.error');
+            return view('errors.errorNotEnough');
           }
         }
 
@@ -164,7 +172,7 @@ class EventsController extends Controller
            }
            else
            {
-            return view('errors.error');
+            return view('errors.errorNotEnough');
           }
         }
 
@@ -199,7 +207,7 @@ class EventsController extends Controller
            }
            else
            {
-            return view('errors.error');
+            return view('errors.errorNotEnough');
           }
         }
 
