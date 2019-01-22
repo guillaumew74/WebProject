@@ -304,7 +304,7 @@ body {
   position: fixed;
   left: 250px;
   width: 0;
-  height: 100%;
+  height: 79%;
   margin-left: -250px;
   overflow-y: auto;
   background: #000;
@@ -375,13 +375,14 @@ body {
     padding-left: 0;
   }
   #wrapper {
-    padding-left: 250px;
+    padding-left: 149px;
+    margin-bottom: 30%;
   }
   #sidebar-wrapper {
     width: 0;
   }
   #wrapper #sidebar-wrapper {
-    width: 250px;
+    width: 45%;
   }
   .page-content-wrapper {
     padding: 20px;
@@ -393,15 +394,18 @@ body {
   }
 
 footer{
+  position: fixed;
   width: 100%;
   height: 80px;
   background-color: black;
   margin-top: 4%;
+  bottom: 0;
 }
+
 
 li img
 {
-width:100%;
+width:65%;
 height:100%;
 display: inline-block;
 }
@@ -417,10 +421,11 @@ h1
   margin:0.5%;
 }
 
-
+li{
+  font-size: 80%;
+}
 }
 
 /*bare lateral en % 
 texte en pourcentage et plus petit 
-faut voir comment le main est arrangé et voir ce que ca donne,
 retrecir le carroussel*/
