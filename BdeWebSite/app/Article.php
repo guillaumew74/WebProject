@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Models;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Article extends Model
 {
-	protected $table = 'events';
+	protected $table = 'articles';
 
 	
 
