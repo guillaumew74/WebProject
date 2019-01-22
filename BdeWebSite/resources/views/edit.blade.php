@@ -14,7 +14,7 @@
           </div>
 
           <div class="form-group {!! $errors->has('lastName') ? 'has-error' : '' !!}">
-              {!! Form::text('lastName', null, ['class' => 'form-control', 'placeholder' => 'Nom']) !!}
+              {!! Form::text('lastName', null, ['class' => 'form-control', 'placeholder' => 'Prénom']) !!}
               {!! $errors->first('lastName', '<small class="help-block">:message</small>') !!}
           </div>
 
@@ -67,18 +67,18 @@
           <div class="form-group">
             <div class="checkbox">
               <label>
-                {!! Form::checkbox('state', 2, 0) !!}Administrateur
+                {!! Form::checkbox('state', 2) !!}Administrateur
               </label>
             </div>
 
               <div class="checkbox">
               <label>
-                {!! Form::checkbox('state', 1, 0) !!}Cesi
+                {!! Form::checkbox('state', 1) !!}Cesi
               </label>
 
               <div class="checkbox">
               <label>
-                {!! Form::checkbox('state', 0, 0) !!}User
+                {!! Form::checkbox('state', 0) !!}User
               </label>
             </div>
             </div>

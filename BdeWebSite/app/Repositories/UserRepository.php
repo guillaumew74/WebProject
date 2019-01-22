@@ -20,7 +20,7 @@ class UserRepository
     $user->lastName = $inputs['lastName'];
     $user->location = $inputs['location'];
     $user->email = $inputs['email'];
-    $user->state = isset($inputs['state']);
+    $user->state = $inputs['state'];
 
     $user->save();
   }

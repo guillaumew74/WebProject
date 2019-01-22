@@ -11,15 +11,15 @@
         <p>LastName : {{ $user->lastName }}</p>
         <p>Location : {{ $user->location }}</p>
 
-        @if($user->sate == 2)
+        @if($user->state == 2)
           Administrateur
         @endif
 
-        @if($user->sate == 1)
+        @if($user->state == 1)
           Cesi
         @endif
 
-        @if($user->sate == 0)
+        @if($user->state == 0)
           User
         @endif
 

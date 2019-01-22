@@ -18,6 +18,7 @@ class UserCreateRequest extends FormRequest
       'name' => 'required|max:255|unique:users',
       'lastName' => 'required | max:255',
       'location' => 'required| max:255',
+      'state' => 'required|max:255',
       'email' => 'required|email|max:255|unique:users',
       'password' => 'required|confirmed|min:6'
     ];
