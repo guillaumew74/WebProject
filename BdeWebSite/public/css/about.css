@@ -1,5 +1,6 @@
 body {
   overflow-x: hidden;
+  padding-top: 54px;
 }
 
 #wrapper {
@@ -125,5 +126,22 @@ h1
   font-size: 500%;
   margin:0.5%;
 }
+
+@media (min-width: 992px) {
+  body {
+    padding-top: 56px;
+  }
+
+}
+
+.card {
+  height: 100%;
+}
+
+#comment {
+  border: 1px solid blue;
+
+}
+
 
 

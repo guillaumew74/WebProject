@@ -33,3 +33,12 @@ Route::get('logout', 'auth\LoginController@logout');
 Route::get('contact', 'ContactController@getForm');
 Route::post('contact', 'ContactController@postForm');
 
+Route::get('/form', 'EventsController@getForm');
+Route::post('/post', 'EventsController@postForm');
+
+Route::get('/show', 'EventsController@showPostNoP');
+Route::get('/show/{id}', 'EventsController@showPost');
+
+Route::get('/showOne/{id}', 'EventsController@showOne');
+
+Route::get('/like/{id}', 'EventsController@like');
