@@ -136,7 +136,12 @@ h1
 
 
 
-@media all and (orientation: portrait){
+
+
+
+
+
+@media all and (min-width: 500px) and (max-width: 1000px){
 
 body {
   overflow-x: hidden;
@@ -274,7 +279,14 @@ h1
 }
 
 
-@media all and (max-device-width: 400px){
+
+
+
+
+
+
+
+@media all and ((min-width: 300px) and (max-width: 400px)){
 
 
 body {
