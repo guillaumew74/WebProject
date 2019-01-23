@@ -51,7 +51,7 @@ return [
     'gte'                  => [
         'numeric' => 'La valeur de :attribute doit être supérieure ou égale à :value.',
         'file'    => 'La taille du fichier de :attribute doit être supérieure ou égale à :value kilo-octets.',
-        'string'  => 'Le texte :attribute doit contenir au moins :value caractères.',
+        'string'  => 'Le texte :attribute doit contenir au moins :value caractères, une majuscule et un chiffre..',
         'array'   => 'Le tableau :attribute doit contenir au moins :value éléments.',
     ],
     'image'                => 'Le champ :attribute doit être une image.',
@@ -85,7 +85,7 @@ return [
     'min'                  => [
         'numeric' => 'La valeur de :attribute doit être supérieure ou égale à :min.',
         'file'    => 'La taille du fichier de :attribute doit être supérieure à :min kilo-octets.',
-        'string'  => 'Le texte :attribute doit contenir au moins :min caractères.',
+        'string'  => 'Le texte :attribute doit contenir au moins :min caractères, une majuscule et un chiffre.',
         'array'   => 'Le tableau :attribute doit contenir au moins :min éléments.',
     ],
     'not_in'               => "Le champ :attribute sélectionné n'est pas valide.",
@@ -104,7 +104,7 @@ return [
     'size'                 => [
         'numeric' => 'La valeur de :attribute doit être :size.',
         'file'    => 'La taille du fichier de :attribute doit être de :size kilo-octets.',
-        'string'  => 'Le texte de :attribute doit contenir :size caractères.',
+        'string'  => 'Le texte de :attribute doit contenir :size caractères, une majuscule et un chiffre.',
         'array'   => 'Le tableau :attribute doit contenir :size éléments.',
     ],
     'starts_with'          => 'Le champ :attribute doit commencer avec une des valeurs suivantes : :values',
