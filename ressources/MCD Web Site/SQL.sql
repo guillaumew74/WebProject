@@ -19,7 +19,29 @@ CREATE TABLE Article(
 
 
 #------------------------------------------------------------
-# Table: User
+# Table: Orders
+#------------------------------------------------------------
+
+CREATE TABLE Orders(
+        idOrders Int  Auto_increment  NOT NULL ,
+        date     Date NOT NULL
+	,CONSTRAINT Orders_PK PRIMARY KEY (idOrders)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: contain
+#------------------------------------------------------------
+
+CREATE TABLE contain(
+        idOrders   Int NOT NULL ,
+        idArticles Int NOT NULL
+	,CONSTRAINT contain_PK PRIMARY KEY (idOrders,idArticles)
+)ENGINE=InnoDB;
+
+
+#------------------------------------------------------------
+# Table: Users
 #------------------------------------------------------------
 
 CREATE TABLE Users(
@@ -34,8 +56,9 @@ CREATE TABLE Users(
         created_at    TimeStamp NOT NULL ,
         updapted_at   TimeStamp NOT NULL ,
         idcomments    Int NOT NULL ,
-        idPhotos      Int NOT NULL
-	,CONSTRAINT User_PK PRIMARY KEY (idUsers)
+        idPhotos      Int NOT NULL ,
+        idOrders      Int
+	,CONSTRAINT Users_PK PRIMARY KEY (idUsers)
 )ENGINE=InnoDB;
 
 
@@ -48,10 +71,12 @@ CREATE TABLE Events(
         owner      Varchar (255) NOT NULL ,
         date       Date NOT NULL ,
         descrition Varchar (255) NOT NULL ,
-        validated  boolean NOT NULL ,
+        validated  Boolean NOT NULL ,
         imageLink  Varchar (255) NOT NULL ,
-        likes       TinyText NOT NULL ,
+        likes      Int NOT NULL ,
         vote       Int NOT NULL ,
+        recurent   Boolean NOT NULL ,
+        payable    Int NOT NULL ,
         idUsers    Int NOT NULL
 	,CONSTRAINT Events_PK PRIMARY KEY (idEvent)
 )ENGINE=InnoDB;
@@ -82,17 +107,6 @@ CREATE TABLE Comments(
 
 
 #------------------------------------------------------------
-# Table: Buy
-#------------------------------------------------------------
-
-CREATE TABLE Buy(
-        idUsers    Int NOT NULL ,
-        idArticles Int NOT NULL
-	,CONSTRAINT Buy_PK PRIMARY KEY (idUsers,idArticles)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
 # Table: Subscribe
 #------------------------------------------------------------
 
@@ -105,18 +119,33 @@ CREATE TABLE Subscribe(
 
 
 
+ALTER TABLE contain
+	ADD CONSTRAINT contain_Orders0_FK
+	FOREIGN KEY (idOrders)
+	REFERENCES Orders(idOrders);
+
+ALTER TABLE contain
+	ADD CONSTRAINT contain_Article1_FK
+	FOREIGN KEY (idArticles)
+	REFERENCES Article(idArticles);
+
 ALTER TABLE Users
-	ADD CONSTRAINT User_Comments0_FK
+	ADD CONSTRAINT Users_Comments0_FK
 	FOREIGN KEY (idcomments)
 	REFERENCES Comments(idcomments);
 
 ALTER TABLE Users
-	ADD CONSTRAINT User_Photos1_FK
+	ADD CONSTRAINT Users_Photos1_FK
 	FOREIGN KEY (idPhotos)
 	REFERENCES Photos(idPhotos);
 
+ALTER TABLE Users
+	ADD CONSTRAINT Users_Orders2_FK
+	FOREIGN KEY (idOrders)
+	REFERENCES Orders(idOrders);
+
 ALTER TABLE Events
-	ADD CONSTRAINT Events_User0_FK
+	ADD CONSTRAINT Events_Users0_FK
 	FOREIGN KEY (idUsers)
 	REFERENCES Users(idUsers);
 
@@ -130,22 +159,5 @@ ALTER TABLE Comments
 	FOREIGN KEY (idPhotos)
 	REFERENCES Photos(idPhotos);
 
-ALTER TABLE Buy
-	ADD CONSTRAINT Buy_User0_FK
-	FOREIGN KEY (idUsers)
-	REFERENCES Users(idUsers);
 
-ALTER TABLE Buy
-	ADD CONSTRAINT Buy_Article1_FK
-	FOREIGN KEY (idArticles)
-	REFERENCES Article(idArticles);
 
-ALTER TABLE Subscribe
-	ADD CONSTRAINT Subscribe_Events0_FK
-	FOREIGN KEY (idEvent)
-	REFERENCES Events(idEvent);
-
-ALTER TABLE Subscribe
-	ADD CONSTRAINT Subscribe_User1_FK
-	FOREIGN KEY (idUsers)
-	REFERENCES Users(idUsers);

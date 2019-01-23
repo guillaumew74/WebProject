@@ -1,6 +1,7 @@
 @extends('template')
 
 @section('contenu')
+<div id="wrapper">
 <!-- Page Content -->
 <div class="container">
 
@@ -103,5 +104,6 @@
 
 </div>
 <!-- /.container -->
+</div>
 @endsection
 

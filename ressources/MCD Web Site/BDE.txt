@@ -1,0 +1,224 @@
+Dictionnaire de données 
+
+Nom : idUser
+Code : IDUSER
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : name 
+Code : NAME
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : lastName
+Code : LASTNAME
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : location
+Code : LOCATION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : email
+Code : EMAIL
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : password
+Code : PASSWORD
+Type : VARCHAR
+Taille : 60,
+Commentaire : 
+
+Nom : state
+Code : STATE
+Type : INT
+Taille : ,
+Commentaire : 
+
+Nom : rememberToken
+Code : REMEMBERTOKEN
+Type : VARCHAR
+Taille : 100,
+Commentaire : 
+
+Nom : created_at
+Code : CREATED_AT
+Type : TIMESTAMP
+Taille : ,
+Commentaire : 
+
+Nom : adapted_at
+Code : ADAPTED_AT
+Type : TIMESTAMP
+Taille : ,
+Commentaire : 
+
+Nom : idEvent
+Code : IDEVENT
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : owner
+Code : OWNER
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : date
+Code : DATE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : descrition
+Code : DESCRITION
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : validated
+Code : VALIDATED
+Type : TINYINT
+Taille : ,
+Commentaire : 
+
+Nom : imageLink
+Code : IMAGELINK
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : like
+Code : LIKE
+Type : TINYTEXT
+Taille : ,
+Commentaire : 
+
+Nom : notes
+Code : NOTES
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : idArticle
+Code : IDARTICLE
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : quantity
+Code : QUANTITY
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : price
+Code : PRICE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : urlImage
+Code : URLIMAGE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : idPhotos
+Code : IDPHOTOS
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : link
+Code : LINK
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : idcomments
+Code : IDCOMMENTS
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : comments
+Code : COMMENTS
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
+Nom : idArticles
+Code : IDARTICLE
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : quantity
+Code : QUANTITY
+Type : INT
+Taille : 255,
+Commentaire : 
+
+Nom : price
+Code : PRICE
+Type : INT
+Taille : 255,
+Commentaire : 
+
+Nom : idUsers
+Code : IDUSER
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : state
+Code : STATE
+Type : TINYINT
+Taille : ,
+Commentaire : 
+
+Nom : updapted_at
+Code : ADAPTED_AT
+Type : TIMESTAMP
+Taille : ,
+Commentaire : 
+
+Nom : id
+Code : IDEVENT
+Type : AUTO_INCREMENT
+Taille : ,
+Commentaire : 
+
+Nom : date
+Code : DATE
+Type : DATE
+Taille : 255,
+Commentaire : 
+
+Nom : validated
+Code : VALIDATED
+Type : BOOL
+Taille : ,
+Commentaire : 
+
+Nom : vote
+Code : NOTES
+Type : INT
+Taille : 255,
+Commentaire : 
+
+Nom : categorie
+Code : CATEGORIE
+Type : VARCHAR
+Taille : 255,
+Commentaire : 
+
