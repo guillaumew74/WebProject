@@ -9,9 +9,10 @@
   <div class="row my-4">
     <div class="col-lg-1">
       {!! Form::open(array('action' => array('EventsController@showSort', $arrayShow['1']->idEvents))) !!}
-      <div class="form-group">
+      <div class="form-group uk-button">
        {!! Form::label('sortBy', 'Trié Par : ') !!}
-       {!! Form::select('sortBy', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R') !!}
+       {!! Form::select('sortBy', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R'), null, array("onchange" => sortS()) !!}
+       {!! Form::close() !!}
      </div>
    </div>
  </div>

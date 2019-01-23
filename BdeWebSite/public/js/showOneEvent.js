@@ -1,5 +1,4 @@
 
-
 var divFormu = document.getElementById("divFormu");
 divFormu.style.display = 'none';
 
@@ -16,3 +15,9 @@ function newComment(){
 	//$('#divFormu').css("display", $('divFormu').css("display") == "block" ? "none" : "block"); //permet d'afficher ou d'enlever le formulaire apres avoir cliqué sur le btn
 
 }
+
+var sortBy = document.getElementById("sortBy");
+
+function sortS(){
+    sortBy.form.submit();
+};

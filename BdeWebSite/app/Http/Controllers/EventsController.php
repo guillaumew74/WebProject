@@ -7,6 +7,7 @@ use App\Events;
 use App\Comments;
 use App\Http\Requests\formRequests;
 use App\Http\Requests\addComments;
+use App\Http\Requests\sortBy;
 
 class EventsController extends Controller
 {
@@ -220,9 +221,13 @@ class EventsController extends Controller
         }
 
 
-  public function showSort($id) {
+  public function showSort(sortBy $request, $id) {
     $event = Events::where('idEvents', $id)->first();
-    if()
+    $sortBy = $request->input();
+    return $sortBy;
+    // if($event->validated == 0){
+
+    // }
   }
 
   public function showOne($id)//affiche un event en particulier
