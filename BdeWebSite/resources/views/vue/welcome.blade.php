@@ -2,8 +2,7 @@
 
 @section('contenu')
 
-          <!-- /#sidebar-wrapper -->
-
+<div id="wrapper">
         <!-- Page Content -->
         <div class="page-content-wrapper">
             <div class="container-fluid">
@@ -88,6 +87,7 @@
       </div>
     </div>
 </section>
+</div>
 
 @endsection
 
