@@ -220,7 +220,10 @@ class EventsController extends Controller
         }
 
 
-
+  public function showSort($id) {
+    $event = Events::where('idEvents', $id)->first();
+    if()
+  }
 
   public function showOne($id)//affiche un event en particulier
   {

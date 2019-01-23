@@ -38,6 +38,7 @@ Route::post('/post', 'EventsController@postForm');
 
 Route::get('/show', 'EventsController@showEventNoP');
 Route::get('/show/{id}', 'EventsController@showEvent');
+Route::post('/show/{id}', 'EventsController@showSort');
 
 Route::get('/showOne/{id}', 'EventsController@showOne');
 
