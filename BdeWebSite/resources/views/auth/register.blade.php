@@ -116,6 +116,11 @@
                             </div>
                         </div>
 
+              <div class="checkbox">
+              <label>
+               <label><input type="checkbox" name="valid" required>  En cochant, j'accepte <a href="/condition">les conditions d'utilisation.</a></label>
+              </label>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
