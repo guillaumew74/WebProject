@@ -154,7 +154,7 @@ body {
 }
 
 #sidebar-wrapper {
-  z-index: 1000;   
+  z-index: 1000;
   position: fixed;
   left: 250px;
   width: 0;
@@ -310,7 +310,7 @@ body {
   background: #000;
 }
 
-#wrapper #sidebar-wrapper {  
+#wrapper #sidebar-wrapper {
   width: 250px;
 }
 
@@ -426,6 +426,30 @@ li{
 }
 }
 
-/*bare lateral en % 
-texte en pourcentage et plus petit 
+.js-cookie-consent.cookie-consent {
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  background-color: black;
+}
+
+span.cookie-consent__message {
+  color: white;
+}
+
+button.js-cookie-consent-agree {
+  border: none;
+  border-radius: 3px;
+  background: #f4645f;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+}
+
+
+/*bare lateral en %
+texte en pourcentage et plus petit
 retrecir le carroussel*/

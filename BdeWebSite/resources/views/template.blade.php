@@ -7,6 +7,7 @@
 @include('layout.navbar')
 @include('layout.sidebar')
 @yield('contenu')
+@include('cookieConsent::index')
 @include('layout.footer')
 @include('layout.script')
 
