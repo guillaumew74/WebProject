@@ -124,5 +124,5 @@
       --}}
 
 
-
+  <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
     @endsection

@@ -141,7 +141,7 @@
     <script src="{{ URL::asset('js/bootstrap.bundle.min.js') }}"></script>
 
    {{-- On utilise des URL::asset pour que le navigateur aille chercher les fichiers au bon endroit --}}
-   <script src="{{ URL::asset('js/blog.js') }}"></script>
+
   </body>
   </html>
 
