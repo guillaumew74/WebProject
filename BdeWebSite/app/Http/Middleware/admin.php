@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Middleware;
 use Closure;
+
 class Admin
 {
     /**
@@ -13,9 +14,9 @@ class Admin
     public function handle($request, Closure $next)
     {
         $user = $request->user();
-        if ($user && $user->role === 'admin') {
+        if ($user && $user->state === 2) {
             return $next($request);
         }
-        return redirect()->route('home');
+        return redirect()->route('/error');
     }
 }

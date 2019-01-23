@@ -8,7 +8,7 @@
         <h3 class="panel-title">Il y a un problème !</h3>
       </div>
       <div class="panel-body">
-        <p>Nous sommes désolés...</p>
+        <p>Nous sommes désolés vous n'êtes pas administrateur...</p>
       </div>
     </div>
   </div>

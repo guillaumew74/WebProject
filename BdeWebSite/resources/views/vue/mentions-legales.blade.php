@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-
+<div id="wrapper">
 <div class="page-content-wrapper">
   <div class="container-fluid">
       <h2>Éditeur : Association CESI</h2>
@@ -57,5 +57,6 @@
       <p>Déclaration d’activité enregistrée sous le numéro 11 75 47883 75 auprès du Préfet de la région Ile-de-France.<br></p>
       <p>Cet enregistrement ne vaut pas agrément de l’État.<br></p>
   </div>
+</div>
 </div>
 @endsection
