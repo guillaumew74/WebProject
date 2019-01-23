@@ -1,5 +1,5 @@
 <!--correspond au formulaire pour soumettre des idées-->
-@extends('templateForm')
+@extends('templateuser')
 
 @section('contenu') <!--Voici le formulaire d'enregistrement d'événement-->
     <br>
