@@ -22,7 +22,6 @@
       {{ Html::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}
       <![endif]-->
 
-    <script src="{{ asset('../js/app.js') }}" defer></script>
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

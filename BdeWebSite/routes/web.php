@@ -21,9 +21,6 @@ Route::get('/mentions-legales', function () {
     return view('vue.mentions-legales');
 });
 
-//ROUTE MODIFICATION USER CSSEUD
-Route::resource('user', 'UserController');
-
 //ROUTE LOGIN/LOGOUT
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -54,3 +51,12 @@ Route::get('/showIdea/{id}', 'EventsController@showIdea');
 
 Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');
+
+
+Route::resource('user', 'UserController')->middleware('admin');
+
+Route::get('/error', function () {
+    return view('errors.erroradmin');
+});
+
+
