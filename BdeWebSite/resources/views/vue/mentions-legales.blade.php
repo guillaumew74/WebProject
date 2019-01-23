@@ -39,6 +39,14 @@
 
 <div class="page-content-wrapper">
   <div class="container-fluid">
+      <h2>Utilisation de cookies</h2>
+      <p>Des cookies sont utilisés sur nos sites.<br></p>
+      <p>Pour plus d’informations, vous pouvez vous référer à la Politique sur le Protection des Données Personnelles. <a href="https://www.cesi.fr/politique-de-confidentialite/">cliquez-ici</a> <br></p>
+  </div>
+</div>
+
+<div class="page-content-wrapper">
+  <div class="container-fluid">
       <h2>Déclarations d’activité</h2>
       <p>CESI SAS – Société par actions simplifiée au capital de 1.1M€<br></p>
       <p>342 707 502<br></p>
