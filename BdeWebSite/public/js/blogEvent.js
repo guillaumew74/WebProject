@@ -16,8 +16,15 @@ function newComment(){
 
 }
 
-var sortBy = document.getElementById("sortBy");
+// var sortBy = document.getElementById("sortBy");
+// sortBy.addEventListener('change', function(){
+// 	alert('1');
+//     this.form.submit();
+// }, false);
 
-function sortS(){
-    sortBy.form.submit();
-};
+
+var sortBySS = document.getElementById("sortBySS");
+
+function submitSS($this) {
+	$this.form.submit();
+}

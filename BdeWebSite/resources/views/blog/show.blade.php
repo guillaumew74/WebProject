@@ -10,8 +10,11 @@
     <div class="col-lg-1">
       {!! Form::open(array('action' => array('EventsController@showSort', $arrayShow['1']->idEvents))) !!}
       <div class="form-group uk-button">
-       {!! Form::label('sortBy', 'Trié Par : ') !!}
-       {!! Form::select('sortBy', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R'), null, array("onchange" => sortS()) !!}
+       {!! Form::label('sortBySS', 'Trié Par : ') !!}
+       {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R', array('onchange' => 'submitSS(this)')) !!}
+       <div class="submit" style="display:none">
+       {!! Form::submit('Envoyer !', ['class' => 'btn btn-info pull-right', 'display' => 'none']) !!}
+     </div>
        {!! Form::close() !!}
      </div>
    </div>
