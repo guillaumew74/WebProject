@@ -55,6 +55,7 @@ Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');
 
 Route::resource('user', 'UserController')->middleware('admin');
 
+
 Route::get('/error', function () {
     return view('errors.erroradmin');
 });

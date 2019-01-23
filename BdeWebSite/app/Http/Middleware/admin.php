@@ -17,6 +17,6 @@ class Admin
         if ($user && $user->state === 2) {
             return $next($request);
         }
-        return redirect()->route('/error');
+        return redirect('error');
     }
 }
