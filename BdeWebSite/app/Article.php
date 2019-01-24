@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-	protected $table = 'articles';
+	 protected $fillable = ['iDArticles', 'name', 'quantity', 'price', 'imageLink', 'categorie'];
+}
 
 	
 
-	public $timestamps = false;
-}
+	
+
