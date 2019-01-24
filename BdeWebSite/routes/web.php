@@ -60,4 +60,8 @@ Route::get('/error', function () {
     return view('errors.erroradmin');
 });
 
+Route::get('/condition', function () {
+    return view('vue.condition');
+});
+
 
