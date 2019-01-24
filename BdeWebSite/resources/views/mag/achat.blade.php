@@ -93,7 +93,7 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ $articles['2']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#">{{ $articles['2']->name }}</a>
@@ -109,7 +109,7 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ $articles['3']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#">{{ $articles['3']->name }}</a>
@@ -125,7 +125,7 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ $articles['4']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#">{{ $articles['4']->name }}</a>
@@ -141,7 +141,7 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ $articles['5']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#">{{ $articles['5']->name }}</a>
@@ -157,7 +157,7 @@
 
             <div class="col-lg-4 col-md-6 mb-4">
               <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="http://placehold.it/700x400" alt=""></a>
+                <a href="#"><img class="card-img-top" src="{{ $articles['6']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="#">{{ $articles['6']->name }}</a>
