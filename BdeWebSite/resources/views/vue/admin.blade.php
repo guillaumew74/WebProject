@@ -1,6 +1,7 @@
 @extends('templateuser')
 
 @section('contenu')
+    <br>
   <div class="col-sm-offset-4 col-sm-4">
 <div class="panel panel-primary">
       <div class="panel-heading">
@@ -11,17 +12,25 @@
           <tr>
             <th>#</th>
             <th>Ressource administrateur</th>
-            <th></th>
-            <th></th>
-            <th></th>
           </tr>
         </thead>
         <tbody>
             <tr>
               <td></td>
-              <td class="text-primary"><strong>Gérer utilisateur</strong></td>
+              <td><strong><a class="text-success" href="/user">Gérer utilisateur</a></strong></td>
 
-
+            </tr>
+            <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/adarticle">Ajouter des articles</a></strong></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/">Modifier des articles</a></strong></td>
+            </tr>
+              <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/">Modifier événement</a></strong></td>
             </tr>
           </tbody>
       </table>

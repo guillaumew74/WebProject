@@ -39,7 +39,7 @@ Route::post('/show/{id}', 'EventsController@showSort'); //Affiche la suite des p
 
 Route::get('/showOne/{id}', 'EventsController@showOne'); //Affiche un Event ou Idea
 
-Route::post('/postComment/{id}', 'EventsController@showOnePost'); //Après avoir posté un comment
+Route::post('/postComment/{id}', 'EventsController@showOneEventPost'); //Après avoir posté un comment
 
 Route::get('/like/{id}', 'EventsController@like'); //fonction Like
 

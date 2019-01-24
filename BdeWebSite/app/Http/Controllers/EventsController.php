@@ -305,7 +305,7 @@ class EventsController extends Controller
         $eventShow = Events::where('idEvents', $id)->first();
         $comments = Comments::where('idEvents', $id )->get();
 
-        return view("blog.showOne", compact('eventShow', 'comments'));
+        return view("blog.showOneEvent", compact('eventShow', 'comments'));
       }
 
       public function like($id){
@@ -365,9 +365,13 @@ class EventsController extends Controller
 
   public function getSuscribers($id) {
 
+    $suscribers = DB::table('suscribes')->where('idEvents', $id)->join('users', 'suscribes.idUsers', '=', 'users.id')->select('users.name', 'users.lastName')->get();
 
-    $suscribers = DB::table('suscribes')->join('users', 'suscribes.id', '=', 'users.id')->select('users.name', 'users.lastName')->get();
-    return $id;
+    $filename = "suscribers.csv";
+    $handle = fopen($filename, 'w+');
+    fputcsv($handle, array('name', 'lastName'));
+
+    return $suscribers;
   }
 
 }
