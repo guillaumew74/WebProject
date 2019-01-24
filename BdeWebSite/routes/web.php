@@ -33,29 +33,29 @@ Route::post('contact', 'ContactController@postForm');
 Route::get('/form', 'EventsController@getForm');
 Route::post('/post', 'EventsController@postForm');
 
-Route::get('/show', 'EventsController@showEventNoP');
-Route::get('/show/{id}', 'EventsController@showEvent');
-Route::post('/show/{id}', 'EventsController@showSort');
+Route::get('/show', 'EventsController@showEventNoP'); //Affiche la première page des Events
+Route::get('/show/{id}', 'EventsController@showEvent'); //Affiche la suite des page par ancienneté
+Route::post('/show/{id}', 'EventsController@showSort'); //Affiche la suite des page retrié par popularité
 
-Route::get('/showOne/{id}', 'EventsController@showOne');
+Route::get('/showOne/{id}', 'EventsController@showOne'); //Affiche un Event ou Idea
 
-Route::post('/postComment/{id}', 'EventsController@showOnePost');
+Route::post('/postComment/{id}', 'EventsController@showOnePost'); //Après avoir posté un comment
 
-Route::get('/like/{id}', 'EventsController@like');
+Route::get('/like/{id}', 'EventsController@like'); //fonction Like
 
-Route::get('/vote/{id}', 'EventsController@vote');
+Route::get('/vote/{id}', 'EventsController@vote'); //fonction vote
 
-Route::get('/showIdea', 'EventsController@showIdeaNoP');
-Route::get('/showIdea/{id}', 'EventsController@showIdea');
+Route::get('/showIdea', 'EventsController@showIdeaNoP'); //affiche la première pas des Idea
+Route::get('/showIdea/{id}', 'EventsController@showIdea'); //affiche la suite des Idea
 
-Route::post('/showIdeaPost', 'EventsController@postSort');
-Route::get('/showIdeaSort/{id}', 'EventsController@showIdeaSort');
+Route::post('/showIdeaPost', 'EventsController@postSort');//permet de gere le choix du tri du user
+Route::get('/showIdeaSort/{id}', 'EventsController@showIdeaSort');//affiche la suite des idea retrié par popularité
 
-Route::get('/suscribe/{id}', 'EventsController@suscribe');
-Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');
+Route::get('/suscribe/{id}', 'EventsController@suscribe');//fonction suscribe
+Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');//permet de télécharger la liste des participant en csv
 
-Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');
-Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');
+Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un event
+Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
 
 

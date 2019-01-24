@@ -363,9 +363,11 @@ class EventsController extends Controller
   return  redirect()->action('EventsController@showOne', $id);
   }
 
-  public function getSuscribers() {
+  public function getSuscribers($id) {
+
+
     $suscribers = DB::table('suscribes')->join('users', 'suscribes.id', '=', 'users.id')->select('users.name', 'users.lastName')->get();
-    return $suscribers;
+    return $id;
   }
 
 }
