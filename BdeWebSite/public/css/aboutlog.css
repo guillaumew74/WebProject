@@ -106,7 +106,11 @@ footer{
   margin-top: 4%;
   position: absolute;
   bottom: 0;
+  min-width: 200%;
+  align-content: center;
+  margin-left: -50%
 }
+
 
 li img
 {
@@ -127,4 +131,9 @@ h1
 {
   font-size: 500%;
   margin:0.5%;
+}
+
+.card
+{
+  margin-top: 15%;
 }
