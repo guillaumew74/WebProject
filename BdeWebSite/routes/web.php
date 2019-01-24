@@ -27,8 +27,16 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', 'auth\LoginController@logout');
 
 //ROUTE PRISE DE CONTACT
-Route::get('contact', 'ContactController@getForm');
-Route::post('contact', 'ContactController@postForm');
+Route::get('/contact', 'ContactController@getForm');
+Route::post('/contact', 'ContactController@postForm');
+
+// ROUTE AFFICHAGE BOUTIQUE
+Route::get('/boutique','MagController@showMag'); 
+ //  function () {
+ // $produit= DB::table('produit')->get();
+ //  return view('achat', compact('produit'));
+
+
 
 Route::get('/form', 'EventsController@getForm');
 Route::post('/post', 'EventsController@postForm');
