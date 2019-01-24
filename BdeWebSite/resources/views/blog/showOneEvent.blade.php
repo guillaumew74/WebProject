@@ -21,11 +21,21 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-sm-8">
+    <div class="col-sm-7">
       <h2 class="mt-4">What We Do</h2>
       <p>{{ $eventShow->description }}</p>
+
+      @auth {{-- vérifie si un user est authentifié --}}
       <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:20px;color:white;"></i>Commente</a>
+
       <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>Like {{ $eventShow->like }}</a>
+
+      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"><i class="far fa-caret-right" style="font-size:20px;color:white;"></i>Suscribe to this event</a>
+
+      <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg">Télécharger la liste des participants</a>
+
+      @endauth
+
     </div>
     <div class="col-sm-4">
       <h2 class="mt-4">Contact Us</h2>

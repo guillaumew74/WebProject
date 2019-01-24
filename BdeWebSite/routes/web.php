@@ -48,9 +48,15 @@ Route::get('/vote/{id}', 'EventsController@vote');
 Route::get('/showIdea', 'EventsController@showIdeaNoP');
 Route::get('/showIdea/{id}', 'EventsController@showIdea');
 
+Route::post('/showIdeaPost', 'EventsController@postSort');
+Route::get('/showIdeaSort/{id}', 'EventsController@showIdeaSort');
+
+Route::get('/suscribe/{id}', 'EventsController@suscribe');
+Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');
 
 Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');
+
 
 
 Route::resource('user', 'UserController')->middleware('admin');

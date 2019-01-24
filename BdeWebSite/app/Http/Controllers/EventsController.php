@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Events;
 use App\Comments;
+use App\Suscribe;
 use App\Http\Requests\formRequests;
 use App\Http\Requests\addComments;
 use App\Http\Requests\sortBy;
+use Illuminate\Support\Facades\Auth;//permet de gérer le user connecter
+use Illuminate\Support\Facades\DB;//permet de gérer la DB en globla et de faire des jointures entre les tables
 
 class EventsController extends Controller
 {
@@ -50,7 +53,7 @@ class EventsController extends Controller
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
              $events->save();
 
-             return redirect()->action('EventsController@showPostNoP');
+             return redirect()->action('EventsController@showEventNoP');
            }
 
          }
@@ -143,9 +146,10 @@ class EventsController extends Controller
 
 
         public function showIdeaNoP() {
-
+            $choice = 'R'; //On utilise cette méthode quand on a choisi de trié pas popularité
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
+
               $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
@@ -169,7 +173,7 @@ class EventsController extends Controller
 
              $j--; //j a été incrémenté une fois de trop dans le do while
 
-             return view('blog.show', compact('arrayShow', 'j'));
+             return view('blog.show', compact('arrayShow', 'j', 'choice'));
            }
            else
            {
@@ -220,16 +224,6 @@ class EventsController extends Controller
           }
         }
 
-
-  public function showSort(sortBy $request, $id) {
-    $event = Events::where('idEvents', $id)->first();
-    $sortBy = $request->input();
-    return $sortBy;
-    // if($event->validated == 0){
-
-    // }
-  }
-
   public function showOne($id)//affiche un event en particulier
   {
     $eventShow = Events::where('idEvents', $id)->first();
@@ -240,6 +234,64 @@ class EventsController extends Controller
       return redirect()->action('EventsController@showOneIdea', $id);
     }
 
+  }
+
+  public function postSort(sortBy $request) {
+
+    //$event = Events::where('idEvents', $id)->first();
+    $sortBy = $request->input();
+    $choice = $sortBy['sortBySS'];
+
+
+    if ($choice == 'P') {
+      $v = 0;
+    return redirect()->action('EventsController@showIdeaSort', $v );
+  }
+
+
+     else {
+      return redirect()->action('EventsController@showIdeaNoP', $choice);
+     }
+  }
+
+
+
+  public function showIdeaSort($v) {
+
+  $choice = 'P'; //On utilise cette méthode quand on a choisi de trié pas popularité
+  $first = Events::where('validated', '0')->orderBy('vote', 'ASC')->first(); //On vien chercher l'id de l'event le moins voté
+  $idFirst = $first->idEvents;
+  $nbrFirst = Events::where('vote', $first->vote)->count(); //nbr d'event qui ont le moins de vote
+
+
+  $eventMoreValidated = Events::where('validated', '0')->orderBy('vote', 'DSC')->first();
+
+    for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+                //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
+
+      $moreVote = $eventMoreValidated->vote;
+
+      $moreVote = $moreVote + 1;
+      $moreVote = $moreVote - $v;
+         do{
+          $v++;
+          $moreVote = $moreVote - 1;
+          } while (Events::where('vote', $moreVote)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
+
+         $arrayShow[$i] = Events::where('vote', $moreVote)->first();
+
+
+
+        if($arrayShow[$i]->idEvents == $idFirst)
+           {
+          return view('errors.errorNoMoreShow');
+          }
+
+         }
+
+      $v--; //j a été incrémenté une fois de trop dans le do while
+
+       return view('blog.show', compact('arrayShow', 'v', 'choice'));
   }
 
 
@@ -265,7 +317,7 @@ class EventsController extends Controller
         $comments = Comments::where('idEvents', $id )->get();
 
 
-        return view("blog.showOne", compact('eventShow', 'comments'));
+        return view("blog.showOneEvent", compact('eventShow', 'comments'));
       }
 
       public function vote($id){
@@ -289,7 +341,7 @@ class EventsController extends Controller
      $i++;
    }
 
-   return view("blog.showOne", compact('eventShow', 'comments'));
+   return view("blog.showOneEvent", compact('eventShow', 'comments'));
  }
  public function showOneIdea($id) {
   $i = 0;
@@ -297,7 +349,25 @@ class EventsController extends Controller
   $eventShow = Events::where('idEvents', $id)->first();
 
   return view("blog.showOneIdea", compact('eventShow'));
-}
+  }
+
+  public function suscribe($id) {
+
+
+    $user = Auth::user();
+  $userId = $user->id; // récupère l'email de la session en cour (unique)
+  $inputs['idEvents'] = $id;
+  $inputs['idUsers'] = $userId;
+  $suscribe = new Suscribe();
+  $suscribe = Suscribe::create($inputs);
+  return  redirect()->action('EventsController@showOne', $id);
+  }
+
+  public function getSuscribers() {
+    $suscribers = DB::table('suscribes')->join('users', 'suscribes.id', '=', 'users.id')->select('users.name', 'users.lastName')->get();
+    return $suscribers;
+  }
+
 }
 
 

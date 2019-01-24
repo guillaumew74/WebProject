@@ -9,13 +9,14 @@
 
   <div class="row my-4">
     <div class="col-lg-1">
-      {!! Form::open(array('action' => array('EventsController@showSort', $arrayShow['1']->idEvents))) !!}
+      {!! Form::open(array('action' => array('EventsController@postSort', $arrayShow['1']->idEvents))) !!}
       <div class="form-group uk-button">
        {!! Form::label('sortBySS', 'Trié Par : ') !!}
+       @if(isset($choice))
+       {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), $choice, array('onchange' => 'submitSS(this)')) !!}
+       @else
        {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R', array('onchange' => 'submitSS(this)')) !!}
-       <div class="submit" style="display:none">
-       {!! Form::submit('Envoyer !', ['class' => 'btn btn-info pull-right', 'display' => 'none']) !!}
-     </div>
+       @endif
        {!! Form::close() !!}
      </div>
    </div>
@@ -89,11 +90,23 @@
 <div class="row">
 
   <div class="col-lg-6 text-center">
+  @if(isset($j))
+
     @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
     <a class="btn btn-primary center-block" href="/showIdea/{{ $j }}">Show more event ! </a>
     @else
     <a class="btn btn-primary center-block" href="/show/{{ $j }}">Show more event ! </a>
     @endif
+
+  @else
+
+    @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
+    <a class="btn btn-primary center-block" href="/showIdeaSort/{{ $v }}">Show more event ! </a>
+    @else
+    <a class="btn btn-primary center-block" href="/show/{{ $v }}">Show more event ! </a>
+    @endif
+
+  @endif
 
 
   </div>
