@@ -70,7 +70,7 @@
 <!-- /.row -->
 <div class="row">
   <div class="col-lg-8" id="divFormu">{{-- L'id permet d'activer la fct js qui affiche le formulaire apres le clique --}}
-    {!! Form::open(array('action' => array('EventsController@showOnePost', $eventShow->idEvents))) !!}
+    {!! Form::open(array('action' => array('EventsController@showOneEventPost', $eventShow->idEvents))) !!}
     <div class="form-group {!! $errors->has('comments') ? 'has-error' : '' !!}">
       {!! Form::textarea ('comments', null, ['class' => 'form-control', 'placeholder' => 'Votre commentaire:']) !!}
       {!! $errors->first('comments', '<small class="help-block">:message</small>') !!}
