@@ -1,6 +1,7 @@
 @extends('templatelog')
 
 @section('contenu')
+<div id="wrapper">
     <br>
 	<div class="col-sm-offset-3 col-sm-6">
 		<div class="panel panel-default bg-default">
@@ -24,4 +25,5 @@
 			</div>
 		</div>
 	</div>
+</div>
 @endsection
