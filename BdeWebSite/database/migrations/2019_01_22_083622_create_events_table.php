@@ -23,6 +23,8 @@ class CreateEventsTable extends Migration
             $table->string('imageLink');
             $table->integer('like')->default('0');
             $table->integer('vote')->default('0');
+            $table->string('recurent');
+            $table->integer('payable');
             $table->timestamps();
         });
     }

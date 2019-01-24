@@ -39,15 +39,18 @@
 
     </div>
     <div class="col-sm-4">
-      <h2 class="mt-4">Information événement</h2>
+      <h2 class="mt-4">Informations sur l'événements</h2>
+      @if($eventShow->payable  == 0)
+      <p>L'événenement est gratuit !</p>
+      @else
+      <p>Le prix de participation de l'événement est de {{ $eventShow->payable }}</p>
+      @endif
+      @if($eventShow->recurent == '0')
+      <p>Cette événement est unique</p>
+      @else
+      <p>Cette événement est {{ $eventShow->recurent }}</p>
+      @endif
       <address>
-        <strong>Lieu</strong>
-        <br>3481 Melrose Place
-        <br>Beverly Hills, CA 90210
-        <br>
-      </address>
-      <address>
-        <br>
         <abbr title="Email">Email:</abbr>
         <a href="mailto:{{ $eventShow->owner }}">{{ $eventShow->owner }}</a>
       </address>

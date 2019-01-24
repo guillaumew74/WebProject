@@ -31,7 +31,10 @@ class formRequests extends FormRequest
 
             'image' => 'required|image|dimensions:min_width,min_height=100',
             'email' => 'required|email',
-            'date' => 'required'
+            'date' => 'required',
+            'payable' => 'required'
         ];
     }
+
+
 }

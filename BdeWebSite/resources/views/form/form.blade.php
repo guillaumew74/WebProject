@@ -2,7 +2,7 @@
 @extends('templateuser')
 
 @section('contenu') <!--Voici le formulaire d'enregistrement d'événement-->
-    <br>
+
    <div class="col-sm-offset-3 col-sm-6">
       <div class="panel panel-info">
          <div class="panel-heading">Soumetre son idée</div>
@@ -30,9 +30,28 @@
                   {!! Form::email('email', null, ['class' => 'form-control', 'placeholder' => 'Votre email']) !!}
                   {!! $errors->first('email', '<small class="help-block">:message</small>') !!}
                </div>
+               <div class="form-group form-control-sm{!! $errors->has('isRecurent') ? 'has-error' : '' !!}">
+                  {!! Form::label('isRecurent', 'Est-ce un événement récurent ?') !!}
+                  {!! Form::checkbox('isRecurent', '1', false) !!}
+                  {!! $errors->first('isRecurent', '<small class="help-block">:message</small>') !!}
+               </div>
+               <div class="form-control form-control-sm {!! $errors->has('recurent') ? 'has-error' : '' !!}" id="typeRecurent">
+
+                  {!! Form::label('recurent', 'Quelle est sa périodicité ?') !!}
+                  {!! Form::radio('recurent', 'quotidien', true )  !!} Quotidien
+                  {!! Form::radio('recurent', 'mensuel', false) !!} Mensuel
+                  {!! Form::radio('recurent', 'annuel', false) !!} Annuel
+                  {!! $errors->first('recurent', '<small class="help-block">:message</small>') !!}
+               </div>
+               <div class="form-group {!! $errors->has('payable') ? 'has-error' : '' !!}">
+                  {!! Form::label('payable', 'Quel est le coût de participation à l\'événement ? (Gratuit = 0)') !!}
+                  {!! Form::number('payable', 'amount', ['class' => 'form-control']) !!}
+                  {!! $errors->first('payable', '<small class="help-block">:message</small>') !!}
+               </div>
                {!! Form::submit('Envoyer !', ['class' => 'btn btn-info pull-right']) !!}
             {!! Form::close() !!}
          </div>
       </div>
    </div>
+   <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 @endsection

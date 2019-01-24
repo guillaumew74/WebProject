@@ -6,13 +6,13 @@
 <div class="container">
 
   <!-- Heading Row -->
-
+  @if($arrayShow['1']->validated == 0) {{-- Le tri n'est disponible que pour la boite à idée --}}
   <div class="row my-4">
     <div class="col-lg-1">
       {!! Form::open(array('action' => array('EventsController@postSort', $arrayShow['1']->idEvents))) !!}
       <div class="form-group uk-button">
        {!! Form::label('sortBySS', 'Trié Par : ') !!}
-       @if(isset($choice))
+       @if(isset($choice)) {{-- On retrouve le choix qui vient d'etre fait par le user --}}
        {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), $choice, array('onchange' => 'submitSS(this)')) !!}
        @else
        {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R', array('onchange' => 'submitSS(this)')) !!}
@@ -21,7 +21,9 @@
      </div>
    </div>
  </div>
- <div class="row">
+ @endif
+
+ <div class="row my-4">
   <div class="col-lg-8">
     <img class="img-fluid rounded" src="{{ URL::asset($arrayShow['1']->imageLink) }}" alt=""> {{-- On doit uiliser la methode asset pour que le navigateur aille chercher dans public --}}
 

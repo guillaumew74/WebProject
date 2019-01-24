@@ -47,9 +47,9 @@ class EventsController extends Controller
             $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
             $inputs['imageLink'] = $cheminPhoto;
             $inputs['owner'] = $inputs['email'];
-
-            //return $inputs;
-
+            if(! isset($inputs['isRecurent'])){ //si la checkbox isRecurent n'est pas coché alors on set recurent a 0
+              $inputs['recurent'] = 0;
+            }
 
 
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
@@ -347,8 +347,7 @@ class EventsController extends Controller
    return view("blog.showOneEvent", compact('eventShow', 'comments'));
  }
  public function showOneIdea($id) {
-  $i = 0;
-  $idParse = $id;
+
   $eventShow = Events::where('idEvents', $id)->first();
 
   return view("blog.showOneIdea", compact('eventShow'));
