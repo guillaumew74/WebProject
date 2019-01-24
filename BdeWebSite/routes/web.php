@@ -31,7 +31,7 @@ Route::get('/contact', 'ContactController@getForm');
 Route::post('/contact', 'ContactController@postForm');
 
 // ROUTE AFFICHAGE BOUTIQUE
-Route::get('/boutique','MagController@showMag'); 
+Route::get('/boutique','MagController@showMag');
  //  function () {
  // $produit= DB::table('produit')->get();
  //  return view('achat', compact('produit'));
@@ -65,13 +65,13 @@ Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');//permet de 
 Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un event
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
+//ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
+Route::group(['middleware' => 'admin'], function() {
 
+Route::get('/administration', function () {return view('vue.admin');});
+Route::resource('/user', 'UserController');
 
-Route::get('/administration', function () {
-    return view('vue.admin');
-})->middleware('admin');
-Route::resource('user', 'UserController')->middleware('admin');
-
+});
 
 Route::get('/error', function () {
     return view('errors.erroradmin');
