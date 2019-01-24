@@ -6,11 +6,13 @@ use Illuminate\Http\Request;
 use App\Events;
 use App\Comments;
 use App\Suscribe;
+use App\User;
 use App\Http\Requests\formRequests;
 use App\Http\Requests\addComments;
 use App\Http\Requests\sortBy;
 use Illuminate\Support\Facades\Auth;//permet de gérer le user connecter
 use Illuminate\Support\Facades\DB;//permet de gérer la DB en globla et de faire des jointures entre les tables
+use Illuminate\Support\Facades\Response;
 
 class EventsController extends Controller
 {
@@ -207,6 +209,7 @@ class EventsController extends Controller
               } while (Events::where('idEvents', $lastid)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
               $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+
               if($arrayShow[$i]->idEvents == $idFirst)
               {
                 return view('errors.errorNoMoreShow');
@@ -245,13 +248,13 @@ class EventsController extends Controller
 
     if ($choice == 'P') {
       $v = 0;
-    return redirect()->action('EventsController@showIdeaSort', $v );
-  }
+      return redirect()->action('EventsController@showIdeaSort', $v );
+    }
 
 
-     else {
+    else {
       return redirect()->action('EventsController@showIdeaNoP', $choice);
-     }
+    }
   }
 
 
@@ -273,31 +276,31 @@ class EventsController extends Controller
 
       $moreVote = $moreVote + 1;
       $moreVote = $moreVote - $v;
-         do{
-          $v++;
-          $moreVote = $moreVote - 1;
+      do{
+        $v++;
+        $moreVote = $moreVote - 1;
           } while (Events::where('vote', $moreVote)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
-         $arrayShow[$i] = Events::where('vote', $moreVote)->first();
+          $arrayShow[$i] = Events::where('vote', $moreVote)->first();
 
 
 
-        if($arrayShow[$i]->idEvents == $idFirst)
-           {
-          return view('errors.errorNoMoreShow');
+          if($arrayShow[$i]->idEvents == $idFirst)
+          {
+            return view('errors.errorNoMoreShow');
           }
 
-         }
+        }
 
       $v--; //j a été incrémenté une fois de trop dans le do while
 
-       return view('blog.show', compact('arrayShow', 'v', 'choice'));
-  }
+      return view('blog.show', compact('arrayShow', 'v', 'choice'));
+    }
 
 
 
-  public function showOneEventPost(Request $request, $id){
-    $events = new Events();
+    public function showOneEventPost(Request $request, $id){
+      $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
         $addRow = Comments::create($inputs);
@@ -349,30 +352,43 @@ class EventsController extends Controller
   $eventShow = Events::where('idEvents', $id)->first();
 
   return view("blog.showOneIdea", compact('eventShow'));
-  }
+}
 
-  public function suscribe($id) {
+public function suscribe($id) {
 
 
-    $user = Auth::user();
+  $user = Auth::user();
   $userId = $user->id; // récupère l'email de la session en cour (unique)
   $inputs['idEvents'] = $id;
   $inputs['idUsers'] = $userId;
   $suscribe = new Suscribe();
   $suscribe = Suscribe::create($inputs);
   return  redirect()->action('EventsController@showOne', $id);
-  }
+}
 
-  public function getSuscribers($id) {
+public function getSuscribers($id) {
 
-    $suscribers = DB::table('suscribes')->where('idEvents', $id)->join('users', 'suscribes.idUsers', '=', 'users.id')->select('users.name', 'users.lastName')->get();
+  $suscribers = DB::table('suscribes')->where('idEvents', $id)->join('users', 'suscribes.idUsers', '=', 'users.id')->select('users.name', 'users.lastName', 'users.email')->get();
 
+    $suscribers = json_decode($suscribers, true);
     $filename = "suscribers.csv";
     $handle = fopen($filename, 'w+');
-    fputcsv($handle, array('name', 'lastName'));
+    fputcsv($handle, array('name', 'lastName', 'email'));
 
-    return $suscribers;
+    foreach($suscribers as $row) {
+        fputcsv($handle, array($row['name'],';', $row['lastName'],';', $row['email']));
+    }
+
+    fclose($handle);
+
+    $headers = array(
+        'Content-Type' => 'text/csv',
+    );
+
+    return Response::download($filename, 'suscribers.csv', $headers);
   }
+
+
 
 }
 
