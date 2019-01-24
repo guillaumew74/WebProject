@@ -453,14 +453,14 @@ button.js-cookie-consent-agree {
 
 #comment{
 
-   margin-bottom: 5%;
+   margin-bottom: 1%;
    margin-left: 2%;
   border: 1px solid blue;
   border-radius: 10px;
 
 }
 #cmrow {
-  margin-top: 0,5%;
+  margin-top: 2%;
    display: flex;
   flex-direction: column;
   height: 2%;
