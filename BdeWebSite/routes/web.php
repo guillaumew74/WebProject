@@ -59,6 +59,9 @@ Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');
 
 
 
+Route::get('/administration', function () {
+    return view('vue.admin');
+})->middleware('admin');
 Route::resource('user', 'UserController')->middleware('admin');
 
 
