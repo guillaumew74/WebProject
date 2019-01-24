@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-
+<div id="wrapper">
 {{-- <header class="business-header"> --}}
   <div class="container">
     <div class="row">
@@ -22,40 +22,39 @@
 
   <div class="row">
     <div class="col-sm-7">
-      <h2 class="mt-4">What We Do</h2>
+      <h2 class="mt-4">Description</h2>
       <p>{{ $eventShow->description }}</p>
 
       @auth {{-- vérifie si un user est authentifié --}}
-      <a class="btn btn-primary btn-lg" onClick="newComment()"><i class="far fa-comments" style="font-size:20px;color:white;"></i>Commente</a>
+      <div id="contleft">
+      <a class="btn btn-primary btn-lg" onClick="newComment()" class="btnedit"><i class="far fa-comments" style="font-size:20px;color:white;"></i></a>
 
-      <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>Like {{ $eventShow->like }}</a>
+      <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary" class="btnedit"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>{{ $eventShow->like }}</a>
 
-      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"><i class="far fa-caret-right" style="font-size:20px;color:white;"></i>Suscribe to this event</a>
+      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"></i>Suscribe to this event</a>
 
-      <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg">Télécharger la liste des participants</a>
-
+      <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
+    </div>
       @endauth
 
     </div>
     <div class="col-sm-4">
-      <h2 class="mt-4">Contact Us</h2>
+      <h2 class="mt-4">Information événement</h2>
       <address>
-        <strong>Start Bootstrap</strong>
+        <strong>Lieu</strong>
         <br>3481 Melrose Place
         <br>Beverly Hills, CA 90210
         <br>
       </address>
       <address>
-        <abbr title="Phone">P:</abbr>
-        (123) 456-7890
         <br>
-        <abbr title="Email">E:</abbr>
+        <abbr title="Email">Email:</abbr>
         <a href="mailto:{{ $eventShow->owner }}">{{ $eventShow->owner }}</a>
       </address>
     </div>
   </div>
   <!-- /.row -->
-  <div class="row">
+  <div class="row" id="cmrow">
    {{--  @if($comments->comments) --}}
 
     @foreach ($comments as $comment)
@@ -83,7 +82,7 @@
 
 <div class="row" >
   <div class="col-lg-8 my-6">
-      <a class="btn btn-primary btn-lg" href="/show">Retour à la navigation</a>
+      <a class="btn btn-primary btn-lg" href="/show" class="btnedit">Retour à la navigation</a>
     </div>
   </div>
 </div>
@@ -135,4 +134,5 @@
 
 
   <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
+</div>
     @endsection
