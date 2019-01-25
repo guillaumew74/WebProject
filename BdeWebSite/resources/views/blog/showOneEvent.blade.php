@@ -61,13 +61,16 @@
    {{--  @if($comments->comments) --}}
 
 
-      <div class="col-lg-2 " id="comment">
-      @for($i = 1; $i<=$nbrComment; $i++)
-    <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
 
+      @for($i = 1; $i<=$nbrComment; $i++)
+      <div class="col-lg-2 " id="comment">
+    <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
+    <p>{{ $comments[$i]->created_at }}</p>
     <p>{{ $comments[$i]->comments }}</p>
+
+     </div>
     @endfor
-    </div>
+
 
    {{-- @endif --}}
 </div>
