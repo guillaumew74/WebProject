@@ -2,7 +2,7 @@
 @extends('templateuser')
 
 @section('contenu') <!--Voici le formulaire d'enregistrement d'événement-->
-
+@auth
    <div class="col-sm-offset-3 col-sm-6">
       <div class="panel panel-info">
          <div class="panel-heading">Soumetre son idée</div>
@@ -53,5 +53,20 @@
          </div>
       </div>
    </div>
+   @endauth
+   @guest
+   <div></div>
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
+   <div class="col-sm-offset-4 col-sm-4">
+    <div class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title">Il y a un problème !</h3>
+      </div>
+      <div class="panel-body">
+        <p>Vous devez être connecté pour proposer une idée d'événement</p>
+        <a href="/">Retour au Menu</a>
+      </div>
+    </div>
+  </div>
+  @endguest
 @endsection
