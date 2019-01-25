@@ -34,6 +34,14 @@
       <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"></i>Suscribe to this event</a>
 
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
+
+
+      <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @if ($userState == 1)
+
+      <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
+    </div>
+      @endif
     </div>
       @endauth
 
@@ -60,12 +68,17 @@
   <div class="row" id="cmrow">
    {{--  @if($comments->comments) --}}
 
-    @foreach ($comments as $comment)
-      <div class="col-lg-2 " id="comment">
-    <p>{{ $comment->comments }}</p>
 
-      </div>
-    @endforeach
+
+      @for($i = 1; $i<=$nbrComment; $i++)
+      <div class="col-lg-2 " id="comment">
+    <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
+    <p>{{ $comments[$i]->created_at }}</p>
+    <p>{{ $comments[$i]->comments }}</p>
+
+     </div>
+    @endfor
+
 
    {{-- @endif --}}
 </div>
@@ -91,51 +104,8 @@
 </div>
     <!-- /.container -->
 
-
-
-  {{-- peut afficher 3 autres event --}}
-{{--       <div class="row">
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque sequi doloribus totam ut praesentium aut.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 my-4">
-          <div class="card">
-            <img class="card-img-top" src="http://placehold.it/300x200" alt="">
-            <div class="card-body">
-              <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-            </div>
-            <div class="card-footer">
-              <a href="#" class="btn btn-primary">Find Out More!</a>
-            </div>
-          </div>
-        </div>
-
-      </div>
-      --}}
-
-
-  <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
 </div>
-    @endsection
+  <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
+
+
+@endsection

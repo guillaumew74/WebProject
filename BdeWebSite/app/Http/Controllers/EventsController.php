@@ -55,7 +55,7 @@ class EventsController extends Controller
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
              $events->save();
 
-             return redirect()->action('EventsController@showEventNoP');
+             return redirect()->action('EventsController@showIdeaNoP');
            }
 
          }
@@ -303,12 +303,34 @@ class EventsController extends Controller
       $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
+        $user = Auth::user();
+    $userId = $user->id; // récupère l'id de la session en cour (unique)
+        $inputs['idUsers'] = $userId;
         $addRow = Comments::create($inputs);
 
         $eventShow = Events::where('idEvents', $id)->first();
-        $comments = Comments::where('idEvents', $id )->get();
 
-        return view("blog.showOneEvent", compact('eventShow', 'comments'));
+        $listComments = Comments::where('idEvents', $id )->pluck('idComments');
+
+        $c = 1;
+        foreach ($listComments as $idComment ) {
+          $comments[$c] = Comments::where('idComments', $idComment)->first();
+          $c++;
+        }
+
+
+        $nbrComment  = Comments::where('idEvents', $id )->get()->count() ;
+
+        $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+
+        $i = 1;
+        foreach ($listUser as $user) {
+          $userName[$i] = User::where('id', $user)->first();
+          $i++;
+        }
+
+
+        return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment'));
       }
 
       public function like($id){
@@ -334,17 +356,28 @@ class EventsController extends Controller
       }
 
       public function showOneEvent($id) {
-        $i = 0;
+
         $idParse = $id;
         $eventShow = Events::where('idEvents', $id)->first();
 
       $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
+      $nbrComment = Comments::where('idEvents', $idParse)->get()->count();
+
+      $istUser = Comments::where('idEvents', $id )->pluck('idUsers
+        ');
+
+        $c=1;
+        foreach ($listUser as $user) {
+          $userName[$c] = User::where('id', $user)->first();
+          $c++;
+        }
+        $i = 1;
      foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
      $comments[$i] = $comment;
      $i++;
    }
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments'));
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName'));
  }
  public function showOneIdea($id) {
 
@@ -386,8 +419,6 @@ public function getSuscribers($id) {
 
     return Response::download($filename, 'suscribers.csv', $headers);
   }
-
-
 
 }
 

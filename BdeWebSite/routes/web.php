@@ -73,6 +73,7 @@ Route::group(['middleware' => 'admin'], function() {
 
 Route::get('/administration', function () {return view('vue.admin');});
 Route::resource('/user', 'UserController');
+Route::get('/api', function () {return view('vue.api');});
 
 });
 
@@ -84,4 +85,5 @@ Route::get('/condition', function () {
     return view('vue.condition');
 });
 
+Route::get('/signal/{id}', 'EventsController@signal');//affiche une Idea
 

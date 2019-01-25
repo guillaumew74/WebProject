@@ -10,6 +10,7 @@ class CreatePhotosTable extends Migration {
 		Schema::create('photos', function(Blueprint $table) {
 			$table->increments('idPhotos');
 			$table->string('ImageLink', 255);
+			$table->integer('nbrLike');
 		});
 	}
 
