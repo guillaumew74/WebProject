@@ -13,6 +13,7 @@ use App\Http\Requests\sortBy;
 use Illuminate\Support\Facades\Auth;//permet de gérer le user connecter
 use Illuminate\Support\Facades\DB;//permet de gérer la DB en globla et de faire des jointures entre les tables
 use Illuminate\Support\Facades\Response;
+use DateTime; //permet d'utiliser la function time
 
 class EventsController extends Controller
 {
@@ -68,83 +69,124 @@ class EventsController extends Controller
 
   public function showEvent($j) //affichage de la page des événements
   {
-           // $j = 0;
-            $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
-            if ($allEvents >= 5) {
+    $now = new DateTime();
+    $standardDate = $now->format( 'Y-m-d');
+    $choice = 'R';
 
-              $first = Events::where('validated', '=', '1')->first();
-              $idFirst = $first->idEvents;
-
-            $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
+      $allEvents = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->count(); //compte le nombre d'event validé
 
 
-            for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5eme est utilisé pour le bouton showMore)
+        if ($allEvents >= 5) {
 
+          $first = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
+          $idFirst = $first->idEvents;
+
+        $postShow = Events::whereDate('date', '>=', $standardDate)->where('validated', '=', '1')->latest()->first();// On récupere l'article qui vient d'etre posté
+
+            for($i = 1; $i <= 5; $i++) { //On vient charger les 4 derniers articles
 
              $lastid = $postShow->idEvents + 1;
              $lastid = $lastid - $j;
              do{
               $j++;
               $lastid = $lastid - 1;
-             } while (Events::where('idEvents', $lastid)->first() == null ); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
+             } while (Events::where('idEvents', $lastid)->where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first() == null ); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
+             $arrayShow[$i] = Events::where('idEvents', $lastid)->where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
 
-
-             $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
              if($arrayShow[$i]->idEvents == $idFirst)
              {
               return view('errors.errorNoMoreShow');
             }
 
-          }
-           $j--; //j a été incrémenté une fois de trop dans le do while
+      }
+        $j--; //j a été incrémenté une fois de trop dans le do while
 
-           return view('blog.show', compact('arrayShow', 'j'));
-         }
-         else
-         {
-          return view('errors.errorNotEnough');
-        }
+       return view('blog.show', compact('arrayShow', 'j', 'choice'));
+     }
+     else
+     {
+      return view('errors.errorNotEnough');
+     }
 
       }
       public function showEventNoP() {
+        $now = new DateTime();
+    $standardDate = $now->format( 'Y-m-d');
+    $choice = 'R';
+
 
        $j = 0;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
-            $allEvents = Events::where('validated', '=', '1')->count(); //compte le nombre d'event validé
+            $allEvents = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->count(); //compte le nombre d'event validé
+
             if ($allEvents >= 5) {
 
              for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
-
-
              $lastid = $postShow->idEvents + 1; //l'id du dernier event
              $lastid = $lastid - $j;
-
 
              do{
               $j++;
               $lastid = $lastid - 1;
-              } while (Events::where('idEvents', $lastid)->where('validated', '=', '1')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
+              } while (Events::where('idEvents', $lastid)->where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
 
-
-              $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+              $arrayShow[$i] = Events::where('idEvents', $lastid)->whereDate('date', '>=', $standardDate)->first();
 
             }
 
 
              $j--; //j a été incrémenté une fois de trop dans le do while
 
-             return view('blog.show', compact('arrayShow', 'j'));
+             return view('blog.show', compact('arrayShow', 'j', 'choice'));
            }
            else
            {
             return view('errors.errorNotEnough');
           }
         }
+
+  public function showEventPast($j) {
+
+    $now = new DateTime();
+    $standardDate = $now->format( 'Y-m-d');
+    $choice = 'P';
+
+    $allPastEvents = Events::whereDate('date', '<', $standardDate)->where('validated', '=', '1')->count(); //On obtient tout les events avant la date d'aujourd'hui
+    $lastEvent = Events::latest()->whereDate('date', '<', $standardDate)->where('validated', '=', '1')->first();
+
+    if($allPastEvents >= 4) {
+
+             for($i = 1; $i <= 4; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+                //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
+             $lastid = $lastEvent->idEvents + 1; //l'id du dernier event
+
+             $lastid = $lastid - $j;
+
+             do{
+              $j++;
+              $lastid = $lastid - 1;
+              } while (Events::where('idEvents', $lastid)->where('validated', '=', '1')->whereDate('date', '<', $standardDate)->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
+
+              $arrayShow[$i] = Events::where('idEvents', $lastid)->whereDate('date', '<', $standardDate)->where('validated', '=', '1')->first();
+
+            }
+
+
+             $j--; //j a été incrémenté une fois de trop dans le do while
+
+             return view('blog.showPastEvent', compact('arrayShow', 'j', 'choice'));
+
+    }
+    else {
+            return view('errors.errorNotEnough');
+          }
+
+  }
 
 
         public function showIdeaNoP() {
@@ -273,9 +315,7 @@ class EventsController extends Controller
   }
 
 
-  public function showEventPast($id) {
-      return 'a';
-  }
+
 
 
 

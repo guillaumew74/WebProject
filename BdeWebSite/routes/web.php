@@ -75,6 +75,10 @@ Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un e
 
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
+Route::get('/errorState', function (){
+   return view('errors.errorState');
+});
+
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
 Route::group(['middleware' => 'admin'], function() {
 
