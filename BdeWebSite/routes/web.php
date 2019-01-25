@@ -82,5 +82,5 @@ Route::get('/condition', function () {
     return view('vue.condition');
 });
 
-Route::get('/signal/{id}', 'EventsController@signal');//affiche une Idea
+Route::get('/signal/{id}', 'SignalController@signalEvent');//affiche une Idea
 
