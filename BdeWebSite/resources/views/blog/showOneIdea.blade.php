@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-
+<div id="wrapper">
 {{-- <header class="business-header"> --}}
   <div class="container">
     <div class="row">
@@ -25,21 +25,21 @@
       <h2 class="mt-4">Description</h2>
       <p>{{ $eventShow->description }}</p>
 
-      <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary"><i class="far fa-vote-yea" style="font-size:20px;color:white;"></i>Vote {{ $eventShow->vote }}</a>
+      <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary">Votez pour cette idée ! {{ $eventShow->vote }}</a>
     </div>
     <div class="col-sm-4">
             <h2 class="mt-4">Informations sur l'événements</h2>
       @if( $eventShow->payable  == 0)
 
-      <p>L'événenement est gratuit !</p>
+      <p>L'événenement est <strong>gratuit</strong>  !</p>
       @else
-      <p>Le prix de participation de l'événement est de {{ $eventShow->payable }}</p>
+      <p>Le prix de participation de l'événement est de <strong>{{ $eventShow->payable }} €</strong></p>
       @endif
 
       @if( $eventShow->recurent == '0')
-      <p>Cette événement est unique</p>
+      <p>Cette événement est <strong>unique</strong></p>
       @else
-      <p>Cette événement est {{ $eventShow->recurent }}</p>
+      <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong></p>
       @endif
       <address>
         <abbr title="Email">Email:</abbr>
@@ -55,6 +55,7 @@
       <a class="btn btn-primary btn-lg" href="/showIdea">Retour à la navigation</a>
     </div>
   </div>
+</div>
 </div>
     <!-- /.container -->
 @endsection
