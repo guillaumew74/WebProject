@@ -9,6 +9,7 @@
       </div>
       <div class="panel-body">
         <p>Merci. Votre message de signalement a été transmis aux administrateurs du site. Vous recevrez une réponse rapidement.</p>
+        <a href="/">Retour au Menu</a>
       </div>
     </div>
   </div>

@@ -76,6 +76,11 @@
     <p>{{ $comments[$i]->created_at }}</p>
     <p>{{ $comments[$i]->comments }}</p>
 
+    <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @if ($userState == 1)
+    <a href="/signal/{{ $comments[$i]->idComments }}" class="btn btn-danger btn-sm" class="btnedit">Supprimer ce commentaire</a>
+    @endif
+
      </div>
     @endfor
 

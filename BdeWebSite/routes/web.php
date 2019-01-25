@@ -93,4 +93,5 @@ Route::get('/condition', function () {
 });
 
 Route::get('/signal/{id}', 'SignalController@getSignalEvent');
+Route::get('/signal/{id}', 'SignalController@getSignalCom');
 

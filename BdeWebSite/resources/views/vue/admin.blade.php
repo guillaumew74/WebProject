@@ -30,7 +30,7 @@
             </tr>
               <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/">Ajouter événement</a></strong></td>
+              <td><strong><a class="text-success" href="/form">Ajouter événement</a></strong></td>
             </tr>
              <tr>
               <td></td>
