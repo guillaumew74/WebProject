@@ -356,17 +356,27 @@ class EventsController extends Controller
       }
 
       public function showOneEvent($id) {
-        $i = 0;
+
         $idParse = $id;
         $eventShow = Events::where('idEvents', $id)->first();
 
       $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
+      $nbrComment = Comments::where('idEvents', $idParse)->get()->count();
+
+      $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+
+        $c=1;
+        foreach ($listUser as $user) {
+          $userName[$c] = User::where('id', $user)->first();
+          $c++;
+        }
+        $i = 1;
      foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
      $comments[$i] = $comment;
      $i++;
    }
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments'));
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName'));
  }
  public function showOneIdea($id) {
 
