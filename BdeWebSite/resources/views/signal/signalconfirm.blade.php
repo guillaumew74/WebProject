@@ -9,11 +9,11 @@
 
         <div class="panel panel-default">
 
-            <div class="panel-heading">Contactez le BDE</div>
+            <div class="panel-heading">Signalement BDE</div>
 
             <div class="panel-body">
 
-               <p>Merci. Votre message a été transmis à l'administrateur du site. Vous recevrez une réponse rapidement.</p>
+              <p>Merci. Votre message de signalement a été transmis aux administrateurs du site. Vous recevrez une réponse rapidement.</p>
 
             </div>
 
