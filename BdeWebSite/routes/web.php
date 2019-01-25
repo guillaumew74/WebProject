@@ -37,7 +37,7 @@ Route::get('buy/{n}','MagController@confirmBuy');
  // $produit= DB::table('produit')->get();
  //  return view('achat', compact('produit'));
 
-// ROUTE AFFICHAGE PANIER 
+// ROUTE AFFICHAGE PANIER
 Route::get('/panier','CartController@showCart');
 
 
@@ -92,5 +92,5 @@ Route::get('/condition', function () {
     return view('vue.condition');
 });
 
-Route::get('/signal/{id}', 'SignalController@signalEvent');//affiche une Idea
+Route::get('/signal/{id}', 'SignalController@getSignalEvent');
 

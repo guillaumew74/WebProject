@@ -3,18 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\SignalRequest;
-use App\models\Contact;
+use Illuminate\Support\Facades\Auth;//permet de gérer le user connecter
 use Mail;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class SignalController extends Controller
 {
 
-public function signalEvent(ContactRequest $request){
 
-        Mail::send('signal.signalemail', $request->all(), function($message)
+
+public function getSignalEvent($id){
+
+  $nom= Auth::user()->name;
+  $email=Auth::user()->email;
+        Mail::send('signal.signalemail',['nom'=>$nom, 'email'=>$email,'idEvents'=>$id], function($message)
 
         {
 
