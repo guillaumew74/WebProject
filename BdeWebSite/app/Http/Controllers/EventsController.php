@@ -363,7 +363,8 @@ class EventsController extends Controller
       $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
       $nbrComment = Comments::where('idEvents', $idParse)->get()->count();
 
-      $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+      $istUser = Comments::where('idEvents', $id )->pluck('idUsers
+        ');
 
         $c=1;
         foreach ($listUser as $user) {
