@@ -239,22 +239,42 @@ class EventsController extends Controller
 
   }
 
-  public function postSort(sortBy $request) {
+  public function postSort(sortBy $request, $id) {
 
-    //$event = Events::where('idEvents', $id)->first();
+    $event = Events::where('idEvents', $id)->first();
+    if($event->validated == 0) {
     $sortBy = $request->input();
     $choice = $sortBy['sortBySS'];
 
 
-    if ($choice == 'P') {
-      $v = 0;
-      return redirect()->action('EventsController@showIdeaSort', $v );
-    }
+      if ($choice == 'P') {
+        $v = 0;
+        return redirect()->action('EventsController@showIdeaSort', $v );
+      }
 
 
-    else {
-      return redirect()->action('EventsController@showIdeaNoP', $choice);
-    }
+      else {
+        return redirect()->action('EventsController@showIdeaNoP', $choice);
+      }
+     }
+      else {
+        $pastEvent = $request->input();
+        $choice = $pastEvent['pastEvent'];
+
+        if ($choice == 'P') {
+          $id = 0;
+            return redirect()->action('EventsController@showEventPast', $id);
+        }
+        else {
+          return redirect()->action('EventsController@showEventNoP');
+        }
+      }
+
+  }
+
+
+  public function showEventPast($id) {
+      return 'a';
   }
 
 

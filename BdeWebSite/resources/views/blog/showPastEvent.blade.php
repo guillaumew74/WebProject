@@ -2,7 +2,7 @@
 
 @section('contenu')
 
-@if(! ((! Auth::check()) && ($arrayShow['1']->validated == 0) )) {{-- Si le user n'est pas log alors il ne peux pas acceder à la boite a idee --}}
+
 
 
 <div id="wrapper">
@@ -10,22 +10,7 @@
 <div class="container">
 
   <!-- Heading Row -->
-  @if($arrayShow['1']->validated == 0) {{-- Le tri n'est disponible que pour la boite à idée --}}
-  <div class="row my-4">
-    <div class="col-lg-1">
-      {!! Form::open(array('action' => array('EventsController@postSort', $arrayShow['1']->idEvents))) !!}
-      <div class="form-group uk-button">
-       {!! Form::label('sortBySS', 'Trié Par : ') !!}
-       @if(isset($choice)) {{-- On retrouve le choix qui vient d'etre fait par le user --}}
-       {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), $choice, array('onchange' => 'submitSS(this)')) !!}
-       @else
-       {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R', array('onchange' => 'submitSS(this)')) !!}
-       @endif
-       {!! Form::close() !!}
-     </div>
-   </div>
- </div>
- @else
+
 <div class="row my-4">
     <div class="col-lg-1">
       {!! Form::open(array('action' => array('EventsController@postSort', $arrayShow['1']->idEvents))) !!}
@@ -40,7 +25,7 @@
      </div>
    </div>
  </div>
- @endif
+
 
  <div class="row my-4">
   <div class="col-lg-8">
@@ -139,28 +124,11 @@
 </div>
 <!-- /.container -->
 </div>
-
+<!--/.wrapper -->
 
 
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 
-@else
 
- <div id="wrapper">
-   <div class="col-sm-offset-4 col-sm-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title">Il y a un problème !</h3>
-      </div>
-      <div class="panel-body">
-        <p>Vous devez être connecté pour voir les idées d'événements</p>
-        <a href="/">Retour au Menu</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-@endif
 @endsection
 

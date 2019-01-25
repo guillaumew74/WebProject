@@ -56,13 +56,20 @@ Route::get('/vote/{id}', 'EventsController@vote'); //fonction vote
 Route::get('/showIdea', 'EventsController@showIdeaNoP'); //affiche la première pas des Idea
 Route::get('/showIdea/{id}', 'EventsController@showIdea'); //affiche la suite des Idea
 
-Route::post('/showIdeaPost', 'EventsController@postSort');//permet de gere le choix du tri du user
+Route::post('/showIdeaPost/{id}', 'EventsController@postSort');//permet de gere le choix du tri du user
+Route::post('/showEventPost/{id}', 'EventsController@postSort');//permet de gere le choix du tri du user
+
+
+Route::get('/showEventPast/{id}', 'EventsController@showEventPast');
+
 Route::get('/showIdeaSort/{id}', 'EventsController@showIdeaSort');//affiche la suite des idea retrié par popularité
 
 Route::get('/suscribe/{id}', 'EventsController@suscribe');//fonction suscribe
 Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');//permet de télécharger la liste des participant en csv
 
 Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un event
+
+
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
