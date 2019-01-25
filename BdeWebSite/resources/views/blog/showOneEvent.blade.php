@@ -35,6 +35,14 @@
 
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
     </div>
+
+      {{ $userState = Auth::user()->state}}
+      @if($userState == 1)
+
+      <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
+
+      @endif
+    </div>
       @endauth
 
     </div>
