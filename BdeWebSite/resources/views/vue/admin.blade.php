@@ -30,11 +30,11 @@
             </tr>
               <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/">Modifier événement</a></strong></td>
+              <td><strong><a class="text-success" href="/">Ajouter événement</a></strong></td>
             </tr>
              <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/api">api</a></strong></td>
+              <td><strong><a class="text-success" href="/api">Api Node.js</a></strong></td>
             </tr>
           </tbody>
       </table>
