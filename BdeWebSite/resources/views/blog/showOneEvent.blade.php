@@ -34,13 +34,13 @@
       <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"></i>Suscribe to this event</a>
 
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
-    </div>
 
-      {{ $userState = Auth::user()->state}}
-      @if($userState == 1)
+
+      <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @if ($userState == 1)
 
       <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
-
+    </div>
       @endif
     </div>
       @endauth
