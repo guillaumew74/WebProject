@@ -25,18 +25,16 @@ class MagController extends Controller
 
        }
 
-
-
-
-
        return view('mag.achat', compact('articles'));
    }
-    // pull
-    //tasse
-    //porteclef
-    //coquetelephone
-    //casquette
-    //t-shirt
+    
 
+    public function confirmBuy($n){
+
+       $article = Article::where('idArticles','=',$n)->first();
+
+      return view('mag.confirmBuy',compact('article'))->with('numero',$n);
+
+    }
 
 }
