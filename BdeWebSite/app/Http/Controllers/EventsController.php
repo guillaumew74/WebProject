@@ -419,8 +419,6 @@ public function getSuscribers($id) {
     return Response::download($filename, 'suscribers.csv', $headers);
   }
 
-
-
 }
 
 
