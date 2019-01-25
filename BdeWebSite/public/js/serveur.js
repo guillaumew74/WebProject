@@ -7,7 +7,6 @@ var express = require("express");
 var hostname = 'localhost'; 
 var port = 8080; 
 var bodyParser = require("body-parser"); 
-var array =  ["ours","zebre","vache"];
 var cors = require('cors');
 // Nous créons un objet de type Express. 
 var app = express(); 
@@ -15,7 +14,6 @@ var app = express();
 
  
 app.use(cors());
-
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); 
 //Afin de faciliter le routage (les URL que nous souhaitons prendre en charge dans notre API), nous créons un objet Router.
@@ -33,17 +31,14 @@ myRouter.route('/piscines')
  nbResultat : (req.query.maxresultat)*5, 
  methode : req.method });
 })
+
+
 //POST
 .post(function(req,res){
 	doSomething(req.body.ecole, res);
-	/*res.json({message : "Ajoute une nouvelle piscine à la liste", 
- 	/*nom : req.body.nom, 
- 	ville : (req.body.ville), 
- 	taille : req.body.taille,
- 	methode : req.method*/
- 	
- 		/*});*/
      })
+
+
 // Nous demandons à l'application d'utiliser notre routeur
 app.use(myRouter);  
  
@@ -66,11 +61,11 @@ function doSomething(ecole, res){
 	}
 
 	else if (ecole == "epitech") {
-		resultat = "alors pas trop noye dans ta piscine ?";
+		resultat = "alors pas trop noyer dans ta piscine ?";
 	}
 
 	else{
-		resultat = "c moisi";
+		resultat = "viens au cesi l'année prochaine";
 	}
 
 		res.json({message : resultat, 

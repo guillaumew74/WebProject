@@ -32,9 +32,13 @@
               <td></td>
               <td><strong><a class="text-success" href="/">Modifier événement</a></strong></td>
             </tr>
+             <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/api">api</a></strong></td>
+            </tr>
           </tbody>
       </table>
     </div>
-  </div>
+</div>
 
 @endsection
