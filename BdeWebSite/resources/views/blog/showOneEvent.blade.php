@@ -11,6 +11,9 @@
 
         <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
 
+        @if ($past)
+        <a class="btn btn-primary btn-lg" class="btnedit" href="/addPicture/{id}">Ajouter des photos</a>
+        @endif
       </div>
 
     </div>

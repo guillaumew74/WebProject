@@ -55,10 +55,10 @@
          </div>
       </div>
    </div>
+   <script src="{{ URL::asset('js/formEvent.js') }}"></script>
    @endauth
    @guest
-   <div></div>
-   <script src="{{ URL::asset('js/formEvent.js') }}"></script>
+
    <div class="col-sm-offset-4 col-sm-4">
     <br>
     <br>

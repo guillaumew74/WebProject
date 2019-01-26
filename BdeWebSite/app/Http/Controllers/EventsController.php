@@ -433,6 +433,14 @@ class EventsController extends Controller
 
       $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
 
+      $now = new DateTime();
+       $standardDate = $now->format( 'Y-m-d');
+       if($eventShow->date < $standardDate){
+        $past = true;
+       } else {
+        $past = false;
+       }
+
         $c=1;
         foreach ($listUser as $user) {
           $userName[$c] = User::where('id', $user)->first();
@@ -444,7 +452,7 @@ class EventsController extends Controller
      $i++;
    }
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName'));
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName', 'past'));
  }
  public function showOneIdea($id) {
 

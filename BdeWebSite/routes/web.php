@@ -75,6 +75,8 @@ Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un e
 
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
+Route::get('/addPicture/{id}', 'EventsController@addPicture');
+
 Route::get('/errorState', function (){
    return view('errors.errorState');
 });

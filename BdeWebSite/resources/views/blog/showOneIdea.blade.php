@@ -42,6 +42,7 @@
       @else
       <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong></p>
       @endif
+      <p>Cette événement est prévu pour le <strong>{{ $eventShow->date }}</strong></p>
       <address>
         <abbr title="Email">Email:</abbr>
         <a href="mailto:{{ $eventShow->owner }}">{{ $eventShow->owner }}</a>

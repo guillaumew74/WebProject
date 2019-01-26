@@ -143,6 +143,7 @@
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 
 @else
+
   <div id="wrapper">
    <div class="col-sm-offset-4 col-sm-4">
     <div class="panel panel-danger">
