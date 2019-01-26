@@ -96,24 +96,8 @@
 <div class="row">
 
   <div class="col-lg-6 text-center">
-  @if(isset($j))
 
-    @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
-    <a class="btn btn-primary center-block" href="/showIdea/{{ $j }}">Show more event ! </a>
-    @else
-    <a class="btn btn-primary center-block" href="/show/{{ $j }}">Show more event ! </a>
-    @endif
-
-  @else
-
-    @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
-    <a class="btn btn-primary center-block" href="/showIdeaSort/{{ $v }}">Show more event ! </a>
-    @else
-    <a class="btn btn-primary center-block" href="/show/{{ $v }}">Show more event ! </a>
-    @endif
-
-  @endif
-
+    <a class="btn btn-primary center-block" href="/showEventPast/{{ $j }}">Show more event ! </a>
 
   </div>
   <!-- /.col-lg-6 -->
