@@ -88,6 +88,12 @@ Route::get('/administration', function () {return view('vue.admin');});
 Route::resource('/user', 'UserController');
 Route::get('/api', function () {return view('vue.api');});
 
+ Route::get('/suparticles', function () {
+ $articles= DB::table('articles')->get();
+  return view('vue.suparticles', compact('articles'));
+ });
+ Route::get('/suparticles/{id}', 'SupArticlesController@getSupArticles');
+
 });
 
 Route::get('/error', function () {

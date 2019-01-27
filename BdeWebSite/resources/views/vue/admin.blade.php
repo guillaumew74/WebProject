@@ -18,20 +18,27 @@
             <tr>
               <td></td>
               <td><strong><a class="text-success" href="/user">Gérer utilisateur</a></strong></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/adarticles">Ajouter des articles</a></strong></td>
+            </tr>
 
-            </tr>
             <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/adarticle">Ajouter des articles</a></strong></td>
+              <td><strong><a class="text-success" href="/suparticles">Suprimer des articles</a></strong></td>
             </tr>
-            <tr>
-              <td></td>
-              <td><strong><a class="text-success" href="/">Modifier des articles</a></strong></td>
-            </tr>
+
               <tr>
               <td></td>
               <td><strong><a class="text-success" href="/form">Ajouter événement</a></strong></td>
             </tr>
+
+            <tr>
+              <td></td>
+              <td><strong><a class="text-success" href="/validevent">Valider événement</a></strong></td>
+            </tr>
+
              <tr>
               <td></td>
               <td><strong><a class="text-success" href="/api">Api Node.js</a></strong></td>
