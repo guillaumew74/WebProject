@@ -98,6 +98,10 @@ Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
 Route::get('/adarticlesform', 'ArticlesController@getForm');
 Route::post('/adarticles', 'ArticlesController@insert');
 
+Route::get('/validevent', function () {
+$events= DB::table('events')->where('validated', '0')->get();
+return view('admin.validevent', compact('events'));});
+Route::get('/validevent/{id}', 'EventsController@getValidEvent');
 
 });
 

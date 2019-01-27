@@ -495,6 +495,12 @@ public function getSuscribers($id) {
     return Response::download($filename, 'suscribers.csv', $headers);
   }
 
+  public function getValidEvent($id) {
+
+DB::table('events')->where('idEvent', '=', $id)->insert([['validated' => 1]]);
+return view('admin.validevent');
+}
+
 }
 
 
