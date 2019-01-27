@@ -497,7 +497,7 @@ public function getSuscribers($id) {
 
   public function getValidEvent($id) {
 
-DB::table('events')->where('idEvent', '=', $id)->insert([['validated' => 1]]);
+DB::table('events')->where('idEvents', $id)->update([['validated' => '1']]);
 return view('admin.validevent');
 }
 
