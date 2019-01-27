@@ -21,7 +21,7 @@
             </tr>
             <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/adarticles">Ajouter des articles</a></strong></td>
+              <td><strong><a class="text-success" href="/adarticlesform">Ajouter des articles</a></strong></td>
             </tr>
 
             <tr>

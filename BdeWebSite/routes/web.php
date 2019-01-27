@@ -92,7 +92,10 @@ Route::get('/api', function () {return view('vue.api');});
  $articles= DB::table('articles')->get();
   return view('vue.suparticles', compact('articles'));
  });
- Route::get('/suparticles/{id}', 'SupArticlesController@getSupArticles');
+ Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
+
+ Route::get('/adarticlesform', 'ArticlesController@getForm');
+ Route::post('/adarticles', 'ArticlesController@insert');
 
 });
 
