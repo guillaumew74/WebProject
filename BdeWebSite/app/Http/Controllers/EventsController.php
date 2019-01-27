@@ -495,10 +495,11 @@ public function getSuscribers($id) {
     return Response::download($filename, 'suscribers.csv', $headers);
   }
 
-  public function getValidEvent($id) {
 
-DB::table('events')->where('idEvents', $id)->update([['validated' => '1']]);
-return view('admin.validevent');
+public function getValidEvent($id) {
+
+  DB::table('events')->where('idEvents', $id)->update(array('validated' => '1'));
+  return view('vue.admin');
 }
 
 }
