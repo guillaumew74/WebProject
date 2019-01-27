@@ -84,18 +84,20 @@ Route::get('/errorState', function (){
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
 Route::group(['middleware' => 'admin'], function() {
 
+
 Route::get('/administration', function () {return view('vue.admin');});
 Route::resource('/user', 'UserController');
 Route::get('/api', function () {return view('vue.api');});
 
- Route::get('/suparticles', function () {
- $articles= DB::table('articles')->get();
-  return view('vue.suparticles', compact('articles'));
- });
- Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
+Route::get('/suparticles', function () {
+$articles= DB::table('articles')->get();
+return view('vue.suparticles', compact('articles'));});
 
- Route::get('/adarticlesform', 'ArticlesController@getForm');
- Route::post('/adarticles', 'ArticlesController@insert');
+Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
+
+Route::get('/adarticlesform', 'ArticlesController@getForm');
+Route::post('/adarticles', 'ArticlesController@insert');
+
 
 });
 
