@@ -12,8 +12,11 @@ class CreatePhotosTable extends Migration {
 			$table->string('ImageLink', 255);
 			$table->integer('nbrLike');
 			$table->integer('idEvents');
+			$table->integer('idUsers');
+			$table->timestamps();
 
 			  $table->foreign('idEvents')->references('idEvents')->on('Events')->onDelete('restrict')->onUpdate('restrict');
+			  $table->foreign('idUsers')->references('id')->on('Users')->onDelete('restrict')->onUpdate('restrict');
 		});
 	}
 

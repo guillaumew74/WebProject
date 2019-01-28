@@ -6,9 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Photo extends Model
 {
-	protected $fillable = ['idPhotos', 'ImageLink', 'nbrLike', 'idEvents'];
+	protected $fillable = ['idPhotos', 'ImageLink', 'nbrLike', 'idEvents', 'idUsers'];
 
 
-
-	public $timestamps = false;
 }

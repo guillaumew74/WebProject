@@ -7,7 +7,7 @@
     <br>
     <br>
       <div class="panel panel-info">
-         <div class="panel-heading">Soumetre son idée</div>
+         <div class="panel-heading">Soumettre 1 à 3 photos</div>
          <div class="panel-body">
 
             {!! Form::open(array('action' => ['EventsController@postPicture', $id], 'files' => true)) !!}
