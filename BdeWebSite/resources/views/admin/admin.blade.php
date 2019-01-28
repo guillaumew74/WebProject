@@ -41,7 +41,7 @@
 
              <tr>
               <td></td>
-              <td><strong><a class="text" href="/api">Api Node.js</a></strong></td>
+              <td><strong><a class="text" href="/api">Api Node.js (école)</a></strong></td>
             </tr>
           </tbody>
       </table>
