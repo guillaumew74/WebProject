@@ -33,12 +33,14 @@ Route::post('/contact', 'ContactController@postForm');
 // ROUTE AFFICHAGE BOUTIQUE
 Route::get('/boutique','MagController@showMag');
 Route::get('buy/{n}','MagController@confirmBuy');
+Route::get('buyArticle/{id}','MagController@buyArticle');
  //  function () {
  // $produit= DB::table('produit')->get();
  //  return view('achat', compact('produit'));
 
-// ROUTE AFFICHAGE PANIER
-Route::get('/panier','CartController@showCart');
+
+// ROUTE AFFICHAGE PANIER 
+Route::get('/panier','MagController@showPan');
 
 
 Route::get('/form', 'EventsController@getForm');
