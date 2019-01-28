@@ -18,15 +18,15 @@ class MagController extends Controller
   public function showMag()
   {
 
-    for($i = 1; $i <= 7; $i++) {
+     $nbrOfArticles = Article::all()->count();
+     $articles = Article::all();
 
-     $article = Article::where('idArticles','=',$i)->first();
-     $articles[$i] = $article;
+  
 
-   }
-
-   return view('mag.achat', compact('articles'));
+   return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
  }
+
+
 
 
  public function confirmBuy($n){
@@ -41,13 +41,22 @@ class MagController extends Controller
 
  public function showPan() {
 
-  for($i = 1; $i <= 7; $i++) {
+   if (Auth::user() == null) {
+    return view ('mag.successBuy');
+  }
+  elseif(Auth::user() != null){
 
-   $article = Article::where('idArticles','=',$i)->first();
-   $articles[$i] = $article;
+    $user = Auth::user();
+    $iduser = $user->id;
 
- }
- return view('mag.pan', compact('articles'));
+    $items = Buy::where('idUsers',$iduser)->get();
+
+
+    $nbrOfItem = Buy::where('idUsers',$iduser)->count();
+
+    return view('mag.pan', compact('items'))->with('nbrOfItem',$nbrOfItem);
+  }
+  
 }
 
 
@@ -55,27 +64,28 @@ class MagController extends Controller
 
 public function buyArticle($id){
 
+
   if (Auth::user() == null) {
     return view ('mag.successBuy', compact('article'));
   }
 
   else {
 
-  $user = Auth::user();
-  $iduser = $user->id;
-  $inputsBuy['idArticles'] = $id;
-  $inputsBuy['idUsers'] = $iduser;
-  ;
+    $user = Auth::user();
+    $iduser = $user->id;
+    $inputsBuy['idArticles'] = $id;
+    $inputsBuy['idUsers'] = $iduser;
+    ;
 
-  $buy = Buy::create($inputsBuy);
-  $buy->save();
+    $buy = Buy::create($inputsBuy);
+    $buy->save();
 
 
 
-  $article = Article::where('idArticles', $id)->firstOrFail();
+    $article = Article::where('idArticles', $id)->firstOrFail();
 
-  return view ('mag.successBuy', compact('article'));
-}
+    return view ('mag.successBuy');
+  }
 
 }
 

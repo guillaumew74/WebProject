@@ -39,7 +39,7 @@ Route::get('buyArticle/{id}','MagController@buyArticle');
  //  return view('achat', compact('produit'));
 
 
-// ROUTE AFFICHAGE PANIER 
+// ROUTE AFFICHAGE PANIER
 Route::get('/panier','MagController@showPan');
 
 
@@ -81,8 +81,10 @@ Route::get('/addPicture/{id}', 'EventsController@getPicture');
 
 Route::post('/postPicture/{id}',  'EventsController@postPicture');
 
+Route::get('/noUserLog', 'EventsController@noUserLog');
+
 Route::get('/errorState', function (){
-   return view('errors.errorState');
+
 });
 
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN

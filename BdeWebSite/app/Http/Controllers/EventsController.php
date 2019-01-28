@@ -187,6 +187,7 @@ class EventsController extends Controller
 
               if($arrayShow[$i]->idEvents == $idFirst)
               {
+
                 return view('errors.errorNoMoreShow');
               }
 
@@ -205,6 +206,8 @@ class EventsController extends Controller
 
 
         public function showIdeaNoP() {
+          $user = Auth::user();
+          if ($user){
             $choice = 'R'; //On utilise cette méthode quand on a choisi de trié pas popularité
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
             if ($allEvents >= 5) {
@@ -238,6 +241,9 @@ class EventsController extends Controller
            {
             return view('errors.errorNotEnough');
           }
+        }else {
+          return view('errors.errorNoUserLog');
+        }
         }
 
         public function showIdea($j) {
@@ -250,7 +256,6 @@ class EventsController extends Controller
               $idFirst = $first->idEvents;
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
-
 
              for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
@@ -284,6 +289,8 @@ class EventsController extends Controller
           }
         }
 
+
+
   public function showOne($id)//affiche un event en particulier
   {
     $eventShow = Events::where('idEvents', $id)->first();
@@ -308,12 +315,11 @@ class EventsController extends Controller
         $v = 0;
         return redirect()->action('EventsController@showIdeaSort', $v );
       }
-
-
       else {
         return redirect()->action('EventsController@showIdeaNoP', $choice);
       }
     }
+
     else {
       $pastEvent = $request->input();
       $choice = $pastEvent['pastEvent'];
@@ -329,14 +335,9 @@ class EventsController extends Controller
 
   }
 
-
-
-
-
-
   public function showIdeaSort($v) {
 
-  $choice = 'P'; //On utilise cette méthode quand on a choisi de trié pas popularité
+  $choice = 'P'; //On utilise cette méthode quand on a choisi de trié par popularité
   $first = Events::where('validated', '0')->orderBy('vote', 'ASC')->first(); //On vien chercher l'id de l'event le moins voté
   $idFirst = $first->idEvents;
   $nbrFirst = Events::where('vote', $first->vote)->count(); //nbr d'event qui ont le moins de vote
@@ -344,7 +345,7 @@ class EventsController extends Controller
 
   $eventMoreValidated = Events::where('validated', '0')->orderBy('vote', 'DSC')->first();
 
-    for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+    for($i = 1; $i <= 4; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
 
       $moreVote = $eventMoreValidated->vote;
@@ -393,19 +394,29 @@ class EventsController extends Controller
       $c++;
     }
 
-
     $nbrComment  = Comments::where('idEvents', $id )->get()->count() ;
-
     $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
-
+    $pictures = Photo::where('idEvents', $id)->get();
+    $nbrPictures = Photo::where('idEvents', $id)->count();
+    $past = null;
     $i = 1;
     foreach ($listUser as $user) {
       $userName[$i] = User::where('id', $user)->first();
       $i++;
     }
+  if ($nbrPictures != 0){
+   $p= 1;
+    foreach ($pictures as $pic) {
+      $pics[$p] = $pic;
+      $p++;
+    }}
+    else {
+      $pics = null;
+
+    }
 
 
-    return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment'));
+    return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment', 'pics', 'past'));
   }
 
   public function like($id){
@@ -413,11 +424,8 @@ class EventsController extends Controller
     $eventShow = Events::where('idEvents', $id)->first();
     $nbLikes = $eventShow->like + 1;
         $update = Events::where('idEvents', $id)->update(['like' => $nbLikes]);//On update le nombre de like
-        $eventShow = Events::where('idEvents', $id)->first();//On vien chargé l'event avec le nouveau nombre de like
-        $comments = Comments::where('idEvents', $id )->get();
 
-
-        return view("blog.showOneEvent", compact('eventShow', 'comments'));
+        return redirect()->action('EventsController@showOneEvent', $id);
       }
 
       public function vote($id){
@@ -568,31 +576,35 @@ public function getSuscribers($id) {
   $suscribers = json_decode($suscribers, true);
   $filename = "suscribers.csv";
   $handle = fopen($filename, 'w+');
-  fputcsv($handle, array('name', 'lastName', 'email'));
+  fputcsv($handle, array('name', 'lastName', 'email'), $delimiter = ";");
 
   foreach($suscribers as $row) {
-    fputcsv($handle, array($row['name'],';', $row['lastName'],';', $row['email']));
+    fputcsv($handle, array($row['name'], $row['lastName'], $row['email']), $delimiter = ";");
   }
 
   fclose($handle);
 
   $headers = array(
     'Content-Type' => 'text/csv',
+    'Content-Disposition' => 'attachment; filename=members.csv'
   );
 
   return Response::download($filename, 'suscribers.csv', $headers);
 }
 
 
-public function getValidEvent($id) {
+  public function getValidEvent($id) {
 
-  DB::table('events')->where('idEvents', $id)->update(array('validated' => '1'));
-  return view('admin.admin');
-}
-public function getPicture($id){
-  return view('form.pictureForm', compact('id'));
-}
+    DB::table('events')->where('idEvents', $id)->update(array('validated' => '1'));
+    return view('admin.admin');
+  }
+  public function getPicture($id){
+    return view('form.pictureForm', compact('id'));
+  }
 
+  public function noUserLog() {
+    return view('errors.errorNoUserLog');
+  }
 }
 
 

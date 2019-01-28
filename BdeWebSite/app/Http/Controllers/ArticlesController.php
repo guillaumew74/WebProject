@@ -31,6 +31,7 @@ public function insert()
             'price'=> $postform['price'],
             'imageLink'=> $postform['imageLink'],
             'imageLink'=> $postform['imageLink'],
+            'description'=> $postform['description'],
             'categorie'=> $postform['categorie'],
         );
         //  echo print_r($data);

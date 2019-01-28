@@ -31,7 +31,8 @@
   <!-- Page Content -->
   <div class="container">
 
-    @for ($i = 0; $i < 4; $i++)
+
+    @for ($i = 0; $i < $nbrOfItem; $i++)
     
 
     <div class="row">
@@ -42,7 +43,7 @@
             <h4 class="card-title">
               <a href="/buy/1"> wdkfj</a>
             </h4>
-            <h5> test €</h5>
+            <h5> test : {{$items}}{{$nbrOfItem}}</h5>
             <p class="card-text">test</p>
           </div>
           <div class="card-footer">

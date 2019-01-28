@@ -2,7 +2,7 @@
 
 @section('contenu')
 
-@if(! ((! Auth::check()) && ($arrayShow['1']->validated == 0) )) {{-- Si le user n'est pas log alors il ne peux pas acceder à la boite a idee --}}
+
 
 
 <div id="wrapper">
@@ -142,23 +142,7 @@
 
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 
-@else
 
-  <div id="wrapper">
-   <div class="col-sm-offset-4 col-sm-4">
-    <div class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title">Il y a un problème !</h3>
-      </div>
-      <div class="panel-body">
-        <p>Vous devez être connecté pour voir les idées d'événements</p>
-        <a href="/">Retour au Menu</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-@endif
 @endsection
 
 

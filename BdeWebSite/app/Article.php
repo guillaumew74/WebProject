@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-	 protected $fillable = ['iDArticles', 'name', 'quantity', 'price', 'imageLink', 'categorie'];
+	 protected $fillable = ['iDArticles', 'name','description','quantity', 'price','sold','imageLink', 'categorie'];
 }
 
 	
