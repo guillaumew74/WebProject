@@ -144,19 +144,23 @@
 
 @else
 
-  <div id="wrapper">
+@guest
+<div id="wrapper">
    <div class="col-sm-offset-4 col-sm-4">
+    <br>
+    <br>
     <div class="panel panel-danger">
       <div class="panel-heading">
         <h3 class="panel-title">Il y a un problème !</h3>
       </div>
       <div class="panel-body">
-        <p>Vous devez être connecté pour voir les idées d'événements</p>
+        <p>Vous devez être connecté pour proposer une idée d'événement</p>
         <a href="/">Retour au Menu</a>
       </div>
     </div>
   </div>
 </div>
+  @endguest
 
 @endif
 @endsection

@@ -19,7 +19,7 @@
         <tbody>
             <tr>
               <td></td>
-              <td><img class="img-thumbnail" style="width:60%"src="{{$art->imageLink}}"></td>
+              <td><img class="img-thumbnail" style="width:60%;"src="{{$art->imageLink}}"></td>
               <td><p>{{$art->idArticles}}</p></td>
               <td><p>{{$art->name}}</p></td>
               <td><p>{{$art->quantity}}</p></td>
