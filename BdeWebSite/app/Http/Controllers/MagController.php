@@ -7,7 +7,7 @@ use Faker\Provider\DateTime;
 use Illuminate\Support\Facades\Input;
 use App\Article;
 use Illuminate\Support\Facades\Auth;
-
+use App\Buy;
 
 class MagController extends Controller
 {
@@ -51,12 +51,31 @@ class MagController extends Controller
 }
 
 
+
+
 public function buyArticle($id){
+
+  if (Auth::user() == null) {
+    return view ('mag.successBuy', compact('article'));
+  }
+
+  else {
+
+  $user = Auth::user();
+  $iduser = $user->id;
+  $inputsBuy['idArticles'] = $id;
+  $inputsBuy['idUsers'] = $iduser;
+  ;
+
+  $buy = Buy::create($inputsBuy);
+  $buy->save();
+
+
 
   $article = Article::where('idArticles', $id)->firstOrFail();
 
   return view ('mag.successBuy', compact('article'));
-
+}
 
 }
 
