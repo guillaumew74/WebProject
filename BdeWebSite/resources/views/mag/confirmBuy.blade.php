@@ -45,7 +45,7 @@
               <a href="/buy/1"> {{ $article->name }}</a>
             </h4>
             <h5>{{ $article->price }} €</h5>
-            <p class="card-text">{{ $article->categorie }}</p>
+            <p class="card-text">{{ $article->description }}</p>
           </div>
           <div class="card-footer">
             <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
