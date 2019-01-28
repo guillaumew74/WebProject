@@ -37,4 +37,9 @@ class MagController extends Controller
 
     }
 
+    public function showPan() {
+
+      
+    }
+
 }

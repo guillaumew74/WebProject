@@ -38,7 +38,7 @@ Route::get('buy/{n}','MagController@confirmBuy');
  //  return view('achat', compact('produit'));
 
 // ROUTE AFFICHAGE PANIER 
-Route::get('/panier','CartController@showCart');
+Route::get('/panier','MagController@showPan');
 
 
 Route::get('/form', 'EventsController@getForm');

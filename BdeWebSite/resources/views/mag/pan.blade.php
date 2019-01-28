@@ -51,23 +51,6 @@
         </div>
       </div>
     </div>
-
-
-
-    <div class="col-lg-6 col-md-6 mb-4">
-      <div class="card h-100">
-
-        <div class="card-body">
-          <h4 class="card-title">
-            <a href="{{ $article->idArticles}}"> Confirmation d'achat</a>
-          </h4>
-          <h5>{{ $article->name}} </h5>
-          <p class="card-text">wdfliuhdlfiqdbfkjdqhfbqldfivydqfvliu</p>
-       </div>
-       <div class="card-footer">
-        <a href = /buy > Acheter </a>   
-      </div>
-    </div>
   </div>
 </div>
 <!-- /.row -->
