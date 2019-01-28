@@ -111,17 +111,17 @@
   @if(isset($j))
 
     @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
-    <a class="btn btn-primary center-block" href="/showIdea/{{ $j }}">Show more event ! </a>
+    <a class="btn btn-primary center-block" href="/showIdea/{{ $j }}">Afficher plus d'événement ! </a>
     @else
-    <a class="btn btn-primary center-block" href="/show/{{ $j }}">Show more event ! </a>
+    <a class="btn btn-primary center-block" href="/show/{{ $j }}">Afficher plus d'événement ! </a>
     @endif
 
   @else
 
     @if( $arrayShow['1']->validated  == 0) {{-- Si l'event n'est pas validé on affiche la suite des events Idea  --}}
-    <a class="btn btn-primary center-block" href="/showIdeaSort/{{ $v }}">Show more event ! </a>
+    <a class="btn btn-primary center-block" href="/showIdeaSort/{{ $v }}">Afficher plus d'événement ! </a>
     @else
-    <a class="btn btn-primary center-block" href="/show/{{ $v }}">Show more event ! </a>
+    <a class="btn btn-primary center-block" href="/show/{{ $v }}">Afficher plus d'événement ! </a>
     @endif
 
   @endif

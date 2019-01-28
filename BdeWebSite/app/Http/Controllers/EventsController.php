@@ -392,27 +392,34 @@ class EventsController extends Controller
 
     $nbrComment  = Comments::where('idEvents', $id )->get()->count() ;
     $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+    $listUserPic = Photo::where('idEvents', $id )->pluck('idUsers');
     $pictures = Photo::where('idEvents', $id)->get();
-    $nbrPictures = Photo::where('idEvents', $id)->count();
+    $nbrPics = Photo::where('idEvents', $id)->count();
+
     $past = null;
     $i = 1;
     foreach ($listUser as $user) {
-      $userName[$i] = User::where('id', $user)->first();
+      $userNameComment[$i] = User::where('id', $user)->first();
       $i++;
     }
-  if ($nbrPictures != 0){
+  if ($nbrPics != 0){
    $p= 1;
     foreach ($pictures as $pic) {
       $pics[$p] = $pic;
       $p++;
-    }}
+    }
+    $d = 1;
+    foreach ($listUserPic as $user) {
+        $userNamePic[$d] = User::where('id', $user)->first();
+        $d++;
+      }}
     else {
       $pics = null;
 
     }
 
 
-    return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment', 'pics', 'past'));
+    return view("blog.showOneEvent", compact('eventShow', 'comments', 'userNameComment', 'nbrComment', 'pics', 'past', 'nbrPics', 'userNamePic'));
   }
 
   public function like($id){
@@ -440,11 +447,14 @@ class EventsController extends Controller
         $eventShow = Events::where('idEvents', $id)->first();
 
       $comments = Comments::where('idEvents', $idParse)->get(); //recupère tout les com d'un event
-      $nbrComment = Comments::where('idEvents', $idParse)->get()->count();
+      $nbrComment = Comments::where('idEvents', $idParse)->count();
+       $nbrPics = Photo::where('idEvents', $id)->count();
+
 
       $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+      $listUserPic = Photo::where('idEvents', $id )->pluck('idUsers');
       $pictures = Photo::where('idEvents', $id)->get();
-      $nbrPictures = Photo::where('idEvents', $id)->count();
+      $nbrPics = Photo::where('idEvents', $id)->count();
 
 
       $now = new DateTime();
@@ -465,7 +475,7 @@ class EventsController extends Controller
      $comments[$i] = $comment;
      $i++;
    }
-  if ($nbrPictures != 0){
+  if ($nbrPics != 0){
    $p= 1;
     foreach ($pictures as $pic) {
       $pics[$p] = $pic;
@@ -483,7 +493,7 @@ class EventsController extends Controller
     }
 
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userNameComment', 'past', 'pics', 'userNamePic'));
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userNameComment', 'past', 'pics', 'userNamePic', 'nbrPics'));
  }
 
  public function showOneIdea($id) {
