@@ -42,15 +42,16 @@
           </div>
 
         </div>
-        <!-- /.col-lg-3 -->
 
         
 
           <div class="row">
+ <br>
+ <br>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['1']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['1']->idArticles }}"><img class="card-img-top" src="{{ $articles['1']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['1']->idArticles }}"> {{ $articles['1']->name }}</a>
@@ -65,8 +66,8 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['2']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['2']->idArticles }}"><img class="card-img-top" src="{{ $articles['2']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['2']->idArticles }}">{{ $articles['2']->name }}</a>
@@ -81,8 +82,8 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['3']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['3']->idArticles }}"><img class="card-img-top" src="{{ $articles['3']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['3']->idArticles }}">{{ $articles['3']->name }}</a>
@@ -97,8 +98,8 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['4']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['4']->idArticles }}"><img class="card-img-top" src="{{ $articles['4']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['4']->idArticles }}">{{ $articles['4']->name }}</a>
@@ -113,8 +114,8 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['5']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['5']->idArticles }}"><img class="card-img-top" src="{{ $articles['5']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['5']->idArticles }}">{{ $articles['5']->name }}</a>
@@ -129,8 +130,8 @@
             </div>
 
             <div class="col-lg-4 col-md-6 mb-4">
-              <div class="card h-100">
-                <a href="#"><img class="card-img-top" src="{{ $articles['6']->imageLink }}" alt=""></a>
+              <div class="card h-70">
+                <a href="/buy/{{ $articles['6']->idArticles }}"><img class="card-img-top" src="{{ $articles['6']->imageLink }}" alt=""></a>
                 <div class="card-body">
                   <h4 class="card-title">
                     <a href="/buy/{{ $articles['6']->idArticles }}">{{ $articles['6']->name }}</a>
