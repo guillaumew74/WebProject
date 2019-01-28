@@ -7,7 +7,7 @@
 <!-- Page Content -->
 <div class="page-content-wrapper">
 
-    @for ($i = 0; $i < 6; $i++)
+    @for ($i = 0; $i < $nbrOfItem; $i++)
 
       <div class="card conteneur" style="width: 18rem;">
 
