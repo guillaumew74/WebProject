@@ -39,5 +39,6 @@
     </div>
     {!! link_to_route('user.create', 'Ajouter un utilisateur', [], ['class' => 'btn btn-info pull-right']) !!}
     {!! $links !!}
+    <button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
   </div>
 @endsection

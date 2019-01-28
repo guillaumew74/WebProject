@@ -32,6 +32,8 @@
           </tbody>
       </table>
     </div>
+    <button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
 </div>
+
 
 @endsection
