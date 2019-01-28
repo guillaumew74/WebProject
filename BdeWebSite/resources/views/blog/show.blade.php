@@ -144,7 +144,8 @@
 
 @else
 
-  <div id="wrapper">
+
+{{--   <div id="wrapper">
    <div class="col-sm-offset-4 col-sm-4">
     <div class="panel panel-danger">
       <div class="panel-heading">
@@ -156,7 +157,7 @@
       </div>
     </div>
   </div>
-</div>
+</div> --}}
 
 @endif
 @endsection
