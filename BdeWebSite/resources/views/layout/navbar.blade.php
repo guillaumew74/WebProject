@@ -15,7 +15,7 @@
               <!-- Authentication Links -->
               @guest
               <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">{{ __('Connection') }}</a>
+                <a class="nav-link" href="{{ route('login') }}">{{ __('Connexion') }}</a>
               </li>
               @if (Route::has('register'))
               <li class="nav-item">
