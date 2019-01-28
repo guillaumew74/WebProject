@@ -33,12 +33,14 @@ Route::post('/contact', 'ContactController@postForm');
 // ROUTE AFFICHAGE BOUTIQUE
 Route::get('/boutique','MagController@showMag');
 Route::get('buy/{n}','MagController@confirmBuy');
+Route::get('buyArticle/{id}','MagController@buyArticle');
  //  function () {
  // $produit= DB::table('produit')->get();
  //  return view('achat', compact('produit'));
 
+
 // ROUTE AFFICHAGE PANIER 
-Route::get('/panier','CartController@showCart');
+Route::get('/panier','MagController@showPan');
 
 
 Route::get('/form', 'EventsController@getForm');
@@ -75,12 +77,35 @@ Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un e
 
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
 
+Route::get('/addPicture/{id}', 'EventsController@getPicture');
+
+Route::post('/postPicture/{id}',  'EventsController@postPicture');
+
+Route::get('/errorState', function (){
+   return view('errors.errorState');
+});
+
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
 Route::group(['middleware' => 'admin'], function() {
 
-Route::get('/administration', function () {return view('vue.admin');});
+
+Route::get('/administration', function () {return view('admin.admin');});
 Route::resource('/user', 'UserController');
-Route::get('/api', function () {return view('vue.api');});
+Route::get('/api', function () {return view('admin.api');});
+
+Route::get('/suparticles', function () {
+$articles= DB::table('articles')->get();
+return view('admin.suparticles', compact('articles'));});
+
+Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
+
+Route::get('/adarticlesform', 'ArticlesController@getForm');
+Route::post('/adarticles', 'ArticlesController@insert');
+
+Route::get('/validevent', function () {
+$events= DB::table('events')->where('validated', '0')->get();
+return view('admin.validevent', compact('events'));});
+Route::get('/validevent/{id}', 'EventsController@getValidEvent');
 
 });
 
@@ -92,5 +117,6 @@ Route::get('/condition', function () {
     return view('vue.condition');
 });
 
-Route::get('/signal/{id}', 'SignalController@signalEvent');//affiche une Idea
+Route::get('/signal/{id}', 'SignalController@getSignalEvent');
+Route::get('/signal/{id}', 'SignalController@getSignalCom');
 

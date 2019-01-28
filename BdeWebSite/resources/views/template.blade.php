@@ -2,6 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 @include('layout.head')
 
+
 <body>
 
 @include('layout.navbar')

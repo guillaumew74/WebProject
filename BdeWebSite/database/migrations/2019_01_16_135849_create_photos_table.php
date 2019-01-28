@@ -11,6 +11,9 @@ class CreatePhotosTable extends Migration {
 			$table->increments('idPhotos');
 			$table->string('ImageLink', 255);
 			$table->integer('nbrLike');
+			$table->integer('idEvents');
+
+			  $table->foreign('idEvents')->references('idEvents')->on('Events')->onDelete('restrict')->onUpdate('restrict');
 		});
 	}
 

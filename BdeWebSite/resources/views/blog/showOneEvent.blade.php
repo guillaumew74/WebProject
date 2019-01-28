@@ -9,7 +9,19 @@
         {{-- <img class="img-fluid rounded" src="uploads/1kY0OHGElC.png" alt=""> --}}
         <h1 class="display-3 text-center mt-4">{{ $eventShow->title }}</h1>
 
-        <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
+          @if ($pics)
+            @foreach ($pics as $pic)
+            <img class="img-fluid rounded" src="{{ URL::asset($pic->ImageLink) }}" alt="">
+            @endforeach
+          @else
+
+            <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
+          @endif
+          @if ($past)
+          <a class="btn btn-primary btn-lg" class="btnedit" href="/addPicture/{{ $eventShow->idEvents }}">Ajouter des photos</a>
+
+        @endif
+
 
       </div>
 
@@ -54,9 +66,9 @@
       <p>Le prix de participation de l'événement est de {{ $eventShow->payable }}</p>
       @endif
       @if($eventShow->recurent == '0')
-      <p>Cette événement est unique</p>
+      <p>Cette événement est unique et ce déroulera le {{ $eventShow->date }}</p>
       @else
-      <p>Cette événement est {{ $eventShow->recurent }}</p>
+      <p>Cette événement est {{ $eventShow->recurent }} et ce déroulera le {{ $eventShow->date }}</p>
       @endif
       <address>
         <abbr title="Email">Email:</abbr>
@@ -75,6 +87,11 @@
     <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
     <p>{{ $comments[$i]->created_at }}</p>
     <p>{{ $comments[$i]->comments }}</p>
+
+    <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @if ($userState == 1)
+    <a href="/signal/{{ $comments[$i]->idComments }}" class="btn btn-danger btn-sm" class="btnedit">Supprimer ce commentaire</a>
+    @endif
 
      </div>
     @endfor

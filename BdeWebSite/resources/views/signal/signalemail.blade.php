@@ -12,11 +12,11 @@
 
     <h1>Signalement</h1>
 
-    <p>Réception d'un Signalement:</p>
+    <p>Réception d'un Signalement d'évenement:</p>
 
     <ul>
 
-      <h2> Membre du BDE: </h2>
+      <h2> Membre du CESI: </h2>
 
       <li><strong>Nom</strong> : {{ $nom }}</li>
 
@@ -27,7 +27,7 @@
 
     <ul>
 
-      <li><strong>Article Signalé:</strong> : {{ $idEvents }}</li>
+       <li><strong>Article Signalé</strong> : {{ $idEvents }}</li>
     </ul>
 
   </body>

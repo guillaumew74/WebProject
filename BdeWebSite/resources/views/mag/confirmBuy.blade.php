@@ -59,15 +59,13 @@
 
         <div class="card-body">
           <h4 class="card-title">
-            <a href="{{ $article->idArticles}}"> Confirmation d'achat</a>
+            <a href="#"> Confirmation d'achat</a>
           </h4>
-          <h5>{{ $article->name}} </h5>
-          <p class="card-text">
-           wdfliuhdlfiqdbfkjdqhfbqldfivydqfvliu
-         </p>
+         
+          <p class="card-text">En cliquant sur acheter vous confirmez vouloir ajouter cet article à votre panier.</p>
        </div>
        <div class="card-footer">
-        <a href = /buy > Acheter </a>   
+        <a href = "/buyArticle/{{ $article->idArticles }}" > Acheter </a>   
       </div>
     </div>
   </div>
