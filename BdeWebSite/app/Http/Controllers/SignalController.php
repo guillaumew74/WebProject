@@ -41,7 +41,8 @@ return view('signal.signalCom');
 public function getSignalPic($id){
 
 unlink("uploads/$id");
-DB::table('photos')->where('idPhotos', '=', $id)->delete();
+
+DB::table('photos')->where('ImageLink', '=', 'uploads/'.$id)->delete();
 
 
 return view('signal.signalPic');
