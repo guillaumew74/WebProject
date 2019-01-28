@@ -9,6 +9,7 @@
       </div>
       <div class="panel-body">
         <p>Nous sommes désolés mais il n'y a pas assez d'évènements (+5)...</p>
+        <a href="/">Retour au Menu</a>
       </div>
     </div>
   </div>

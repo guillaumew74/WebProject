@@ -17,24 +17,31 @@
         <tbody>
             <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/user">Gérer utilisateur</a></strong></td>
+              <td><strong><a class="text" href="/user">Gérer utilisateur</a></strong></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td><strong><a class="text" href="/adarticlesform">Ajouter des articles</a></strong></td>
+            </tr>
 
-            </tr>
             <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/adarticle">Ajouter des articles</a></strong></td>
+              <td><strong><a class="text" href="/suparticles">Suprimer des articles</a></strong></td>
             </tr>
-            <tr>
-              <td></td>
-              <td><strong><a class="text-success" href="/">Modifier des articles</a></strong></td>
-            </tr>
+
               <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/">Ajouter événement</a></strong></td>
+              <td><strong><a class="text" href="/form">Ajouter événement</a></strong></td>
             </tr>
+
+            <tr>
+              <td></td>
+              <td><strong><a class="text" href="/validevent">Valider événement</a></strong></td>
+            </tr>
+
              <tr>
               <td></td>
-              <td><strong><a class="text-success" href="/api">Api Node.js</a></strong></td>
+              <td><strong><a class="text" href="/api">Api Node.js</a></strong></td>
             </tr>
           </tbody>
       </table>

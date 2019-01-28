@@ -9,6 +9,7 @@
       </div>
       <div class="panel-body">
         <p>Nous sommes désolés...</p>
+        <a href="/">Retour au Menu</a>
       </div>
     </div>
   </div>

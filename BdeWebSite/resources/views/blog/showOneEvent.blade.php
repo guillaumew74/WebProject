@@ -11,6 +11,9 @@
 
         <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
 
+        @if ($past)
+        <a class="btn btn-primary btn-lg" class="btnedit" href="/addPicture/{id}">Ajouter des photos</a>
+        @endif
       </div>
 
     </div>
@@ -75,6 +78,11 @@
     <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
     <p>{{ $comments[$i]->created_at }}</p>
     <p>{{ $comments[$i]->comments }}</p>
+
+    <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @if ($userState == 1)
+    <a href="/signal/{{ $comments[$i]->idComments }}" class="btn btn-danger btn-sm" class="btnedit">Supprimer ce commentaire</a>
+    @endif
 
      </div>
     @endfor

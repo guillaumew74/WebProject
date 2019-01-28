@@ -25,7 +25,8 @@
       <h2 class="mt-4">Description</h2>
       <p>{{ $eventShow->description }}</p>
 
-      <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary">Votez pour cette idée ! {{ $eventShow->vote }}</a>
+      <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary">Votez pour cette idée ! </a>
+      <p>Il y a {{ $eventShow->vote }} votes pour cette idée </p>
     </div>
     <div class="col-sm-4">
             <h2 class="mt-4">Informations sur l'événements</h2>
@@ -41,6 +42,7 @@
       @else
       <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong></p>
       @endif
+      <p>Cette événement est prévu pour le <strong>{{ $eventShow->date }}</strong></p>
       <address>
         <abbr title="Email">Email:</abbr>
         <a href="mailto:{{ $eventShow->owner }}">{{ $eventShow->owner }}</a>

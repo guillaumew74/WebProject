@@ -5,12 +5,11 @@
     <div class="col-sm-offset-4 col-sm-4">
     <div class="panel panel-danger">
       <div class="panel-heading">
-        <h3 class="panel-title">Il y a un problème !</h3>
+        <h3 class="panel-title">Articles Effacé !</h3>
       </div>
       <div class="panel-body">
-        <p>Nous sommes désolés vous n'êtes pas administrateur...</p>
-        <a href="/">Retour au Menu</a>
+        <p>Vous venez de suprimer un articles</p>
+        <a href="/suparticles">Retour a la page prècedente</a>
       </div>
     </div>
   </div>
-@endsection

@@ -37,6 +37,7 @@ Route::get('buy/{n}','MagController@confirmBuy');
  // $produit= DB::table('produit')->get();
  //  return view('achat', compact('produit'));
 
+
 // ROUTE AFFICHAGE PANIER 
 Route::get('/panier','MagController@showPan');
 
@@ -59,21 +60,49 @@ Route::get('/vote/{id}', 'EventsController@vote'); //fonction vote
 Route::get('/showIdea', 'EventsController@showIdeaNoP'); //affiche la première pas des Idea
 Route::get('/showIdea/{id}', 'EventsController@showIdea'); //affiche la suite des Idea
 
-Route::post('/showIdeaPost', 'EventsController@postSort');//permet de gere le choix du tri du user
+Route::post('/showIdeaPost/{id}', 'EventsController@postSort');//permet de gere le choix du tri du user
+Route::post('/showEventPost/{id}', 'EventsController@postSort');//permet de gere le choix du tri du user
+
+
+Route::get('/showEventPast/{id}', 'EventsController@showEventPast');
+
 Route::get('/showIdeaSort/{id}', 'EventsController@showIdeaSort');//affiche la suite des idea retrié par popularité
 
 Route::get('/suscribe/{id}', 'EventsController@suscribe');//fonction suscribe
 Route::get('/getSuscribers/{id}', 'EventsController@getSuscribers');//permet de télécharger la liste des participant en csv
 
 Route::get('/showOneEvent/{id}', 'EventsController@showOneEvent');//affiche un event
+
+
 Route::get('/showOneIdea/{id}', 'EventsController@showOneIdea');//affiche une Idea
+
+Route::get('/addPicture/{id}', 'EventsController@addPicture');
+
+Route::get('/errorState', function (){
+   return view('errors.errorState');
+});
 
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
 Route::group(['middleware' => 'admin'], function() {
 
+
 Route::get('/administration', function () {return view('vue.admin');});
 Route::resource('/user', 'UserController');
 Route::get('/api', function () {return view('vue.api');});
+
+Route::get('/suparticles', function () {
+$articles= DB::table('articles')->get();
+return view('vue.suparticles', compact('articles'));});
+
+Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
+
+Route::get('/adarticlesform', 'ArticlesController@getForm');
+Route::post('/adarticles', 'ArticlesController@insert');
+
+Route::get('/validevent', function () {
+$events= DB::table('events')->where('validated', '0')->get();
+return view('admin.validevent', compact('events'));});
+Route::get('/validevent/{id}', 'EventsController@getValidEvent');
 
 });
 
@@ -85,5 +114,6 @@ Route::get('/condition', function () {
     return view('vue.condition');
 });
 
-Route::get('/signal/{id}', 'EventsController@signal');//affiche une Idea
+Route::get('/signal/{id}', 'SignalController@getSignalEvent');
+Route::get('/signal/{id}', 'SignalController@getSignalCom');
 
