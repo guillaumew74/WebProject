@@ -80,7 +80,11 @@ VALUES
 ('T-shirt', 'Un tee-shirt spatial simple et élégant.', 800, 36, 0, 'https://frenchrocket.fr/word.html/wp-content/uploads/2018/10/Tshirt-Bleu-flecked-rouge-face-700x904.jpg', 'vetement');
 
 
-
+INSERT INTO `events` (`idEvents`, `owner`, `title`, `date`, `description`, `validated`, `imageLink`, `like`, `vote`, `recurent`, `payable`, `created_at`, `updated_at`)
+VALUES
+(61, 'remipapin6@gmail.com', 'Grand Paintball', '2019-02-15', 'Partie de plaisir dans la forêt', 0, 'uploads/Ol8igmbn8h.jpg', 0, 0, 'mensuel', 5, '2019-01-28 15:09:09', '2019-01-28 15:09:09'),
+(62, 'remipapin6@gmail.com', 'Karting', '2019-01-11', 'Une course endiablée', 1, 'uploads/uaopWXnR4q.jpg', 1, 0, 'annuel', 50, '2019-01-28 15:11:47', '2019-01-28 15:17:17'),
+(63, 'remipapin6@gmail.com', 'Balade en Forêt', '2019-02-20', 'Découvrez le massif Armoricain', 1, 'uploads/L0lG0pbynj.jpg', 0, 0, 'annuel', 0, '2019-01-28 15:14:38', '2019-01-28 15:14:38');
 
 
 
