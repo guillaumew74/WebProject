@@ -64,10 +64,10 @@
             <a href="#"> Confirmation d'achat</a>
           </h4>
          
-          <p class="card-text">En cliquant sur acheter vous confirmez vouloir ajouter cet article à votre panier.</p>
+          <p class="card-text">En cliquant sur "confirmer" vous confirmez vouloir ajouter cet article à votre panier.</p>
        </div>
        <div class="card-footer">
-        <a href = "/buyArticle/{{ $article->idArticles }}" > Acheter </a>   
+        <a href = "/buyArticle/{{ $article->idArticles }}" > Confirmer </a>   
       </div>
     </div>
   </div>

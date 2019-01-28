@@ -13,7 +13,7 @@ class CreateArticlesTable extends Migration {
 			$table->string('description', 255);
 			$table->integer('quantity');
 			$table->integer('price');
-			$table->integer('sold');
+			$table->integer('sold')->default(0);
 			$table->string('imageLink', 255);
 			$table->string('categorie', 20);
 		});

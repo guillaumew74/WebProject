@@ -60,8 +60,8 @@
             <img style="width:50%; " class="card-img-top contenu" src="{{$article->imageLink}}" alt="">
             <div class="card-body">
               <h5 class="card-title">{{$article->name}}: {{$article->price}} €</h5>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              <a href="/buy/{{$article->idArticles}}" class="btn btn-primary">Voir plus</a>
+              <p class="card-text">{{$article->description}}.</p>
+              <a href="/buy/{{$article->idArticles}}" class="btn btn-primary">Acheter</a>
             </div>
           </div>
 
