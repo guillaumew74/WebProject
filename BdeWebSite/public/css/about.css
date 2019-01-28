@@ -466,6 +466,23 @@ button.js-cookie-consent-agree {
   height: 2%;
 }
 
+.page-content-wrapper{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+
+
+}
+.conteneur{
+  margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
 /*bare lateral en %
 texte en pourcentage et plus petit
 retrecir le carroussel*/

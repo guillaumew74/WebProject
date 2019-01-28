@@ -30,6 +30,11 @@
           </div>
 
           <div class="form-group {!! $errors->has('Categorie') ? 'has-error' : '' !!}">
+            {!! Form::text('description', null, ['class' => 'form-control', 'placeholder' => 'Description']) !!}
+            {!! $errors->first('description', '<small class="help-block">:message</small>') !!}
+          </div>
+
+          <div class="form-group {!! $errors->has('Categorie') ? 'has-error' : '' !!}">
             {!! Form::text('categorie', null, ['class' => 'form-control', 'placeholder' => 'Catégorie']) !!}
             {!! $errors->first('categorie', '<small class="help-block">:message</small>') !!}
           </div>
