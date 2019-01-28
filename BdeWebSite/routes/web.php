@@ -81,6 +81,8 @@ Route::get('/addPicture/{id}', 'EventsController@getPicture');
 
 Route::post('/postPicture/{id}',  'EventsController@postPicture');
 
+Route::get('/noUserLog', 'EventsController@noUserLog');
+
 Route::get('/errorState', function (){
 
 });
