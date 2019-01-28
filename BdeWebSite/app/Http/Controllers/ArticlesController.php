@@ -45,7 +45,7 @@ public function getSupArticles($id){
 
 DB::table('articles')->where('idArticles', '=', $id)->delete();
 
-return view('vue.Articledel');
+return view('admin.articledel');
 
 }
 

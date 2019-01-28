@@ -85,13 +85,13 @@ Route::get('/errorState', function (){
 Route::group(['middleware' => 'admin'], function() {
 
 
-Route::get('/administration', function () {return view('vue.admin');});
+Route::get('/administration', function () {return view('admin.admin');});
 Route::resource('/user', 'UserController');
-Route::get('/api', function () {return view('vue.api');});
+Route::get('/api', function () {return view('admin.api');});
 
 Route::get('/suparticles', function () {
 $articles= DB::table('articles')->get();
-return view('vue.suparticles', compact('articles'));});
+return view('admin.suparticles', compact('articles'));});
 
 Route::get('/suparticles/{id}', 'ArticlesController@getSupArticles');
 

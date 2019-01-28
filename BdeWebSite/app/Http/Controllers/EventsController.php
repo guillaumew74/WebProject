@@ -499,7 +499,7 @@ public function getSuscribers($id) {
 public function getValidEvent($id) {
 
   DB::table('events')->where('idEvents', $id)->update(array('validated' => '1'));
-  return view('vue.admin');
+  return view('admin.admin');
 }
 
 }
