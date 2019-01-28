@@ -84,7 +84,7 @@ Route::post('/postPicture/{id}',  'EventsController@postPicture');
 Route::get('/noUserLog', 'EventsController@noUserLog');
 
 Route::get('/errorState', function (){
-   return view('errors.errorState');
+
 });
 
 //ROUTE QUI DEPENDENT DU MIDDLEWARE ADMIN /PAGE ADMIN
