@@ -7,9 +7,11 @@ use App\Events;
 use App\Comments;
 use App\Suscribe;
 use App\User;
+use App\Photo;
 use App\Http\Requests\formRequests;
 use App\Http\Requests\addComments;
 use App\Http\Requests\sortBy;
+use App\Http\Requests\addPicture;
 use Illuminate\Support\Facades\Auth;//permet de gérer le user connecter
 use Illuminate\Support\Facades\DB;//permet de gérer la DB en globla et de faire des jointures entre les tables
 use Illuminate\Support\Facades\Response;
@@ -49,13 +51,18 @@ class EventsController extends Controller
             $inputs['imageLink'] = $cheminPhoto;
             $inputs['owner'] = $inputs['email'];
             if(! isset($inputs['isRecurent'])){ //si la checkbox isRecurent n'est pas coché alors on set recurent a 0
-              $inputs['recurent'] = 0;
-            }
-
+            $inputs['recurent'] = 0;
+          }
 
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
              $events->save();
 
+            $inputsPic['ImageLink'] = $cheminPhoto;
+            $inputsPic['idEvents'] = $events->id;
+            $inputsPic['nbrLike'] = 0;
+
+            $pictures = Photo::create($inputsPic);
+            $pictures->save();
              return redirect()->action('EventsController@showIdeaNoP');
            }
 
@@ -76,10 +83,10 @@ class EventsController extends Controller
       $allEvents = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->count(); //compte le nombre d'event validé
 
 
-        if ($allEvents >= 5) {
+      if ($allEvents >= 5) {
 
-          $first = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
-          $idFirst = $first->idEvents;
+        $first = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
+        $idFirst = $first->idEvents;
 
         $postShow = Events::whereDate('date', '>=', $standardDate)->where('validated', '=', '1')->latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -100,24 +107,24 @@ class EventsController extends Controller
               return view('errors.errorNoMoreShow');
             }
 
-      }
+          }
         $j--; //j a été incrémenté une fois de trop dans le do while
 
-       return view('blog.show', compact('arrayShow', 'j', 'choice'));
-     }
-     else
-     {
-      return view('errors.errorNotEnough');
-     }
-
+        return view('blog.show', compact('arrayShow', 'j', 'choice'));
       }
-      public function showEventNoP() {
-        $now = new DateTime();
-    $standardDate = $now->format( 'Y-m-d');
-    $choice = 'R';
+      else
+      {
+        return view('errors.errorNotEnough');
+      }
+
+    }
+    public function showEventNoP() {
+      $now = new DateTime();
+      $standardDate = $now->format( 'Y-m-d');
+      $choice = 'R';
 
 
-       $j = 0;
+      $j = 0;
 
             $postShow = Events::whereDate('date', '>=', $standardDate)->where('validated', '=', '1')->latest()->first();// On récupere l'article qui vient d'etre posté
 
@@ -151,18 +158,18 @@ class EventsController extends Controller
           }
         }
 
-  public function showEventPast($j) {
+        public function showEventPast($j) {
 
-    $now = new DateTime();
-    $standardDate = $now->format( 'Y-m-d');
-    $choice = 'P';
+          $now = new DateTime();
+          $standardDate = $now->format( 'Y-m-d');
+          $choice = 'P';
 
     $allPastEvents = Events::whereDate('date', '<', $standardDate)->where('validated', '=', '1')->count(); //On obtient tout les events avant la date d'aujourd'hui
     $lastEvent = Events::latest()->whereDate('date', '<', $standardDate)->where('validated', '=', '1')->first();
 
 
-     $first = Events::where('validated', '=', '1')->whereDate('date', '<', $standardDate)->first();
-     $idFirst = $first->idEvents;
+    $first = Events::where('validated', '=', '1')->whereDate('date', '<', $standardDate)->first();
+    $idFirst = $first->idEvents;
 
     if($allPastEvents >= 4) {
 
@@ -179,9 +186,9 @@ class EventsController extends Controller
               $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
 
               if($arrayShow[$i]->idEvents == $idFirst)
-             {
-              return view('errors.errorNoMoreShow');
-            }
+              {
+                return view('errors.errorNoMoreShow');
+              }
 
             }
 
@@ -189,12 +196,12 @@ class EventsController extends Controller
 
              return view('blog.showPastEvent', compact('arrayShow', 'j', 'choice'));
 
-    }
-    else {
+           }
+           else {
             return view('errors.errorNotEnough');
           }
 
-  }
+        }
 
 
         public function showIdeaNoP() {
@@ -293,8 +300,8 @@ class EventsController extends Controller
 
     $event = Events::where('idEvents', $id)->first();
     if($event->validated == 0) {
-    $sortBy = $request->input();
-    $choice = $sortBy['sortBySS'];
+      $sortBy = $request->input();
+      $choice = $sortBy['sortBySS'];
 
 
       if ($choice == 'P') {
@@ -306,19 +313,19 @@ class EventsController extends Controller
       else {
         return redirect()->action('EventsController@showIdeaNoP', $choice);
       }
-     }
-      else {
-        $pastEvent = $request->input();
-        $choice = $pastEvent['pastEvent'];
+    }
+    else {
+      $pastEvent = $request->input();
+      $choice = $pastEvent['pastEvent'];
 
-        if ($choice == 'P') {
-          $id = 0;
-            return redirect()->action('EventsController@showEventPast', $id);
-        }
-        else {
-          return redirect()->action('EventsController@showEventNoP');
-        }
+      if ($choice == 'P') {
+        $id = 0;
+        return redirect()->action('EventsController@showEventPast', $id);
       }
+      else {
+        return redirect()->action('EventsController@showEventNoP');
+      }
+    }
 
   }
 
@@ -373,38 +380,38 @@ class EventsController extends Controller
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
         $user = Auth::user();
     $userId = $user->id; // récupère l'id de la session en cour (unique)
-        $inputs['idUsers'] = $userId;
-        $addRow = Comments::create($inputs);
+    $inputs['idUsers'] = $userId;
+    $addRow = Comments::create($inputs);
 
-        $eventShow = Events::where('idEvents', $id)->first();
+    $eventShow = Events::where('idEvents', $id)->first();
 
-        $listComments = Comments::where('idEvents', $id )->pluck('idComments');
+    $listComments = Comments::where('idEvents', $id )->pluck('idComments');
 
-        $c = 1;
-        foreach ($listComments as $idComment ) {
-          $comments[$c] = Comments::where('idComments', $idComment)->first();
-          $c++;
-        }
-
-
-        $nbrComment  = Comments::where('idEvents', $id )->get()->count() ;
-
-        $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
-
-        $i = 1;
-        foreach ($listUser as $user) {
-          $userName[$i] = User::where('id', $user)->first();
-          $i++;
-        }
+    $c = 1;
+    foreach ($listComments as $idComment ) {
+      $comments[$c] = Comments::where('idComments', $idComment)->first();
+      $c++;
+    }
 
 
-        return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment'));
-      }
+    $nbrComment  = Comments::where('idEvents', $id )->get()->count() ;
 
-      public function like($id){
+    $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
 
-        $eventShow = Events::where('idEvents', $id)->first();
-        $nbLikes = $eventShow->like + 1;
+    $i = 1;
+    foreach ($listUser as $user) {
+      $userName[$i] = User::where('id', $user)->first();
+      $i++;
+    }
+
+
+    return view("blog.showOneEvent", compact('eventShow', 'comments', 'userName', 'nbrComment'));
+  }
+
+  public function like($id){
+
+    $eventShow = Events::where('idEvents', $id)->first();
+    $nbLikes = $eventShow->like + 1;
         $update = Events::where('idEvents', $id)->update(['like' => $nbLikes]);//On update le nombre de like
         $eventShow = Events::where('idEvents', $id)->first();//On vien chargé l'event avec le nouveau nombre de like
         $comments = Comments::where('idEvents', $id )->get();
@@ -432,28 +439,42 @@ class EventsController extends Controller
       $nbrComment = Comments::where('idEvents', $idParse)->get()->count();
 
       $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+      $pictures = Photo::where('idEvents', $id)->get();
+      $nbrPictures = Photo::where('idEvents', $id)->count();
+
 
       $now = new DateTime();
-       $standardDate = $now->format( 'Y-m-d');
-       if($eventShow->date < $standardDate){
+      $standardDate = $now->format( 'Y-m-d');
+      if($eventShow->date < $standardDate){
         $past = true;
-       } else {
+      } else {
         $past = false;
-       }
+      }
 
-        $c=1;
-        foreach ($listUser as $user) {
-          $userName[$c] = User::where('id', $user)->first();
-          $c++;
-        }
-        $i = 1;
+      $c=1;
+      foreach ($listUser as $user) {
+        $userName[$c] = User::where('id', $user)->first();
+        $c++;
+      }
+      $i = 1;
      foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
      $comments[$i] = $comment;
      $i++;
    }
+  if ($nbrPictures != 0){
+   $p= 1;
+    foreach ($pictures as $pic) {
+      $pics[$p] = $pic;
+      $p++;
+    }}
+    else {
+      $pics = null;
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName', 'past'));
+    }
+
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName', 'past', 'pics'));
  }
+
  public function showOneIdea($id) {
 
   $eventShow = Events::where('idEvents', $id)->first();
@@ -461,10 +482,77 @@ class EventsController extends Controller
   return view("blog.showOneIdea", compact('eventShow'));
 }
 
-public function suscribe($id) {
+public function postPicture(addPicture $request, $id) {
 
 
-  $user = Auth::user();
+       $picture['1'] = $request->file('picture1');//on récupere le fichier envoyer avec file()
+       $picture['2'] = $request->file('picture2');
+       $picture['3'] = $request->file('picture3');
+
+       $eventShow = Events::where('idEvents', $id)->first();
+
+
+  for($i=1; $i<=3; $i++){
+
+    if ($picture[$i]) {
+
+       if ($picture[$i]->isValid())//utilisation de la methode isValid qui vérifie la validité de l'image
+       {
+            $chemin = config('image.path');//fais référence au file config/image.php ou on définit le path des image récuperer
+
+            $extension = $picture[$i]->getClientOriginalExtension();//methode qui recupère l'extension originelle
+
+            do {
+              $nom = str_random(10) . '.' . $extension;
+            } while(file_exists($chemin . '/' . $nom));//on génére un nom alétoire et on vérifie qu'il n'existe pas déjà
+            $cheminPhoto = $chemin . '/' . $nom;
+               //if(Auth::check()) permet de vérifier si il le user est authentifier
+
+
+            if($picture[$i]->move($chemin, $nom)){
+              $inputs['ImageLink'] = $cheminPhoto;
+              $inputs['nbrLike'] = 0;
+              $inputs['idEvents'] = $id;
+
+              $create = Photo::create($inputs);
+              $create->save();
+            }
+
+          }
+
+        }
+      }
+      $past = true;
+
+      $comments = Comments::where('idEvents', $id)->get(); //recupère tout les com d'un event
+      $nbrComment = Comments::where('idEvents', $id)->get()->count();
+      $pictures = Photo::where('idEvents', $id)->get();
+
+      $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+
+     $c=1;
+      foreach ($listUser as $user) {
+        $userName[$c] = User::where('id', $user)->first();
+        $c++;
+      }
+      $i = 1;
+     foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
+     $comments[$i] = $comment;
+     $i++;
+    }
+    $p= 1;
+    foreach ($pictures as $pic) {
+      $pics[$p] = $pic;
+      $p++;
+    }
+
+      return view('blog.showOneEvent', compact('eventShow','comments', 'nbrComment', 'userName', 'past', 'pics'));
+    }
+
+    public function suscribe($id) {
+
+
+      $user = Auth::user();
   $userId = $user->id; // récupère l'email de la session en cour (unique)
   $inputs['idEvents'] = $id;
   $inputs['idUsers'] = $userId;
@@ -477,29 +565,32 @@ public function getSuscribers($id) {
 
   $suscribers = DB::table('suscribes')->where('idEvents', $id)->join('users', 'suscribes.idUsers', '=', 'users.id')->select('users.name', 'users.lastName', 'users.email')->get();
 
-    $suscribers = json_decode($suscribers, true);
-    $filename = "suscribers.csv";
-    $handle = fopen($filename, 'w+');
-    fputcsv($handle, array('name', 'lastName', 'email'));
+  $suscribers = json_decode($suscribers, true);
+  $filename = "suscribers.csv";
+  $handle = fopen($filename, 'w+');
+  fputcsv($handle, array('name', 'lastName', 'email'));
 
-    foreach($suscribers as $row) {
-        fputcsv($handle, array($row['name'],';', $row['lastName'],';', $row['email']));
-    }
-
-    fclose($handle);
-
-    $headers = array(
-        'Content-Type' => 'text/csv',
-    );
-
-    return Response::download($filename, 'suscribers.csv', $headers);
+  foreach($suscribers as $row) {
+    fputcsv($handle, array($row['name'],';', $row['lastName'],';', $row['email']));
   }
+
+  fclose($handle);
+
+  $headers = array(
+    'Content-Type' => 'text/csv',
+  );
+
+  return Response::download($filename, 'suscribers.csv', $headers);
+}
 
 
 public function getValidEvent($id) {
 
   DB::table('events')->where('idEvents', $id)->update(array('validated' => '1'));
   return view('admin.admin');
+}
+public function getPicture($id){
+  return view('form.pictureForm', compact('id'));
 }
 
 }
