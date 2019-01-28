@@ -1,0 +1,26 @@
+{
+    "name": "Api Paypal",
+    "version": "1.0.0",
+    "description": "API paypal pour BDE WEB SITE.",
+    "main": "serverPaypal.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "paypal",
+        "payment",
+        "gateway",
+        "nodejs",
+        "payment",
+        "integration",
+        "in",
+        "web",
+        "apps"
+    ],
+    "author": "Guillaume Woreth",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^4.15.4",
+        "paypal-rest-sdk": "^1.7.1"
+    }
+}
