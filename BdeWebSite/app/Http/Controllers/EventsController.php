@@ -29,7 +29,6 @@ class EventsController extends Controller
   public function postForm(formRequests $request) //Traitement du formulaire
   {
 
-
    $image = $request->file('image');//on récupere le fichier envoyer avec file()
 
         if ($image->isValid())//utilisation de la methode isValid qui vérifie la validité de l'image
@@ -50,6 +49,7 @@ class EventsController extends Controller
             $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
             $inputs['imageLink'] = $cheminPhoto;
             $inputs['owner'] = $inputs['email'];
+
             if(! isset($inputs['isRecurent'])){ //si la checkbox isRecurent n'est pas coché alors on set recurent a 0
             $inputs['recurent'] = 0;
           }
@@ -57,12 +57,6 @@ class EventsController extends Controller
              $events = Events::create($inputs); //On enregistre les données du formuliare dans la db
              $events->save();
 
-            $inputsPic['ImageLink'] = $cheminPhoto;
-            $inputsPic['idEvents'] = $events->id;
-            $inputsPic['nbrLike'] = 0;
-
-            $pictures = Photo::create($inputsPic);
-            $pictures->save();
              return redirect()->action('EventsController@showIdeaNoP');
            }
 
@@ -210,18 +204,19 @@ class EventsController extends Controller
           if ($user){
             $choice = 'R'; //On utilise cette méthode quand on a choisi de trié pas popularité
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
-            if ($allEvents >= 5) {
+            if ($allEvents >= 4) {
 
               $j = 0;
 
-            $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
+            $postShow = Events::where('validated', '=', '0')->latest()->first();// On récupere l'article qui vient d'etre posté
 
 
-             for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+             for($i = 1; $i <= 4; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
 
 
                $lastid = $postShow->idEvents + 1;
+
                $lastid = $lastid - $j;
 
 
@@ -231,6 +226,7 @@ class EventsController extends Controller
               } while (Events::where('idEvents', $lastid)->where('validated', '=', '0')->first() == null); // on récupère l'id d'avant en vérifiant qu'il n'a pas été supprimé
 
               $arrayShow[$i] = Events::where('idEvents', $lastid)->first();
+
             }
 
              $j--; //j a été incrémenté une fois de trop dans le do while
@@ -461,7 +457,7 @@ class EventsController extends Controller
 
       $c=1;
       foreach ($listUser as $user) {
-        $userName[$c] = User::where('id', $user)->first();
+        $userNameComment[$c] = User::where('id', $user)->first();
         $c++;
       }
       $i = 1;
@@ -474,13 +470,20 @@ class EventsController extends Controller
     foreach ($pictures as $pic) {
       $pics[$p] = $pic;
       $p++;
-    }}
+    }
+      $d = 1;
+    foreach ($listUserPic as $user) {
+        $userNamePic[$d] = User::where('id', $user)->first();
+        $d++;
+      }}
     else {
       $pics = null;
+      $userNamePic = null;
 
     }
 
-   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userName', 'past', 'pics'));
+
+   return view("blog.showOneEvent", compact('eventShow', 'comments', 'nbrComment', 'userNameComment', 'past', 'pics', 'userNamePic'));
  }
 
  public function showOneIdea($id) {
@@ -498,6 +501,9 @@ public function postPicture(addPicture $request, $id) {
        $picture['3'] = $request->file('picture3');
 
        $eventShow = Events::where('idEvents', $id)->first();
+    $user = Auth::user();
+    $userId = $user->id; // récupère l'id de la session en cour (unique)
+
 
 
   for($i=1; $i<=3; $i++){
@@ -521,6 +527,7 @@ public function postPicture(addPicture $request, $id) {
               $inputs['ImageLink'] = $cheminPhoto;
               $inputs['nbrLike'] = 0;
               $inputs['idEvents'] = $id;
+              $inputs['idUsers'] = $userId;
 
               $create = Photo::create($inputs);
               $create->save();
@@ -533,17 +540,20 @@ public function postPicture(addPicture $request, $id) {
       $past = true;
 
       $comments = Comments::where('idEvents', $id)->get(); //recupère tout les com d'un event
-      $nbrComment = Comments::where('idEvents', $id)->get()->count();
+      $nbrComment = Comments::where('idEvents', $id)->count();
       $pictures = Photo::where('idEvents', $id)->get();
+      $nbrPics = Photo::where('idEvents', $id)->count();
 
       $listUser = Comments::where('idEvents', $id )->pluck('idUsers');
+      $listUserPic = Photo::where('idEvents', $id )->pluck('idUsers');
 
-     $c=1;
+      $c=1;
       foreach ($listUser as $user) {
-        $userName[$c] = User::where('id', $user)->first();
+        $userNameComment[$c] = User::where('id', $user)->first();
         $c++;
       }
-      $i = 1;
+
+    $i = 1;
      foreach ($comments as $comment ) { //création d'un tableau qui contient chaque com
      $comments[$i] = $comment;
      $i++;
@@ -553,8 +563,13 @@ public function postPicture(addPicture $request, $id) {
       $pics[$p] = $pic;
       $p++;
     }
+    $d = 1;
+    foreach ($listUserPic as $user) {
+        $userNamePic[$d] = User::where('id', $user)->first();
+        $d++;
+      }
 
-      return view('blog.showOneEvent', compact('eventShow','comments', 'nbrComment', 'userName', 'past', 'pics'));
+      return view('blog.showOneEvent', compact('eventShow','comments', 'nbrComment', 'userNameComment', 'past', 'pics', 'userNamePic', 'nbrPics'));
     }
 
     public function suscribe($id) {

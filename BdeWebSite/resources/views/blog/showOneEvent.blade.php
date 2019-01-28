@@ -8,15 +8,7 @@
       <div class="col-lg-10">
         {{-- <img class="img-fluid rounded" src="uploads/1kY0OHGElC.png" alt=""> --}}
         <h1 class="display-3 text-center mt-4">{{ $eventShow->title }}</h1>
-
-          @if ($pics)
-            @foreach ($pics as $pic)
-            <img class="img-fluid rounded" src="{{ URL::asset($pic->ImageLink) }}" alt="">
-            @endforeach
-          @else
-
-            <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
-          @endif
+        <img class="img-fluid rounded" src="{{ URL::asset($eventShow->imageLink) }}" alt="">
           @auth
           @if ($past)
           <a class="btn btn-primary btn-lg" class="btnedit" href="/addPicture/{{ $eventShow->idEvents }}">Ajouter des photos</a>
@@ -83,12 +75,24 @@
    {{--  @if($comments->comments) --}}
 
 
+    @if ($pics)
+            @for ($i = 1; $i<=$nbrPics; $i++)
+             <div class="col-lg-8 comment">
+              <h5>{{ $userNamePic[$i]->lastName }} {{ $userNamePic[$i]->name }}</h5>
+            <img class="img-fluid rounded" src="{{ URL::asset($pics[$i]->ImageLink) }}" alt="">
+            <p>{{ $pics[$i]->created_at }}</p>
+            </div>
+            @endfor
+      @endif
 
       @for($i = 1; $i<=$nbrComment; $i++)
-      <div class="col-lg-2 " id="comment">
-    <h5>{{ $userName[$i]->lastName }}  {{ $userName[$i]->name }} </h5>
+      <div class="col-lg-2 comment" >
+    <h5>{{ $userNameComment[$i]->lastName }}  {{ $userNameComment[$i]->name }} </h5>
     <p>{{ $comments[$i]->created_at }}</p>
     <p>{{ $comments[$i]->comments }}</p>
+
+
+
 
     <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
       @if ($userState == 1)

@@ -2,9 +2,6 @@
 
 @section('contenu')
 
-
-
-
 <div id="wrapper">
 <!-- Page Content -->
 <div class="container">

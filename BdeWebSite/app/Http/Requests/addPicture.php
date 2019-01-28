@@ -25,7 +25,7 @@ class addPicture extends FormRequest
     public function rules()
     {
         return [
-            // 'picture1' = 'required'
+             'picture1' => 'required'
         ];
 
     }
