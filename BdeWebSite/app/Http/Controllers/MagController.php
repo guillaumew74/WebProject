@@ -35,6 +35,14 @@ class MagController extends Controller
 
  }
 
+  public function deleteBuy($n){
+
+   $deletedBuy = Buy::where('idArticles','=',$n)->first()->delete();
+
+ return redirect()->action('MagController@showPan');
+
+ }
+
 
 
  public function showPan() {
