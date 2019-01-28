@@ -26,7 +26,9 @@
 
 <body>
 
-
+<br>
+<br>
+<br>
 
   <!-- Page Content -->
   <div class="container">
@@ -77,7 +79,7 @@
 
 
 <!-- /.container -->
-</footer>
+
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
