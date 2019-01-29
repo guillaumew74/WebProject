@@ -37,7 +37,8 @@
 
       <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary" class="btnedit"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>{{ $eventShow->like }}</a>
 
-      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"></i>S'inscrire à cette événement</a>
+      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" onClick="suscribe()" id="suscribe"></i>S'inscrire à cette événement</a>
+      <a class="btn btn-primary" id="afterSuscribe" style="visibility: hidden;" disabled>Inscrit !</a>
 
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
 
