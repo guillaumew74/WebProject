@@ -143,7 +143,12 @@
   </div>
 </div>
     <!-- /.container -->
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
   <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
 

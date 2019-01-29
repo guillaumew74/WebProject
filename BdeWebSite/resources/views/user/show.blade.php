@@ -6,10 +6,10 @@
     <div class="panel panel-primary">
       <div class="panel-heading">Fiche d'utilisateur</div>
       <div class="panel-body">
-        <p>Nom : {{ $user->name }}</p>
+        <p>Prénom : {{ $user->name }}</p>
         <p>Email : {{ $user->email }}</p>
-        <p>LastName : {{ $user->lastName }}</p>
-        <p>Location : {{ $user->location }}</p>
+        <p>Nom : {{ $user->lastName }}</p>
+        <p>Localisation : {{ $user->location }}</p>
 
         @if($user->state == 2)
           Administrateur

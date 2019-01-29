@@ -2,7 +2,7 @@
 
 @section('contenu')
     <br>
-  <div class="col-sm-offset-4 col-sm-5">
+  <div class="col-sm-offset-4 col-sm-6">
 <div style="width:100%"  class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Liste des articles <i class="fas fa-trash-alt"></i></h3>

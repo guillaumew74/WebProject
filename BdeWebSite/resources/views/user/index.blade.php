@@ -2,7 +2,7 @@
 
 @section('contenu')
     <br>
-    <div class="col-sm-offset-4 col-sm-4">
+    <div class="col-sm-offset-4 col-sm-5">
       @if(session()->has('ok'))
       <div class="alert alert-success alert-dismissible">{!! session('ok') !!}</div>
     @endif
@@ -40,7 +40,7 @@
     </div>
 
     {!! link_to_route('user.create', 'Ajouter un utilisateur', [], ['class' => 'btn btn-info pull-right']) !!}
-    {!! $links !!}
+    {!! $links !!}<br>
     <button type="button" class="btn btn-primary pull-right"><a style="color: white;" href="/administration">Retour Administration</a></button>
   </div>
 @endsection
