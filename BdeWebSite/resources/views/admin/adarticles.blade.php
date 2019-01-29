@@ -4,8 +4,8 @@
 <div id="wrapper">
     <br>
   <div class="col-sm-offset-3 col-sm-6">
-    <div class="panel panel-default bg-default">
-      <div class="panel-heading">Ajout d'article </div>
+    <div class="panel panel-primary bg-default">
+      <div class="panel-heading">Ajout d'article  <i class="fas fa-cart-plus"></i></div>
       <div class="panel-body">
 
         {!! Form::open(['url' => '/adarticles']) !!}
@@ -39,7 +39,7 @@
             {!! $errors->first('categorie', '<small class="help-block">:message</small>') !!}
           </div>
 
-          {!! Form::submit('Envoyer !', ['class' => 'btn btn-default pull-right']) !!}
+          {!! Form::submit('Envoyer !', ['class' => 'btn btn-primary pull-right']) !!}
         {!! Form::close() !!}
 
         <button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
