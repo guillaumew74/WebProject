@@ -30,8 +30,8 @@ class MagController extends Controller
   {
 
    $nbrOfArticles = Article::all()->count();
-   $articles = Article::where('categorie', $cat)->get();
-
+   $collection = Article::where('categorie', $cat)->get();
+   $articles = $collection->sortByDesc('sold');
 
    return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
  }
