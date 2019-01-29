@@ -2,7 +2,7 @@ body {
   overflow-x: hidden;
 }
 
-#wrapper {
+.wrapper {
   padding-left: 250px;
 }
 
@@ -17,7 +17,7 @@ body {
   background: #000;
 }
 
-#wrapper #sidebar-wrapper {
+.wrapper #sidebar-wrapper {
   width: 250px;
 }
 
@@ -27,7 +27,7 @@ body {
   padding: 2%;
 }
 
-#wrapper .page-content-wrapper {
+.wrapper .page-content-wrapper {
   position: absolute;
   margin-right: -250px;
 }
@@ -78,23 +78,23 @@ body {
   background: none;
 }
 
-  #wrapper {
+  .wrapper {
     padding-left: 0;
   }
-  #wrapper {
+  .wrapper {
     padding-left: 250px;
   }
   #sidebar-wrapper {
     width: 0;
   }
-  #wrapper #sidebar-wrapper {
+  .wrapper #sidebar-wrapper {
     width: 250px;
   }
   .page-content-wrapper {
     padding: 20px;
     position: relative;
   }
-  #wrapper .page-content-wrapper {
+  .wrapper .page-content-wrapper {
     position: relative;
     margin-right: 0;
   }
