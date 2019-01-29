@@ -39,6 +39,19 @@ public function getSignalCom($id){
 //Connection DB de la façade DB qui suprimme le com en fonction de son ID
 DB::table('comments')->where('idComments', '=', $id)->delete();
 
+  //récupération du nom du signaleur dans la varible de session
+  $nom= Auth::user()->name;
+
+  //idem pour mail
+  $email=Auth::user()->email;
+
+  //fonction envoie de mail de la façade mail
+  Mail::send('signal.signalemailcom',['nom'=>$nom, 'email'=>$email,'idComments'=>$id], function($message){
+
+            $message->to('bdewebsite1@gmail.com')->subject('Signalement Commentaire');
+
+            });
+
 //retour d'une vue confirmant le signalement de comentaire
 return view('signal.signalCom');
 
@@ -47,11 +60,26 @@ return view('signal.signalCom');
 //fonction de Signalement de Photo
 public function getSignalPic($id){
 
+  $nom= Auth::user()->name;
+
+  //idem pour mail
+  $email=Auth::user()->email;
+//fonction envoie de mail de la façade mail
+  Mail::send('signal.signalemailpic',['nom'=>$nom, 'email'=>$email,'ImageLink'=>$id], function($message){
+
+            $message->to('bdewebsite1@gmail.com')->subject('Signalement Image');
+
+  });
+
 //permet de suprimer le lien d'un image stocké en dur dans le projet
 unlink("uploads/$id");
 
 //supression en base de donné du lien symbolique
 DB::table('photos')->where('ImageLink', '=', 'uploads/'.$id)->delete();
+
+  //récupération du nom du signaleur dans la varible de session
+
+
 
 //retour d'une vue de confirmation de signalement de photo
 return view('signal.signalPic');
