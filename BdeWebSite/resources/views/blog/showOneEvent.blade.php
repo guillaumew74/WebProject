@@ -138,7 +138,7 @@
 
 <div class="row" >
   <div class="col-lg-8 my-6">
-      <a class="btn btn-primary btn-sm" href="/show" class="btnedit">Retour à la navigation</a>
+      <a class="btn btn-primary btn-sm btnedit" href="/show" >Retour à la navigation</a>
     </div>
   </div>
 </div>

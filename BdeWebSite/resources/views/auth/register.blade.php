@@ -1,7 +1,7 @@
 @extends('templatelog')
 
 @section('contenu')
-<div class="container"style="margin-left: 15%;">
+<div class="container" style="margin-left: 15%;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -29,7 +29,7 @@
                             <label for="lastName" class="col-md-4 col-form-label text-md-right">{{ __('Nom') }}</label>
 
                             <div class="col-md-6">
-                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required autofocus>
+                                <input id="lastName" type="text" class="form-control{{ $errors->has('lastName') ? ' is-invalid' : '' }}" name="lastName" value="{{ old('lastName') }}" required>
 
                                 @if ($errors->has('lastName'))
                                     <span class="invalid-feedback" role="alert">
@@ -43,7 +43,7 @@
         <label for="location" class="col-md-4 col-form-label text-md-right">{{ __('Centre') }}</label>
         <div class="col-md-6">
             <p>
-       <select id="location" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" value="{{ old('location') }}" required autofocus>
+       <select id="location" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" required>
            <option value="Aix-en-Provence">Aix-en-Provence</option>
            <option value="Angoulême">Angoulême</option>
            <option value="Arras">Arras</option>
@@ -116,10 +116,9 @@
                             </div>
                         </div>
 
-              <div class="checkbox">
-              <label>
-               <label><input type="checkbox" name="valid" required>  En cochant, j'accepte <a href="/condition">les conditions d'utilisation.</a></label>
-              </label>
+              <div class="form-group row">
+               <label><input type="checkbox" name="valid" required>  En cochant, j'accepte<a href="/condition">les conditions d'utilisation.</a></label>
+              </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
@@ -134,4 +133,5 @@
         </div>
     </div>
 </div>
+
 @endsection
