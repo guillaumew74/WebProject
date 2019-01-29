@@ -1,7 +1,7 @@
 @extends('templatelog')
 
 @section('contenu')
-<div class="container">
+<div class="container"style="margin-left: 15%;">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

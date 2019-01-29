@@ -2,7 +2,7 @@
 
 @section('contenu')
     <br>
-  <div class="col-sm-offset-1 col-sm-10">
+  <div class="col-sm-offset-1 col-sm-12">
 <div style="width:100%"  class="panel panel-primary">
       <div class="panel-heading">
         <h3 class="panel-title">Validation d'évenements <i class="fas fa-check"></i></h3>

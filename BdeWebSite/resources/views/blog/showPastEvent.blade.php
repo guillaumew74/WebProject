@@ -3,8 +3,6 @@
 @section('contenu')
 
 
-
-
 <div id="wrapper">
 <!-- Page Content -->
 <div class="container">
@@ -15,7 +13,7 @@
     <div class="col-lg-1">
       {!! Form::open(array('action' => array('EventsController@postSort', $arrayShow['1']->idEvents))) !!}
       <div class="form-group uk-button">
-       {!! Form::label('pastEvent', 'Trié Par : ') !!}
+       {!! Form::label('pastEvent', 'Trié&nbsp;Par&nbsp;: ') !!}
        @if(isset($choice)) {{-- On retrouve le choix qui vient d'etre fait par le user --}}
        {!! Form::select('pastEvent', array('R' => 'Evénement à venir', 'P' => 'Evénements passés'), $choice, array('onchange' => 'submitSS(this)')) !!}
        @else
@@ -110,6 +108,7 @@
 </div>
 <!--/.wrapper -->
 
+  <script src="{{ URL::asset('js/show.js') }}"></script>
 
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 

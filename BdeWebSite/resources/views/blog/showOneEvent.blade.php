@@ -143,9 +143,16 @@
   </div>
 </div>
     <!-- /.container -->
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
-  <script src="{{ URL::asset('js/showOneEvent.js') }}"></script>
+
+   {{-- On utilise des URL::asset pour que le navigateur aille chercher les fichiers au bon endroit --}}
+  <script src="{{ URL::asset('js/blogEvent.js') }}"></script>
 
 
 @endsection

@@ -1,7 +1,7 @@
-@extends('templatelog')
+@extends('template')
 
 @section('contenu')
-<div id="wrapper">
+<div id="wrapper"style="margin-left: 10%; margin-top: 5%;">
     <br>
 	<div class="col-sm-offset-3 col-sm-6">
 		<div class="panel panel-default bg-default">
@@ -25,5 +25,20 @@
 			</div>
 		</div>
 	</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
 @endsection
