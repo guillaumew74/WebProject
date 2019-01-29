@@ -1,4 +1,4 @@
- 
+
 @extends('template')
 
 @section('contenu')
@@ -32,22 +32,22 @@
 
 
 
-    <div class="col-lg-6 col-md-6 mb-4">
+
       <div class="card h-100">
 
         <div class="card-body">
           <h4 class="card-title">
-            <a href="#"> Confirmation d'achat</a>
+            Confirmation d'achat
           </h4>
-         
+
           <p class="card-text">En cliquant sur "confirmer" vous confirmez vouloir ajouter cet article à votre panier.</p>
        </div>
        <div class="card-footer">
-        <a href = "/buyArticle/{{ $article->idArticles }}" > Confirmer </a>   
+        <a href = "/buyArticle/{{ $article->idArticles }}" > Confirmer </a>
       </div>
     </div>
   </div>
-</div>
+
 <!-- /.row -->
 
 </div>
