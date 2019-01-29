@@ -36,9 +36,10 @@
 
         <h1 class="my-4">BDE Shop</h1>
         <div class="list-group">
-          <a href="#" class="list-group-item">Top-Vente</a> 
-          <a href="#" class="list-group-item">Vetements</a>
-          <a href="#" class="list-group-item">Goodies</a> 
+          
+           <a href="/cgv" class="list-group-item">Conditions générales de ventes</a>
+          <a href="/boutique/vetement" class="list-group-item">Vetements</a>
+          <a href="/boutique/goodies" class="list-group-item">Goodies</a> 
 
         </div>
 
@@ -56,13 +57,15 @@
 
           @foreach ($articles as $article)
 
+        
+
           <div class="card conteneur" style="width: 18rem;">
 
             <img style="width:50%; " class="card-img-top contenu" src="{{$article->imageLink}}" alt="">
             <div class="card-body">
-              <h5 class="card-title">{{$article->name}}: {{$article->price}} €</h5>
+              <h5 class="card-title">{{$article->name}} : {{$article->price}} €</h5>
               <p class="card-text">{{$article->description}}.</p>
-              <a href="/buy/{{$article->idArticles}}" class="btn btn-primary">Acheter</a>
+              <a href="/buy/{{$article->idArticles}}" class="btn btn-primary btn-sm">Acheter</a> 
             </div>
           </div>
 
