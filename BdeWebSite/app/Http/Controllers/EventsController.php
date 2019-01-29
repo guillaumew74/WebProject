@@ -76,8 +76,7 @@ class EventsController extends Controller
 
       $allEvents = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->count(); //compte le nombre d'event validé
 
-
-      if ($allEvents >= 5) {
+      if ($allEvents >= 4) {
 
         $first = Events::where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
         $idFirst = $first->idEvents;
@@ -96,13 +95,13 @@ class EventsController extends Controller
 
              $arrayShow[$i] = Events::where('idEvents', $lastid)->where('validated', '=', '1')->whereDate('date', '>=', $standardDate)->first();
 
-             if($arrayShow[$i]->idEvents == $idFirst)
+             if($arrayShow[$i]->idEvents == $idFirst) //Verifie que l'event n'est pas le dernier a afficher
              {
               return view('errors.errorNoMoreShow');
             }
 
           }
-        $j--; //j a été incrémenté une fois de trop dans le do while
+         //j a été incrémenté une fois de trop dans le do while
 
         return view('blog.show', compact('arrayShow', 'j', 'choice'));
       }
@@ -114,7 +113,7 @@ class EventsController extends Controller
     }
     public function showEventNoP() {
       $now = new DateTime();
-      $standardDate = $now->format( 'Y-m-d');
+      $standardDate = $now->format( 'Y-m-d'); //recupère et format la date actuelle
       $choice = 'R';
 
 
@@ -142,7 +141,8 @@ class EventsController extends Controller
             }
 
 
-             $j--; //j a été incrémenté une fois de trop dans le do while
+
+
 
              return view('blog.show', compact('arrayShow', 'j', 'choice'));
            }
@@ -245,7 +245,7 @@ class EventsController extends Controller
         public function showIdea($j) {
 
             $allEvents = Events::where('validated', '=', '0')->count(); //compte le nombre d'event validé
-            if ($allEvents >= 5) {
+            if ($allEvents >= 4) {
 
 
               $first = Events::where('validated', '=', '0')->first();
@@ -253,7 +253,7 @@ class EventsController extends Controller
 
             $postShow = Events::latest()->first();// On récupere l'article qui vient d'etre posté
 
-             for($i = 1; $i <= 5; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
+             for($i = 1; $i <= 4; $i++) { //On vient charger les 5 derniers articles (le 5 est utilisé pour le bouton showMore)
                 //WARNING Si on ne possède pas 5 articles dans la db on rentre dans une boucle infini
 
 
@@ -299,7 +299,7 @@ class EventsController extends Controller
 
   }
 
-  public function postSort(sortBy $request, $id) {
+  public function postSort(sortBy $request, $id) { //fonction qui permet de trier et d'afficher les events en fonction du choix du user
 
     $event = Events::where('idEvents', $id)->first();
     if($event->validated == 0) {
@@ -372,13 +372,15 @@ class EventsController extends Controller
 
 
     public function showOneEventPost(Request $request, $id){
+
       $events = new Events();
         $inputs = $request->input(); //On enregistre les données du formulaire dans inputs
         $inputs['idEvents'] = $id; //On renseigne l'id de l'evenement dans lequel on souhaite rajouter un commentaire
         $user = Auth::user();
     $userId = $user->id; // récupère l'id de la session en cour (unique)
     $inputs['idUsers'] = $userId;
-    $addRow = Comments::create($inputs);
+
+    $addRow = Comments::create($inputs); //on ajoute le commentaire a la table comment
 
     $eventShow = Events::where('idEvents', $id)->first();
 
@@ -397,7 +399,7 @@ class EventsController extends Controller
     $nbrPics = Photo::where('idEvents', $id)->count();
 
     $past = null;
-    $i = 1;
+    $i = 1;     /*Ces trois fonctions permettent d'afficher toutes les informations sur les users, commentaires et photos postés sur cette Event */
     foreach ($listUser as $user) {
       $userNameComment[$i] = User::where('id', $user)->first();
       $i++;
@@ -423,7 +425,7 @@ class EventsController extends Controller
   }
 
   public function like($id){
-    $conc = 'like' . $id;
+    $conc = 'like' . $id; //Utilisation d'une valeur de session pour savoir si le user a deja liker cette event ou non
     $value = session([$conc => true]);
 
     $eventShow = Events::where('idEvents', $id)->first();
@@ -439,8 +441,8 @@ class EventsController extends Controller
 
         $eventShow = Events::where('idEvents', $id)->first();
         $nbVotes = $eventShow->vote + 1;
-        $update = Events::where('idEvents', $id)->update(['vote' => $nbVotes]);//On update le nombre de like
-        $eventShow = Events::where('idEvents', $id)->first();//On vien chargé l'event avec le nouveau nombre de like
+        $update = Events::where('idEvents', $id)->update(['vote' => $nbVotes]);//On update le nombre de vote
+        $eventShow = Events::where('idEvents', $id)->first();
 
         return view("blog.showOneIdea", compact('eventShow'));
       }
@@ -460,7 +462,7 @@ class EventsController extends Controller
       $pictures = Photo::where('idEvents', $id)->get();
       $nbrPics = Photo::where('idEvents', $id)->count();
 
-
+ /* on recupère toutes les infos sur une Event */
       $now = new DateTime();
       $standardDate = $now->format( 'Y-m-d');
       if($eventShow->date < $standardDate){
