@@ -8,12 +8,14 @@
 #------------------------------------------------------------
 
 CREATE TABLE Article(
-        idArticles Int  Auto_increment  NOT NULL ,
-        name       Varchar (255) NOT NULL ,
-        quantity   Int NOT NULL ,
-        price      Int NOT NULL ,
-        imageLink  Varchar (255) NOT NULL ,
-        categorie  Varchar (255) NOT NULL
+        idArticles  Int  Auto_increment  NOT NULL ,
+        name        Varchar (255) NOT NULL ,
+        quantity    Int NOT NULL ,
+        price       Int NOT NULL ,
+        imageLink   Varchar (255) NOT NULL ,
+        categorie   Varchar (255) NOT NULL ,
+        description Varchar (255) NOT NULL ,
+        solde       Int NOT NULL
 	,CONSTRAINT Article_PK PRIMARY KEY (idArticles)
 )ENGINE=InnoDB;
 
@@ -71,11 +73,11 @@ CREATE TABLE Events(
         owner      Varchar (255) NOT NULL ,
         date       Date NOT NULL ,
         descrition Varchar (255) NOT NULL ,
-        validated  Boolean NOT NULL ,
+        validated  Bool NOT NULL ,
         imageLink  Varchar (255) NOT NULL ,
         likes      Int NOT NULL ,
         vote       Int NOT NULL ,
-        recurent   Boolean NOT NULL ,
+        recurent   Bool NOT NULL ,
         payable    Int NOT NULL ,
         idUsers    Int NOT NULL
 	,CONSTRAINT Events_PK PRIMARY KEY (idEvent)
@@ -101,7 +103,7 @@ CREATE TABLE Photos(
 CREATE TABLE Comments(
         idcomments Int  Auto_increment  NOT NULL ,
         comments   Varchar (255) NOT NULL ,
-        idPhotos   Int NOT NULL
+        idEvent    Int NOT NULL
 	,CONSTRAINT Comments_PK PRIMARY KEY (idcomments)
 )ENGINE=InnoDB;
 
@@ -155,9 +157,12 @@ ALTER TABLE Photos
 	REFERENCES Events(idEvent);
 
 ALTER TABLE Comments
-	ADD CONSTRAINT Comments_Photos0_FK
-	FOREIGN KEY (idPhotos)
-	REFERENCES Photos(idPhotos);
+	ADD CONSTRAINT Comments_Events0_FK
+	FOREIGN KEY (idEvent)
 
 
 
+
+	=======================================================================
+	   Désolé, il faut activer cette version pour voir la suite du script ! 
+	=======================================================================

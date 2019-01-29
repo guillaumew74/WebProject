@@ -12,19 +12,19 @@ function newComment(){
 	else {
 		$('#divFormu').css("display", "block");
 	}
-	//$('#divFormu').css("display", $('divFormu').css("display") == "block" ? "none" : "block"); //permet d'afficher ou d'enlever le formulaire apres avoir cliqué sur le btn
 
 }
-
-// var sortBy = document.getElementById("sortBy");
-// sortBy.addEventListener('change', function(){
-// 	alert('1');
-//     this.form.submit();
-// }, false);
 
 
 var sortBySS = document.getElementById("sortBySS");
 
 function submitSS($this) {
 	$this.form.submit();
+}
+
+var suscribe = document.getElementById("suscribe");
+
+function suscribe(){
+	suscribe.style.display = 'none';
+	document.getElementById("suscribe").style.visibility = 'visible';
 }
