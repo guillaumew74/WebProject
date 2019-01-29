@@ -12,7 +12,7 @@
 
           <div class="col-lg-3">
 
-            <h1 c>BDE Shop</h1>
+            <h1>BDE Shop</h1>
             <div class="list-group">
               
              <a href="/cgv" class="list-group-item">Conditions générales de ventes</a>
