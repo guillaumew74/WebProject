@@ -82,9 +82,13 @@ class MagController extends Controller
 
     }
 
-
-
-    return view('mag.pan', compact('itemsbought'))->with('numberOfItem',$i);
+    if ($i = 0){
+return view ('mag.emptyPan');
+    
+    }
+    else {
+        return view('mag.pan', compact('itemsbought'))->with('numberOfItem',$i);
+    }
   }
   
 }
@@ -138,7 +142,7 @@ else {
   $contents1 = Buy::where('idUsers','=',$iduser)->get();
 
   $contents2 = DB::table('buys')
-            ->join('articles', 'buys.idArticles', '=', 'articles.idArticles')->get();
+  ->join('articles', 'buys.idArticles', '=', 'articles.idArticles')->get();
 
 
   Mail::send('mag.confirmMail', ['contents2' => $contents2], function ($message)
@@ -152,16 +156,16 @@ else {
 
   });
 
- Mail::send('mag.confirmMail', ['contents2' => $contents2], function ($message)
-        {
+  Mail::send('mag.confirmMail', ['contents2' => $contents2], function ($message)
+  {
 
-            $message->from('bdewebsite1@gmail.com', 'BDE_Cesi');
-            $user = Auth::user();
-            $iduser = $user->id;
-            $message->to('bdewebsite1@gmail.com');
+    $message->from('bdewebsite1@gmail.com', 'BDE_Cesi');
+    $user = Auth::user();
+    $iduser = $user->id;
+    $message->to('bdewebsite1@gmail.com');
 
 
-        });
+  });
 
 }
 
