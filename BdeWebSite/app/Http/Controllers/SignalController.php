@@ -22,7 +22,7 @@ public function getSignalEvent($id){
   $email=Auth::user()->email;
 
   //fonction envoie de mail de la façade mail
-  Mail::send('signal.signalemail',['nom'=>$nom, 'email'=>$email,'idEvents'=>$id], function($message){
+  Mail::send('signal.signalemailevent',['nom'=>$nom, 'email'=>$email,'idEvents'=>$id], function($message){
 
             $message->to('bdewebsite1@gmail.com')->subject('Signalement Evenement');
 
