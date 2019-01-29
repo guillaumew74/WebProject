@@ -140,6 +140,7 @@
 <br>
 
 </div>
+    <script src="{{ URL::asset('js/show.js') }}"></script>
 
    <script src="{{ URL::asset('js/formEvent.js') }}"></script>
 

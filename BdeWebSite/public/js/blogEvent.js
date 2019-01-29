@@ -16,16 +16,6 @@ function newComment(){
 }
 
 
-var sortBySS = document.getElementById("sortBySS");
 
-function submitSS($this) {
-	$this.form.submit();
-}
 
-var suscribe = document.getElementById("suscribe");
 
-function suscribe(){
-	alert('a');
-	suscribe.style.display = 'none';
-	document.getElementById("suscribe").style.visibility = 'visible';_
-}
