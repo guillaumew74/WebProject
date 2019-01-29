@@ -25,6 +25,7 @@ function submitSS($this) {
 var suscribe = document.getElementById("suscribe");
 
 function suscribe(){
+	alert('a');
 	suscribe.style.display = 'none';
-	document.getElementById("suscribe").style.visibility = 'visible';
+	document.getElementById("suscribe").style.visibility = 'visible';_
 }
