@@ -3,7 +3,7 @@
 @section('contenu')
 
 
-<div id="wrapper">
+<div class="wrapper">
 <!-- Page Content -->
 <div class="container">
 

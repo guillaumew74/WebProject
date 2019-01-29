@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-<div id="wrapper">
+<div class="wrapper">
 {{-- <header class="business-header"> --}}
   <div class="container">
     <div class="row">
@@ -56,7 +56,7 @@
 
       @endif
       <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
-      @if ($userState == 1)
+      @if ($userState == 1 || $userState == 2)
 
       <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
     </div>
@@ -95,7 +95,7 @@
             <img class="img-fluid rounded" src="{{ URL::asset($pics[$i]->ImageLink) }}" alt="">
             <p>{{ $pics[$i]->created_at }}</p>
 
-    @if ($userState == 1)
+    @if ($userState == 1 || $userState == 2)
     <a href="/signal/{{ $pics[$i]->ImageLink }}" class="btn btn-danger btn-sm" class="btnedit">Supprimer cette image</a>
     @endif
             </div>
@@ -112,7 +112,7 @@
 
 
     <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
-      @if ($userState == 1)
+      @if ($userState == 1 || $userState == 2)
     <a href="/signal/{{ $comments[$i]->idComments }}" class="btn btn-danger btn-sm" class="btnedit">Supprimer ce commentaire</a>
     @endif
 

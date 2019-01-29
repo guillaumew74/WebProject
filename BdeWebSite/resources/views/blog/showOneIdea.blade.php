@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-<div id="wrapper">
+<div class="wrapper">
 {{-- <header class="business-header"> --}}
   <div class="container">
     <div class="row">
