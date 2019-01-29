@@ -79,19 +79,21 @@ class MagController extends Controller
 
       $itemsbought[$i] = Article::where('idArticles', $item->idArticles)->first();
 
-
     }
 
-    if ($i = 0){
-return view ('mag.emptyPan');
-    
+    if ($i == 0){
+      return view ('mag.emptyPan');
+      
     }
     else {
-        return view('mag.pan', compact('itemsbought'))->with('numberOfItem',$i);
+
+      return view('mag.pan', compact('itemsbought'))->with('numberOfItem',$i);
     }
+
   }
-  
 }
+
+
 
 
 
