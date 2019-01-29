@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-<div id="wrapper">
+<div class="wrapper">
 <div class="page-content-wrapper">
   <div class="container-fluid">
       <h2>Éditeur : Association CESI</h2>

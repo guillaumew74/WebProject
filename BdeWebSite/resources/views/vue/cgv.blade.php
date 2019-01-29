@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-<div id="wrapper">
+<div class="wrapper">
 <h1>PREAMBULE</h1>
 <p>Le Vendeur est éditeur de produits et de services de ___ à destination de consommateurs, commercialisés par l’intermédiaire de ses sites Internet (http://siteweb.com ). La liste et le descriptif des biens et services proposés par la Société peuvent être consultés sur les sites susmentionnés.
 L’activité de la société est présentée et explicitée de même que la destination des produits -ces obligations sont imposées par l’art. L111-1 code conso.</p>
