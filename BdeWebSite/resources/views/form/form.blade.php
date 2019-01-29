@@ -7,7 +7,7 @@
     <br>
     <br>
       <div class="panel panel-info">
-         <div class="panel-heading">Soumetre son idée</div>
+         <div class="panel-heading">Soumetre son idée <i class="fas fa-calendar"></i></div>
          <div class="panel-body">
 
             {!! Form::open(array('url' => '/post', 'files' => true)) !!}

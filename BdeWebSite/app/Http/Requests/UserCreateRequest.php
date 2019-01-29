@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+  /**
+  *Request pour créer un utilisateur
+  */
 class UserCreateRequest extends FormRequest
 {
 
@@ -12,6 +15,9 @@ class UserCreateRequest extends FormRequest
     return true;
   }
 
+  /**
+  * Règle pour créer un nouveau utilisateur
+  */
   public function rules()
   {
     return [

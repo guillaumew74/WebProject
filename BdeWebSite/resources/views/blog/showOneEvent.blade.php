@@ -35,13 +35,26 @@
       <div id="contleft">
       <a class="btn btn-primary btn-lg" onClick="newComment()" class="btnedit"><i class="far fa-comments" style="font-size:20px;color:white;"></i></a>
 
+      <div style="display: none">{!! $concLike = 'like' . $eventShow->idEvents !!}</div>
+      @if (! session()->has($concLike))
       <a href="/like/{{ $eventShow->idEvents }}" class="btn btn-primary" class="btnedit"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>{{ $eventShow->like }}</a>
+      @else
+      <a class="btn btn-primary disabled" class="btnedit" aria-disabled="true" style="font-size:20px;color:white;"><i class="far fa-thumbs-up" style="font-size:20px;color:white;"></i>{{ $eventShow->like }}</a>
+      @endif
 
-      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg"></i>S'inscrire à cette événement</a>
+      @if (! $past)
+      <div style="display: none">{!! $concSuscribe = 'suscribe' . $eventShow->idEvents !!}</div>
+      @if (! session()->has($concSuscribe))
+      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" id="suscribe"></i>S'inscrire à cette événement</a>
 
+        @else
+
+      <a class="btn btn-primary disabled btnedit" aria-disabled="true" style="font-size:20px;color:white;">Inscrit !</a>
+
+       @endif
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
 
-
+      @endif
       <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
       @if ($userState == 1)
 
@@ -55,14 +68,14 @@
     <div class="col-sm-4">
       <h2 class="mt-4">Informations sur l'événements</h2>
       @if($eventShow->payable  == 0)
-      <p>L'événenement est gratuit !</p>
+      <p>L'événenement est <strong>gratuit !</strong></p>
       @else
-      <p>Le prix de participation de l'événement est de {{ $eventShow->payable }}</p>
+      <p>Le prix de participation de l'événement est de <strong>{{ $eventShow->payable }}</strong> €</p>
       @endif
       @if($eventShow->recurent == '0')
-      <p>Cette événement est unique et ce déroulera le {{ $eventShow->date }}</p>
+      <p>Cette événement est unique et ce déroulera le <strong>{{ $eventShow->date }}</strong></p>
       @else
-      <p>Cette événement est {{ $eventShow->recurent }} et ce déroulera le {{ $eventShow->date }}</p>
+      <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong> et ce déroulera le <strong>{{ $eventShow->date }}</strong></p>
       @endif
       <address>
         <abbr title="Email">Email:</abbr>
@@ -125,7 +138,7 @@
 
 <div class="row" >
   <div class="col-lg-8 my-6">
-      <a class="btn btn-primary btn-lg" href="/show" class="btnedit">Retour à la navigation</a>
+      <a class="btn btn-primary btn-sm" href="/show" class="btnedit">Retour à la navigation</a>
     </div>
   </div>
 </div>

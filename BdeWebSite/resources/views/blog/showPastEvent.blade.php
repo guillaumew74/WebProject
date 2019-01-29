@@ -97,7 +97,7 @@
 
   <div class="col-lg-6 text-center">
 
-    <a class="btn btn-primary center-block" href="/showEventPast/{{ $j }}">Afficher plus d'événement ! </a>
+    <a class="btn btn-primary center-block btn-sm" href="/showEventPast/{{ $j }}">Afficher plus d'événement ! </a>
 
   </div>
   <!-- /.col-lg-6 -->

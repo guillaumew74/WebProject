@@ -26,7 +26,9 @@
   <input type="submit" value="Envoyer"  onclick=" test()">
 
 <h3 id ="test"></h3>
+<button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
 </div>
+
 </html>
 
 

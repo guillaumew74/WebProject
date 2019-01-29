@@ -5,7 +5,7 @@
   <div class="col-sm-offset-4 col-sm-5">
 <div style="width:100%"  class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Liste des articles</h3>
+        <h3 class="panel-title">Liste des articles <i class="fas fa-trash-alt"></i></h3>
       </div>
       <table class="table">
         <thead>
@@ -32,6 +32,8 @@
           </tbody>
       </table>
     </div>
+    <button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
 </div>
+
 
 @endsection

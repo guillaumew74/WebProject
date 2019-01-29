@@ -20,7 +20,7 @@
 						{!! Form::textarea ('texte', null, ['class' => 'form-control', 'placeholder' => 'Votre message']) !!}
 						{!! $errors->first('texte', '<small class="help-block">:message</small>') !!}
 					</div>
-					{!! Form::submit('Envoyer !', ['class' => 'btn btn pull-right']) !!}
+					{!! Form::submit('Envoyer !', ['class' => 'btn btn-primary pull-right']) !!}
 				{!! Form::close() !!}
 			</div>
 		</div>

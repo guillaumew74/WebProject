@@ -1,7 +1,10 @@
 <footer>
-      <div class="container"><br></div>
-      <div class="container">
-        <p class="m-1 text-center text-white">Copyright &copy; Guillaume Woreth / Niels Boeckx / Remi Papin / Zacharia Azzouzi Clausel</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+              <br>
+        <p class=" text-center text-white">Copyright &copy; Bde Web Site</p>
       </div>
+    </div>
 </footer>
 

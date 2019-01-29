@@ -4,7 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-
+  /**
+  * Request pour Update un utilisateur
+  */
 class UserUpdateRequest extends FormRequest
 {
 
@@ -13,6 +15,9 @@ class UserUpdateRequest extends FormRequest
     return true;
   }
 
+  /**
+  * Régle pour update un utilisateur
+  */
   public function rules()
   {
     $id = $this->user;

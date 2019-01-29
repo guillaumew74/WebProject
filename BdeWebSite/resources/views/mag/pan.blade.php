@@ -26,7 +26,7 @@
 <body>
 
 
-
+<div class="wrapper">
   <!-- Page Content -->
   <div class="container">
 
@@ -35,7 +35,7 @@
       <div class="col-lg-1">
 
         <h1 class="my-4">Mon panier </h1>
-        
+
 
       </div>
 
@@ -71,6 +71,7 @@
 
     </div>
   </div>
+</div>
 </div>
 <!-- /.container -->
 </footer>

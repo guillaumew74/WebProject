@@ -8,7 +8,7 @@
     @endif
     <div class="panel panel-primary">
       <div class="panel-heading">
-        <h3 class="panel-title">Liste des utilisateurs</h3>
+        <h3 class="panel-title">Liste des utilisateurs <i class="fas fa-users"></i></h3>
       </div>
       <table class="table">
         <thead>
@@ -36,8 +36,11 @@
           @endforeach
           </tbody>
       </table>
+
     </div>
+
     {!! link_to_route('user.create', 'Ajouter un utilisateur', [], ['class' => 'btn btn-info pull-right']) !!}
     {!! $links !!}
+    <button type="button" class="btn btn-primary pull-right"><a style="color: white;" href="/administration">Retour Administration</a></button>
   </div>
 @endsection
