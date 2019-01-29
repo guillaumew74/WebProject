@@ -7,7 +7,7 @@
 @include('layout.navbar')
 @include('layout.sidebar')
 @yield('contenu')
-@include('layout.footer')
+
 @include('layout.script')
 
 </body>

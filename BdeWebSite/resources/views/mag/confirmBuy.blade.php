@@ -39,7 +39,7 @@
             Confirmation d'achat
           </h4>
 
-          <p class="card-text">En cliquant sur "confirmer" vous confirmez vouloir ajouter cet article à votre panier.</p>
+          <p class="card-text">En cliquant sur "confirmer" vous confirmez vouloir ajouter cet article à votre panier et accepter les <a href="/cgv">conditions générales de ventes</a></p>
        </div>
        <div class="card-footer">
         <a href = "/buyArticle/{{ $article->idArticles }}" > Confirmer </a>
@@ -48,7 +48,12 @@
   </div>
 
 <!-- /.row -->
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 </div>
 <!-- /.container -->
 

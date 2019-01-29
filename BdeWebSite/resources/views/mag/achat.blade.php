@@ -15,7 +15,6 @@
             <h1>BDE Shop</h1>
             <div class="list-group">
 
-             <a href="/cgv" class="list-group-item">Conditions générales de ventes</a>
              <a href="/boutique/vetement" class="list-group-item">Vetements</a>
              <a href="/boutique/goodies" class="list-group-item">Goodies</a>
 
@@ -36,7 +35,7 @@
 
 
 
-              <div class="card conteneur" style="width: 18rem;">
+              <div class="card conteneur" style="width: 80%;">
 
                 <img style="width:50%; " class="card-img-top contenu" src="{{$article->imageLink}}" alt="">
                 <div class="card-body">
