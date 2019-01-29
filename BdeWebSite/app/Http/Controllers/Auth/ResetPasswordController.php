@@ -12,23 +12,23 @@ class ResetPasswordController extends Controller
     | Password Reset Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password reset requests
-    | and uses a simple trait to include this behavior. You're free to
-    | explore this trait and override any methods you wish to tweak.
+    | Ce contrôleur est responsable de la gestion des demandes de réinitialisation du mot de passe
+    | et utilise un trait simple pour inclure ce comportement. Vous êtes libre de
+    | explorez ce trait et substituez toutes les méthodes que vous souhaitez modifier.
     |
     */
 
     use ResetsPasswords;
 
     /**
-     * Where to redirect users after resetting their password.
+     * Redirection user après reset password.
      *
      * @var string
      */
     protected $redirectTo = '/home';
 
     /**
-     * Create a new controller instance.
+     * Création d'une nouvelle instance de controlleur.
      *
      * @return void
      */
