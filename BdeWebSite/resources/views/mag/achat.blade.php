@@ -14,10 +14,10 @@
 
             <h1>BDE Shop</h1>
             <div class="list-group">
-              
+
              <a href="/cgv" class="list-group-item">Conditions générales de ventes</a>
              <a href="/boutique/vetement" class="list-group-item">Vetements</a>
-             <a href="/boutique/goodies" class="list-group-item">Goodies</a> 
+             <a href="/boutique/goodies" class="list-group-item">Goodies</a>
 
            </div>
 
@@ -34,7 +34,7 @@
 
               @foreach ($articles as $article)
 
-              
+
 
               <div class="card conteneur" style="width: 18rem;">
 
@@ -42,7 +42,10 @@
                 <div class="card-body">
                   <h5 class="card-title">{{$article->name}} : {{$article->price}} €</h5>
                   <p class="card-text">{{$article->description}}.</p>
-                  <a href="/buy/{{$article->idArticles}}" class="btn btn-primary btn-sm">Acheter</a> 
+                </div>
+
+                <div class="card-footer">
+                    <a href="/buy/{{$article->idArticles}}" class="btn btn-primary btn-sm">Acheter</a>
                 </div>
               </div>
 
