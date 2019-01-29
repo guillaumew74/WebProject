@@ -28,7 +28,7 @@
            <br>
            <br>
 
-           <div id="wrapper">
+           <div class="wrapper">
             <!-- Page Content -->
             <div class="page-content-wrapper">
 
