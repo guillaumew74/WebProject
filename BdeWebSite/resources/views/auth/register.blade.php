@@ -44,6 +44,7 @@
         <div class="col-md-6">
             <p>
        <select id="location" class="form-control{{ $errors->has('location') ? ' is-invalid' : '' }}" name="location" required>
+          <option value="">--choisisez une option--</option>
            <option value="Aix-en-Provence">Aix-en-Provence</option>
            <option value="Angoulême">Angoulême</option>
            <option value="Arras">Arras</option>

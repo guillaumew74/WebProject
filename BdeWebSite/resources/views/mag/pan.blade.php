@@ -15,7 +15,7 @@
        <br>
        <br>
 
-
+{{$numberOfItem}}
          @for ($a = 1; $a <= $numberOfItem; $a++)
 
           <div class="card conteneur" style="width: 18rem;">

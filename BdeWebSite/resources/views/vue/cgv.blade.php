@@ -2,6 +2,8 @@
 
 @section('contenu')
 <div class="wrapper">
+<div class="page-content-wrapper">
+<div class="container-fluid">
 <h1>PREAMBULE</h1>
 <p>Le Vendeur est éditeur de produits et de services de ___ à destination de consommateurs, commercialisés par l’intermédiaire de ses sites Internet (http://siteweb.com ). La liste et le descriptif des biens et services proposés par la Société peuvent être consultés sur les sites susmentionnés.
 L’activité de la société est présentée et explicitée de même que la destination des produits -ces obligations sont imposées par l’art. L111-1 code conso.</p>
@@ -45,5 +47,7 @@ Clause type classique</p>
 <p><strong>Article 16 : Protection des données personnelles</strong> Conformément à la Loi Informatique et Libertés du 6 janvier 1978, vous disposez des droits d’interrogation, d’accès, de modification, d’opposition et de rectification sur les données personnelles vous concernant. En adhérant à ces conditions générales de vente, vous consentez à ce que nous collections et utilisions ces données pour la réalisation du présent contrat. En saisissant votre adresse email sur l’un des sites de notre réseau, vous recevrez des emails contenant des informations et des offres promotionnelles concernant des produits édités par la Société et de ses partenaires. Vous pouvez vous désinscrire à tout instant. Il vous suffit pour cela de cliquer sur le lien présent à la fin de nos emails ou de contacter le responsable du traitement (la Société) par lettre RAR. Nous effectuons sur l’ensemble de nos sites un suivi de la fréquentation.</p>
 
 <p><strong>Article 17 : Droit applicable</strong> Toutes les clauses figurant dans les présentes conditions générales de vente, ainsi que toutes les opérations d’achat et de vente qui y sont visées, seront soumises au droit français.</p>
+</div>
+</div>
 </div>
 @endsection
