@@ -1,4 +1,3 @@
- 
 @extends('template')
 
 @section('contenu')
@@ -27,41 +26,53 @@
 <body>
 
 
-
+<div class="wrapper">
   <!-- Page Content -->
   <div class="container">
 
-
-    @for ($i = 0; $i < $nbrOfItem; $i++)
-    
-
     <div class="row">
-      <div class="col-lg-4 col-md-6 mb-4">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="https://cdn1.ideecadeau.fr/media/catalog/product/l/a/la-tasse-magique-ideecadeau-fr_5451-4ed425a6.jpg" alt=""></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="/buy/1"> wdkfj</a>
-            </h4>
-            <h5> test : {{$items}}{{$nbrOfItem}}</h5>
-            <p class="card-text">test</p>
+
+      <div class="col-lg-1">
+
+        <h1 class="my-4">Mon panier </h1>
+
+
+      </div>
+
+
+
+      <div class="row">
+       <br>
+       <br>
+
+       <div id="wrapper">
+        <!-- Page Content -->
+        <div class="page-content-wrapper">
+
+         @for ($a = 1; $a <= $numberOfItem; $a++)
+
+          <div class="card conteneur" style="width: 18rem;">
+
+            <img style="width:50%; " class="card-img-top contenu" src="{{$itemsbought[$a]->imageLink}}" alt="">
+            <div class="card-body">
+              <h5 class="card-title">{{$itemsbought[$a]->price}} €</h5>
+              <p class="card-text">{{$itemsbought[$a]->description}}.</p>
+              <a href="/unBuy/{{$itemsbought[$a]->idArticles}}" class="btn btn-primary">Supprimer</a>
+            </div>
           </div>
-          <div class="card-footer">
-            <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-          </div>
+
+
+          <!-- /.row -->
+          @endfor
+
         </div>
       </div>
+
+
     </div>
-    <!-- /.row -->
-    @endfor
-
   </div>
-
-
 </div>
-<!-- /.container -->
-
-
+</div>
 <!-- /.container -->
 </footer>
 
@@ -72,8 +83,6 @@
 </body>
 
 </html>
-
-
 
 
 

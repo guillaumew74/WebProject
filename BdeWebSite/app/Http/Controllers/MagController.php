@@ -18,10 +18,8 @@ class MagController extends Controller
   public function showMag()
   {
 
-     $nbrOfArticles = Article::all()->count();
-     $articles = Article::all();
-
-  
+   $nbrOfArticles = Article::all()->count();
+   $articles = Article::all();
 
    return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
  }
@@ -37,6 +35,14 @@ class MagController extends Controller
 
  }
 
+  public function deleteBuy($n){
+
+   $deletedBuy = Buy::where('idArticles','=',$n)->first()->delete();
+
+ return redirect()->action('MagController@showPan');
+
+ }
+
 
 
  public function showPan() {
@@ -47,14 +53,24 @@ class MagController extends Controller
   elseif(Auth::user() != null){
 
     $user = Auth::user();
+
     $iduser = $user->id;
 
     $items = Buy::where('idUsers',$iduser)->get();
 
+    $i = 0; 
 
-    $nbrOfItem = Buy::where('idUsers',$iduser)->count();
+    foreach ($items as $item){
+      $i++;
 
-    return view('mag.pan', compact('items'))->with('nbrOfItem',$nbrOfItem);
+$itemsbought[$i] = Article::where('idArticles', $item->idArticles)->first();
+
+
+    }
+
+
+
+    return view('mag.pan', compact('itemsbought'))->with('numberOfItem',$i);
   }
   
 }
@@ -66,7 +82,7 @@ public function buyArticle($id){
 
 
   if (Auth::user() == null) {
-    return view ('mag.successBuy', compact('article'));
+    return view ('mag.successBuy');
   }
 
   else {
@@ -84,7 +100,7 @@ public function buyArticle($id){
 
     $article = Article::where('idArticles', $id)->firstOrFail();
 
-    return view ('mag.successBuy');
+    return view ('mag.successBuy', compact('article'));
   }
 
 }

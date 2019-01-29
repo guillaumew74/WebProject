@@ -24,9 +24,12 @@
     <div class="col-sm-8">
       <h2 class="mt-4">Description</h2>
       <p>{{ $eventShow->description }}</p>
-
+      <br>
+      <h2>Nombre de vote : {{ $eventShow->vote }}</h2>
+      <br>
       <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary">Votez pour cette idée ! </a>
-      <p>Il y a {{ $eventShow->vote }} votes pour cette idée </p>
+
+
     </div>
     <div class="col-sm-4">
             <h2 class="mt-4">Informations sur l'événements</h2>
@@ -34,17 +37,17 @@
 
       <p>L'événenement est <strong>gratuit</strong>  !</p>
       @else
-      <p>Le prix de participation de l'événement est de <strong>{{ $eventShow->payable }} €</strong></p>
+      <p>Le prix de la participation : <strong>{{ $eventShow->payable }} €</strong></p>
       @endif
 
       @if( $eventShow->recurent == '0')
       <p>Cette événement est <strong>unique</strong></p>
       @else
-      <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong></p>
+      <p>Cette événement est <strong>{{ $eventShow->recurent }}/</strong></p>
       @endif
-      <p>Cette événement est prévu pour le <strong>{{ $eventShow->date }}</strong></p>
+      <p>Date :<strong>{{ $eventShow->date }}.</strong></p>
       <address>
-        <abbr title="Email">Email:</abbr>
+        <abbr >Email:</abbr>
         <a href="mailto:{{ $eventShow->owner }}">{{ $eventShow->owner }}</a>
       </address>
  </div>
@@ -54,7 +57,7 @@
 
 <div class="row" >
   <div class="col-lg-8 my-6">
-      <a class="btn btn-primary btn-lg" href="/showIdea">Retour à la navigation</a>
+      <a class="btn btn-primary btn-sm" href="/showIdea">Retour à la navigation</a>
     </div>
   </div>
 </div>

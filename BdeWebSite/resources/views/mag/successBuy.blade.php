@@ -40,6 +40,9 @@
 			<p>Votre {{$article->name}} a bien été ajouté(e) au panier</p>
 
 			<a href="/boutique">Retour a la boutique</a>
+			<br>
+			
+			<a href="/panier">Afficher le panier</a>
 		</div>
 
 	</div>

@@ -8,7 +8,7 @@
         <h3 class="panel-title"> Signalement BDE ! </h3>
       </div>
       <div class="panel-body">
-        <p>Merci. Le commentaire viens d'être supprimer!!</p>
+        <p>Merci. La Photo viens d'être supprimer!!</p>
         <a href="/">Retour au Menu</a>
       </div>
     </div>

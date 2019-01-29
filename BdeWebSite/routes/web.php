@@ -33,6 +33,7 @@ Route::post('/contact', 'ContactController@postForm');
 // ROUTE AFFICHAGE BOUTIQUE
 Route::get('/boutique','MagController@showMag');
 Route::get('buy/{n}','MagController@confirmBuy');
+Route::get('unBuy/{n}','MagController@deleteBuy');
 Route::get('buyArticle/{id}','MagController@buyArticle');
  //  function () {
  // $produit= DB::table('produit')->get();
@@ -107,6 +108,7 @@ Route::post('/adarticles', 'ArticlesController@insert');
 Route::get('/validevent', function () {
 $events= DB::table('events')->where('validated', '0')->get();
 return view('admin.validevent', compact('events'));});
+
 Route::get('/validevent/{id}', 'EventsController@getValidEvent');
 
 });
@@ -121,4 +123,5 @@ Route::get('/condition', function () {
 
 Route::get('/signal/{id}', 'SignalController@getSignalEvent');
 Route::get('/signal/{id}', 'SignalController@getSignalCom');
+Route::get('/signal/uploads/{id}', 'SignalController@getSignalPic');
 

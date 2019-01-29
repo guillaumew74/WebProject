@@ -39,8 +39,10 @@
             {!! $errors->first('categorie', '<small class="help-block">:message</small>') !!}
           </div>
 
-          {!! Form::submit('Envoyer !', ['class' => 'btn btn pull-right']) !!}
+          {!! Form::submit('Envoyer !', ['class' => 'btn btn-default pull-right']) !!}
         {!! Form::close() !!}
+
+        <button type="button" class="btn btn-primary"><a style="color: white;" href="/administration">Retour Administration</a></button>
       </div>
     </div>
   </div>
