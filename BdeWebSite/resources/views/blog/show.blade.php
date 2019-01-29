@@ -18,8 +18,9 @@
        @else
        {!! Form::select('sortBySS', array('R' => 'Plus récent', 'P' => 'Plus populaire'), 'R', array('onchange' => 'submitSS(this)')) !!}
        @endif
-       {!! Form::close() !!}
+
      </div>
+     {!! Form::close() !!}
    </div>
  </div>
  @else
@@ -33,8 +34,9 @@
        @else
        {!! Form::select('pastEvent', array('R' => 'Evénement à venir', 'P' => 'Evénement passés'), 'R', array('onchange' => 'submitSS(this)')) !!}
        @endif
-       {!! Form::close() !!}
+
      </div>
+     {!! Form::close() !!}
    </div>
  </div>
  @endif

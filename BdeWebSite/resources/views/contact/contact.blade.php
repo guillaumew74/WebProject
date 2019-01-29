@@ -1,7 +1,7 @@
 @extends('template')
 
 @section('contenu')
-<div id="wrapper"style="margin-left: 10%; margin-top: 5%;">
+<div id="wrapper" style="margin-left: 10%; margin-top: 5%;">
     <br>
 	<div class="col-sm-offset-3 col-sm-6">
 		<div class="panel panel-default bg-default">

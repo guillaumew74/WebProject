@@ -19,8 +19,9 @@
        @else
        {!! Form::select('pastEvent', array('R' => 'Evénement à venir', 'P' => 'Evénement passés'), 'R', array('onchange' => 'submitSS(this)')) !!}
        @endif
-       {!! Form::close() !!}
+
      </div>
+     {!! Form::close() !!}
    </div>
  </div>
 
