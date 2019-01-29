@@ -47,7 +47,7 @@
                </div>
                <div class="form-group {!! $errors->has('payable') ? 'has-error' : '' !!}">
                   {!! Form::label('payable', 'Quel est le coût de participation à l\'événement ? (Gratuit = 0)') !!}
-                  {!! Form::number('payable', 'amount', ['class' => 'form-control']) !!}
+                  {!! Form::number('payable', null,['class' => 'form-control']) !!}
                   {!! $errors->first('payable', '<small class="help-block">:message</small>') !!}
                </div>
                {!! Form::submit('Envoyer !', ['class' => 'btn btn-info pull-right']) !!}
