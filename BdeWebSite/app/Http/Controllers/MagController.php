@@ -19,12 +19,24 @@ class MagController extends Controller
   {
 
    $nbrOfArticles = Article::all()->count();
-   $articles = Article::all();
+   $collection = Article::all();
+   $articles = $collection->sortByDesc('sold');
 
    return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
  }
 
 
+  public function showMagCategorie($cat)
+  {
+
+   $nbrOfArticles = Article::all()->count();
+   $collection = Article::where('categorie', $cat)->get();
+   $articles = $collection->sortByDesc('sold');
+
+   return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
+ }
+
+ 
 
 
  public function confirmBuy($n){
@@ -35,11 +47,11 @@ class MagController extends Controller
 
  }
 
-  public function deleteBuy($n){
+ public function deleteBuy($n){
 
    $deletedBuy = Buy::where('idArticles','=',$n)->first()->delete();
 
- return redirect()->action('MagController@showPan');
+   return redirect()->action('MagController@showPan');
 
  }
 
@@ -63,7 +75,7 @@ class MagController extends Controller
     foreach ($items as $item){
       $i++;
 
-$itemsbought[$i] = Article::where('idArticles', $item->idArticles)->first();
+      $itemsbought[$i] = Article::where('idArticles', $item->idArticles)->first();
 
 
     }
@@ -78,7 +90,7 @@ $itemsbought[$i] = Article::where('idArticles', $item->idArticles)->first();
 
 
 
-public function buyArticle($id){
+public function buyArticle($id){ // $id de larticle
 
 
   if (Auth::user() == null) {
@@ -88,9 +100,9 @@ public function buyArticle($id){
   else {
 
     $user = Auth::user();
-    $iduser = $user->id;
+    $iduser = $user->id; // id de l'user connecté
     $inputsBuy['idArticles'] = $id;
-    $inputsBuy['idUsers'] = $iduser;
+    $inputsBuy['idUsers'] = $iduser; 
     ;
 
     $buy = Buy::create($inputsBuy);
@@ -99,6 +111,9 @@ public function buyArticle($id){
 
 
     $article = Article::where('idArticles', $id)->firstOrFail();
+
+    DB::table('articles')->where('idArticles', $id)->increment('sold');
+    DB::table('articles')->where('idArticles', $id)->decrement('quantity');
 
     return view ('mag.successBuy', compact('article'));
   }

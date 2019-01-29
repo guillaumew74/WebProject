@@ -9,5 +9,7 @@
       {{ Html::style('https://oss.maxcdn.com/libs/html5shiv/3.7.2/html5shiv.js') }}
       {{ Html::style('https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js') }}
     <![endif]-->
+      <!-- Use fontawesome icon -->
+    <link href="{{ URL::asset('fontawesome/css/all.min.css') }}" rel="stylesheet">
     <style> textarea { resize: none; } </style>
 </head>

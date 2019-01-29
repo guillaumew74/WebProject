@@ -27,7 +27,12 @@
       <br>
       <h2>Nombre de vote : {{ $eventShow->vote }}</h2>
       <br>
+      <div style="display: none">{!! $concVote = 'vote' . $eventShow->idEvents !!}</div>
+      @if (! session()->has($concVote))
       <a href="/vote/{{ $eventShow->idEvents }}" class="btn btn-primary">Votez pour cette idée ! </a>
+      @else
+      <a class="btn btn-primary disabled" aria-disabled="true" style="font-size:20px; color:white;">Vous avez déja voté pour cette idée</a>
+      @endif
 
 
     </div>
@@ -43,7 +48,7 @@
       @if( $eventShow->recurent == '0')
       <p>Cette événement est <strong>unique</strong></p>
       @else
-      <p>Cette événement est <strong>{{ $eventShow->recurent }}/</strong></p>
+      <p>Cette événement est <strong>{{ $eventShow->recurent }}</strong> </p>
       @endif
       <p>Date :<strong>{{ $eventShow->date }}.</strong></p>
       <address>

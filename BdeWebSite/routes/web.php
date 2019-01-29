@@ -21,6 +21,11 @@ Route::get('/mentions-legales', function () {
     return view('vue.mentions-legales');
 });
 
+Route::get('/cgv', function () {
+    return view('vue.cgv');
+});
+
+
 //ROUTE LOGIN/LOGOUT
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -35,9 +40,7 @@ Route::get('/boutique','MagController@showMag');
 Route::get('buy/{n}','MagController@confirmBuy');
 Route::get('unBuy/{n}','MagController@deleteBuy');
 Route::get('buyArticle/{id}','MagController@buyArticle');
- //  function () {
- // $produit= DB::table('produit')->get();
- //  return view('achat', compact('produit'));
+Route::get('boutique/{cat}','MagController@showMagCategorie');
 
 
 // ROUTE AFFICHAGE PANIER
