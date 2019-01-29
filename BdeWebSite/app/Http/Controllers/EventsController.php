@@ -423,8 +423,6 @@ class EventsController extends Controller
   }
 
   public function like($id){
-    $conc = 'like' . $id;
-    $value = session([$conc => true]);
 
     $eventShow = Events::where('idEvents', $id)->first();
     $nbLikes = $eventShow->like + 1;
@@ -434,8 +432,6 @@ class EventsController extends Controller
       }
 
       public function vote($id){
-        $conc = 'vote' . $id;
-        $value = session([$conc => true]);
 
         $eventShow = Events::where('idEvents', $id)->first();
         $nbVotes = $eventShow->vote + 1;
@@ -588,12 +584,9 @@ public function postPicture(addPicture $request, $id) {
 
     public function suscribe($id) {
 
-  $conc = 'suscribe' . $id;
-  $value = session([$conc => true ]);
 
-
-  $user = Auth::user();
-  $userId = $user->id; // récupère l'id de la session en cour (unique)
+      $user = Auth::user();
+  $userId = $user->id; // récupère l'email de la session en cour (unique)
   $inputs['idEvents'] = $id;
   $inputs['idUsers'] = $userId;
   $suscribe = new Suscribe();
