@@ -6,24 +6,22 @@ use App\myform;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 
-
+//Controller des ressources administrateur qui permet de gerer l'ajout des articles ainsi que la supression
 class ArticlesController extends Controller
 {
 
-public function getForm()
+public function getForm() //fonction geteur du formulaire
 
     {
 
-        return view('admin.adarticles');
+        return view('admin.adarticles');//retour du formulaire permettant l'ajout d'article
 
     }
 
-public function insert()
+public function insert()//fonction qui permet d'inserer en BDD des articles
     {
 
-        $postform = Input::all();
-        //print_r($postform);
-        //insert data into mysql table
+        $postform = Input::all(); //insert data into mysql table
         $data =
 
       array('name'=> $postform['name'],
@@ -34,10 +32,10 @@ public function insert()
             'description'=> $postform['description'],
             'categorie'=> $postform['categorie'],
         );
-        //  echo print_r($data);
+
         $ck = 0;
         $ck = DB::table('articles')->Insert($data);
-        //echo "Record Added Successfully!";
+
         return redirect('/adarticlesform');
 
     }
@@ -45,6 +43,7 @@ public function insert()
 public function getSupArticles($id){
 
 DB::table('articles')->where('idArticles', '=', $id)->delete();
+// connection bdd qui permet de suprimer un article en fonction de son id
 
 return view('admin.articledel');
 

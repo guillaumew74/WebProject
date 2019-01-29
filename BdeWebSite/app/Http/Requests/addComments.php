@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class addComments extends FormRequest
 {
     /**
-     * Determine if the user is authorized to make this request.
+     * Déterminez si l'utilisateur est autorisé à faire cette demande.
      *
      * @return bool
      */
@@ -18,7 +18,7 @@ class addComments extends FormRequest
     }
 
     /**
-     * Get the validation rules that apply to the request.
+     * Obtenez les règles de validation qui s'appliquent à la demande.
      *
      * @return array
      */
