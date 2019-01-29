@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Input;
 use App\Article;
 use Illuminate\Support\Facades\Auth;
 use App\Buy;
+use Mail;
+
 
 class MagController extends Controller
 {
@@ -26,8 +28,8 @@ class MagController extends Controller
  }
 
 
-  public function showMagCategorie($cat)
-  {
+ public function showMagCategorie($cat)
+ {
 
    $nbrOfArticles = Article::all()->count();
    $collection = Article::where('categorie', $cat)->get();
@@ -103,7 +105,7 @@ public function buyArticle($id){ // $id de larticle
     $iduser = $user->id; // id de l'user connecté
     $inputsBuy['idArticles'] = $id;
     $inputsBuy['idUsers'] = $iduser; 
-    ;
+    
 
     $buy = Buy::create($inputsBuy);
     $buy->save();
@@ -115,10 +117,56 @@ public function buyArticle($id){ // $id de larticle
     DB::table('articles')->where('idArticles', $id)->increment('sold');
     DB::table('articles')->where('idArticles', $id)->decrement('quantity');
 
+
     return view ('mag.successBuy', compact('article'));
   }
 
 }
 
+public function commandePan() {
+
+ if (Auth::user() == null) {
+  return view ('mag.successBuy');
+}
+
+else {
+
+
+  $user = Auth::user();
+  $iduser = $user->id;  
+
+  $contents1 = Buy::where('idUsers','=',$iduser)->get();
+
+  $contents2 = DB::table('buys')
+            ->join('articles', 'buys.idArticles', '=', 'articles.idArticles')->get();
+
+
+  Mail::send('mag.confirmMail', ['contents2' => $contents2], function ($message)
+  {
+
+    $message->from('bdewebsite1@gmail.com ', 'BDE_Cesi');
+    $user = Auth::user();
+    $iduser = $user->id;
+    $message->to($user->email);
+
+
+  });
+
+ Mail::send('mag.confirmMail', ['contents2' => $contents2], function ($message)
+        {
+
+            $message->from('bdewebsite1@gmail.com', 'BDE_Cesi');
+            $user = Auth::user();
+            $iduser = $user->id;
+            $message->to('bdewebsite1@gmail.com');
+
+
+        });
 
 }
+
+return view ('mag.successCommande');
+}
+}
+
+

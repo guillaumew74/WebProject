@@ -24,7 +24,7 @@
             <div class="card-body">
               <h5 class="card-title">{{$itemsbought[$a]->price}} €</h5>
               <p class="card-text">{{$itemsbought[$a]->description}}.</p>
-              <a href="/unBuy/{{$itemsbought[$a]->idArticles}}" class="btn btn-primary">Supprimer</a>
+              <a href="/unBuy/{{$itemsbought[$a]->idArticles}}" class="btn btn-primary btn-sm">Supprimer</a>
             </div>
           </div>
 
@@ -35,7 +35,7 @@
         </div>
       </div>
 
-
+ <a href="/commande" class="btn btn-primary btn-lg">Passer commande</a>
     </div>
 
 <!-- /.container -->

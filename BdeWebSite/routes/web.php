@@ -41,7 +41,7 @@ Route::get('buy/{n}','MagController@confirmBuy');
 Route::get('unBuy/{n}','MagController@deleteBuy');
 Route::get('buyArticle/{id}','MagController@buyArticle');
 Route::get('boutique/{cat}','MagController@showMagCategorie');
-
+Route::get('/commande','MagController@commandePan');
 
 // ROUTE AFFICHAGE PANIER
 Route::get('/panier','MagController@showPan');
