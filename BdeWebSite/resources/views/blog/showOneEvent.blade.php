@@ -66,7 +66,7 @@
     </div>
       @endauth
 
-    </div>
+
     <div class="col-sm-4">
       <h2 class="mt-4">Informations sur l'événements</h2>
       @if($eventShow->payable  == 0)
