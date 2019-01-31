@@ -52,10 +52,12 @@
       <a class="btn btn-primary disabled btnedit" aria-disabled="true" style="font-size:20px;color:white;">Inscrit !</a>
 
        @endif
+       <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+       @if ($userState == 2)
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
-
       @endif
-      <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
+      @endif
+
       @if ($userState == 1 || $userState == 2)
 
       <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
@@ -64,7 +66,7 @@
     </div>
       @endauth
 
-    </div>
+
     <div class="col-sm-4">
       <h2 class="mt-4">Informations sur l'événements</h2>
       @if($eventShow->payable  == 0)
