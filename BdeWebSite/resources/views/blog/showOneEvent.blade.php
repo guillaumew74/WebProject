@@ -45,7 +45,7 @@
       @if (! $past)
       <div style="display: none">{!! $concSuscribe = 'suscribe' . $eventShow->idEvents !!}</div>
       @if (! session()->has($concSuscribe))
-      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" id="suscribe"></i>S'inscrire à cette événement</a>
+      <a href="/suscribe/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" id="suscribe"></i>S'inscrire à cet événement</a>
 
         @else
 
@@ -53,16 +53,16 @@
 
        @endif
        <div style="display: none">{!! $userState = Auth::user()->state !!}</div>
-       @if ($userState == 2)
+
       <a href="/getSuscribers/{{ $eventShow->idEvents }}" class="btn btn-primary btn-lg" class="btnedit">Liste des participants</a>
       @endif
-      @endif
 
-      @if ($userState == 1 || $userState == 2)
 
-      <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cette évenement</a>
+
+
+      <a href="/signal/{{ $eventShow->idEvents }}" class="btn btn-danger btn-lg" class="btnedit">Signaler cet évenement</a>
     </div>
-      @endif
+
     </div>
       @endauth
 
