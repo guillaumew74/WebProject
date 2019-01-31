@@ -16,6 +16,7 @@ class MagController extends Controller
 
 
 
+// This function is used to show the shop
 
   public function showMag()
   {
@@ -27,6 +28,7 @@ class MagController extends Controller
    return view('mag.achat', compact('articles'))->with('nbrOfArticles',$nbrOfArticles);
  }
 
+// This function is used to show the shop for a specified categorie ($cat) 
 
  public function showMagCategorie($cat)
  {
@@ -39,7 +41,7 @@ class MagController extends Controller
  }
 
  
-
+// This function is used to acceed to a page where you can confirm that you want to buy something 
 
  public function confirmBuy($n){
 
@@ -49,6 +51,8 @@ class MagController extends Controller
 
  }
 
+// This function is used to delete a reccord in the BUY(n:n) table 
+
  public function deleteBuy($n){
 
    $deletedBuy = Buy::where('idArticles','=',$n)->first()->delete();
@@ -57,7 +61,7 @@ class MagController extends Controller
 
  }
 
-
+// This function is used to show the cart 
 
  public function showPan() {
 
@@ -93,13 +97,9 @@ class MagController extends Controller
   }
 }
 
+// This function is used to add a reccord into the BUY(n:n) table when you conrfirm buying something
 
-
-
-
-
-public function buyArticle($id){ // $id de larticle
-
+public function buyArticle($id){ 
 
   if (Auth::user() == null) {
     return view ('mag.successBuy');
@@ -108,7 +108,7 @@ public function buyArticle($id){ // $id de larticle
   else {
 
     $user = Auth::user();
-    $iduser = $user->id; // id de l'user connecté
+    $iduser = $user->id; 
     $inputsBuy['idArticles'] = $id;
     $inputsBuy['idUsers'] = $iduser; 
     
@@ -128,6 +128,8 @@ public function buyArticle($id){ // $id de larticle
   }
 
 }
+
+// This function is used to confirm your cart and send mail to both customer and BDE parts.
 
 public function commandePan() {
 
